@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:upm/presentation/screens/splash_screen.dart';
 
 class RouteGenerator {
   static Route<Object> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return CupertinoPageRoute(builder: (_) => Container());
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
+      case '/signin':
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
       default:
         return _errorRoute();
     }
