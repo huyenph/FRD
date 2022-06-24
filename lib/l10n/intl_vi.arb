@@ -1,0 +1,20 @@
+{
+  "hi": "Xin Chào!",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "username": "Tên tài khoản",
+  "signin": "Đăng nhập",
+  "signup": "Đăng ký",
+  "text_continue": "Tiếp tục",
+  "countinue_with_facebook": "Đăng nhập với Facebook",
+  "countinue_with_google": "Đăng nhập với Google",
+  "countinue_with_apple": "Đăng nhập với Apple",
+  "dont_have_account": "Bạn không có tài khoản?",
+  "forgot_password": "Quên mật khẩu?",
+  "or": "Hoặc",
+  "signup_title": "Có vẻ bạn chưa có tài khoản.\nHãy tạo tài khoản mới cho",
+  "signup_policy": "Khi nhấn Đồng ý và tiếp tục bên dưới,",
+  "i_agree_to": "Tôi đồng ý với",
+  "term_of_service_and_privacy": "Điều khoản và chính sách bảo mật",
+  "agree_and_continue": "Đồng ý và tiếp tục"
+}

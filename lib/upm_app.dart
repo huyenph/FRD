@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:upm/configs/route_generator.dart';
+import 'package:upm/configs/theme/app_theme.dart';
+import 'package:upm/generated/l10n.dart';
 import 'package:upm/presentation/screens/splash_screen.dart';
 
 class UpmApp extends StatelessWidget {
@@ -13,15 +16,21 @@ class UpmApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return const CupertinoApp(
-      localizationsDelegates: [
-        DefaultMaterialLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
+    return MaterialApp(
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('en'),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

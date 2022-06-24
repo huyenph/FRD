@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:upm/modules/auth/screens/auth_screen.dart';
 import 'package:upm/presentation/screens/splash_screen.dart';
 
 class RouteGenerator {
@@ -7,8 +8,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return CupertinoPageRoute(builder: (_) => const SplashScreen());
-      case '/signin':
-        return CupertinoPageRoute(builder: (_) => const SplashScreen());
+      case '/auth':
+        return CupertinoPageRoute(builder: (_) => const AuthScreen());
       default:
         return _errorRoute();
     }

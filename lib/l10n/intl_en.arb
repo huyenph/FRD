@@ -1,0 +1,20 @@
+{
+  "hi": "Hi!",
+  "email": "Email",
+  "password": "Password",
+  "username": "Username",
+  "signin": "Sign in",
+  "signup": "Sign up",
+  "text_continue": "Continue",
+  "countinue_with_facebook": "Continue with Facebook",
+  "countinue_with_google": "Continue with Google",
+  "countinue_with_apple": "Continue with Apple",
+  "dont_have_account": "Don't have an account?",
+  "forgot_password": "Forgot your password?",
+  "or": "Or",
+  "signup_title": "Looks like you don't have an account. Let's create a new account for",
+  "signup_policy": "By selecting Agree and continue below,",
+  "i_agree_to": "I agree to",
+  "term_of_service_and_privacy": "Terms of Service and Privacy Policy",
+  "agree_and_continue": "Agree and continue"
+}

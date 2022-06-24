@@ -15,12 +15,12 @@ class _SplashScreenState extends BaseState<SplashScreen> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, '/signin'),
+      () => Navigator.pushReplacementNamed(context, '/auth'),
     );
   }
 
   @override
-  Widget buildBody() {
+  Widget buildBody(BuildContext context) {
     return Container(
       color: Colors.white,
       child: const Center(

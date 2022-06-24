@@ -25,7 +25,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
           drawer: buildDrawer(),
           bottomNavigationBar: buildBottomNavigationBar(),
           floatingActionButton: buildFloatingActionButton(),
-          body: buildBody(),
+          body: buildBody(context),
         ),
       ),
     );
@@ -43,7 +43,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   FloatingActionButton? buildFloatingActionButton() => null;
 
-  Widget buildBody();
+  Widget buildBody(BuildContext context);
 
   // void showAlertDialog({
   //   String message = '',

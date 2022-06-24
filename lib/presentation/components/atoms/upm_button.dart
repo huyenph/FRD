@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:upm/common/app_colors.dart';
+import 'package:upm/common/app_size.dart';
 import 'package:upm/presentation/components/atoms/upm_text.dart';
 
 class UpmButton extends StatelessWidget {
@@ -7,9 +9,9 @@ class UpmButton extends StatelessWidget {
     required this.onPressed,
     this.startIcon,
     this.endIcon,
-    this.startIconColor,
-    this.endIconColor,
+    this.mainAxisAlignment = MainAxisAlignment.center,
     this.labelColor,
+    this.backgroundColor = AppColors.primaryColor,
     this.padding = const EdgeInsets.all(8.0),
     this.label,
     this.startIconSize,
@@ -19,11 +21,11 @@ class UpmButton extends StatelessWidget {
   }) : super(key: key);
 
   final VoidCallback onPressed;
-  final IconData? startIcon;
-  final IconData? endIcon;
-  final Color? startIconColor;
-  final Color? endIconColor;
+  final Widget? startIcon;
+  final Widget? endIcon;
+  final MainAxisAlignment mainAxisAlignment;
   final Color? labelColor;
+  final Color backgroundColor;
   final EdgeInsets padding;
   final String? label;
   final double? startIconSize;
@@ -37,31 +39,34 @@ class UpmButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(padding: padding),
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
+              side: BorderSide.none,
+            ),
+          ),
+          padding: MaterialStateProperty.all<EdgeInsets>(
+            const EdgeInsets.all(15.0),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            backgroundColor,
+          ),
+        ),
         child: Row(
+          mainAxisAlignment: mainAxisAlignment,
           children: <Widget>[
-            if (startIcon != null) ...[
-              Icon(
-                startIcon,
-                color: startIconColor,
-                size: startIconSize,
-              ),
-            ],
+            if (startIcon != null) ...[startIcon!],
             if (label != null) ...[
               UpmText(
                 text: label!,
                 fontSize: labelSize,
                 textColor: labelColor,
                 isAllCaps: isAllCaps,
+                fontWeight: FontWeight.bold,
               ),
             ],
-            if (endIcon != null) ...[
-              Icon(
-                endIcon,
-                color: endIconColor,
-                size: endIconSize,
-              ),
-            ],
+            if (endIcon != null) ...[endIcon!],
           ],
         ),
       ),
