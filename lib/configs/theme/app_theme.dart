@@ -30,8 +30,20 @@ class AppTheme {
         selectedItemColor: AppColors.primaryColor,
       ),
       inputDecorationTheme: const InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
+          borderSide: BorderSide(color: AppColors.primaryColor, width: 1.2),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),

@@ -50,11 +50,21 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Hi!`
-  String get hi {
+  /// `Welcome to UPM! 👋🏻`
+  String get welcome_to {
     return Intl.message(
-      'Hi!',
-      name: 'hi',
+      'Welcome to UPM! 👋🏻',
+      name: 'welcome_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please sign-in to your account and start the adventure`
+  String get signin_title {
+    return Intl.message(
+      'Please sign-in to your account and start the adventure',
+      name: 'signin_title',
       desc: '',
       args: [],
     );
@@ -90,81 +100,41 @@ class S {
     );
   }
 
-  /// `Sign in`
-  String get signin {
+  /// `Login`
+  String get login {
     return Intl.message(
-      'Sign in',
-      name: 'signin',
+      'Login',
+      name: 'login',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sign up`
-  String get signup {
+  /// `Register`
+  String get register {
     return Intl.message(
-      'Sign up',
-      name: 'signup',
+      'Register',
+      name: 'register',
       desc: '',
       args: [],
     );
   }
 
-  /// `Continue`
-  String get text_continue {
-    return Intl.message(
-      'Continue',
-      name: 'text_continue',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Facebook`
-  String get countinue_with_facebook {
-    return Intl.message(
-      'Continue with Facebook',
-      name: 'countinue_with_facebook',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Google`
-  String get countinue_with_google {
-    return Intl.message(
-      'Continue with Google',
-      name: 'countinue_with_google',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Apple`
-  String get countinue_with_apple {
-    return Intl.message(
-      'Continue with Apple',
-      name: 'countinue_with_apple',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Don't have an account?`
-  String get dont_have_account {
-    return Intl.message(
-      'Don\'t have an account?',
-      name: 'dont_have_account',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Forgot your password?`
+  /// `Forgot password?`
   String get forgot_password {
     return Intl.message(
-      'Forgot your password?',
+      'Forgot password?',
       name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New on our platform?`
+  String get new_on_platform {
+    return Intl.message(
+      'New on our platform?',
+      name: 'new_on_platform',
       desc: '',
       args: [],
     );
@@ -180,21 +150,51 @@ class S {
     );
   }
 
-  /// `Looks like you don't have an account. Let's create a new account for`
-  String get signup_title {
+  /// `Continue with Facebook`
+  String get continue_with_facebook {
     return Intl.message(
-      'Looks like you don\'t have an account. Let\'s create a new account for',
-      name: 'signup_title',
+      'Continue with Facebook',
+      name: 'continue_with_facebook',
       desc: '',
       args: [],
     );
   }
 
-  /// `By selecting Agree and continue below,`
-  String get signup_policy {
+  /// `Continue with Google`
+  String get continue_with_google {
     return Intl.message(
-      'By selecting Agree and continue below,',
-      name: 'signup_policy',
+      'Continue with Google',
+      name: 'continue_with_google',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue with Apple`
+  String get continue_with_apple {
+    return Intl.message(
+      'Continue with Apple',
+      name: 'continue_with_apple',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adventure starts here 🚀`
+  String get adventure_start_here {
+    return Intl.message(
+      'Adventure starts here 🚀',
+      name: 'adventure_start_here',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make your app management easy and fun!`
+  String get register_title {
+    return Intl.message(
+      'Make your app management easy and fun!',
+      name: 'register_title',
       desc: '',
       args: [],
     );
@@ -210,21 +210,31 @@ class S {
     );
   }
 
-  /// `Terms of Service and Privacy Policy`
-  String get term_of_service_and_privacy {
+  /// `privacy policy & terms`
+  String get privacy_policy {
     return Intl.message(
-      'Terms of Service and Privacy Policy',
-      name: 'term_of_service_and_privacy',
+      'privacy policy & terms',
+      name: 'privacy_policy',
       desc: '',
       args: [],
     );
   }
 
-  /// `Agree and continue`
-  String get agree_and_continue {
+  /// `Already have an account?`
+  String get aldready_have_account {
     return Intl.message(
-      'Agree and continue',
-      name: 'agree_and_continue',
+      'Already have an account?',
+      name: 'aldready_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login instead`
+  String get login_instead {
+    return Intl.message(
+      'Login instead',
+      name: 'login_instead',
       desc: '',
       args: [],
     );

@@ -7,17 +7,23 @@ class UpmAppBar extends StatelessWidget with PreferredSizeWidget {
     required this.title,
     this.actions,
     this.centerTitle = false,
+    this.backgroundColor,
+    this.elevation,
   }) : super(key: key);
 
   final String title;
   final List<Widget>? actions;
   final bool centerTitle;
+  final Color? backgroundColor;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: UpmText(text: title),
       actions: actions,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
       centerTitle: centerTitle,
     );
   }

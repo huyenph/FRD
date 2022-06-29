@@ -22,32 +22,35 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "agree_and_continue":
-            MessageLookupByLibrary.simpleMessage("Đồng ý và tiếp tục"),
-        "countinue_with_apple":
-            MessageLookupByLibrary.simpleMessage("Đăng nhập với Apple"),
-        "countinue_with_facebook":
-            MessageLookupByLibrary.simpleMessage("Đăng nhập với Facebook"),
-        "countinue_with_google":
-            MessageLookupByLibrary.simpleMessage("Đăng nhập với Google"),
-        "dont_have_account":
-            MessageLookupByLibrary.simpleMessage("Bạn không có tài khoản?"),
+        "adventure_start_here": MessageLookupByLibrary.simpleMessage(
+            "Cuộc phiêu lưu bắt đầu từ đây 🚀"),
+        "aldready_have_account":
+            MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản?"),
+        "continue_with_apple":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Apple"),
+        "continue_with_facebook":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Facebook"),
+        "continue_with_google":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Google"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
-        "hi": MessageLookupByLibrary.simpleMessage("Xin Chào!"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("Tôi đồng ý với"),
+        "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "login_instead": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "new_on_platform":
+            MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản?"),
         "or": MessageLookupByLibrary.simpleMessage("Hoặc"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
-        "signin": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
-        "signup": MessageLookupByLibrary.simpleMessage("Đăng ký"),
-        "signup_policy": MessageLookupByLibrary.simpleMessage(
-            "Khi nhấn Đồng ý và tiếp tục bên dưới,"),
-        "signup_title": MessageLookupByLibrary.simpleMessage(
-            "Có vẻ bạn chưa có tài khoản.\nHãy tạo tài khoản mới cho"),
-        "term_of_service_and_privacy": MessageLookupByLibrary.simpleMessage(
-            "Điều khoản và chính sách bảo mật"),
-        "text_continue": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
-        "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản")
+        "privacy_policy": MessageLookupByLibrary.simpleMessage(
+            "Chính sách và điều khoản bảo mật"),
+        "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "register_title": MessageLookupByLibrary.simpleMessage(
+            "Giúp quản lý ứng dụng của bạn dễ dàng và thú vị!"),
+        "signin_title": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng đăng nhập vào tài khoản của bạn"),
+        "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
+        "welcome_to":
+            MessageLookupByLibrary.simpleMessage("Chào mừng đến với UPM! 👋🏻")
       };
 }

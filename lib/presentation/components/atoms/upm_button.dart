@@ -10,7 +10,7 @@ class UpmButton extends StatelessWidget {
     this.startIcon,
     this.endIcon,
     this.mainAxisAlignment = MainAxisAlignment.center,
-    this.labelColor,
+    this.labelColor = AppColors.textColor,
     this.backgroundColor = AppColors.primaryColor,
     this.padding = const EdgeInsets.all(8.0),
     this.label,
@@ -40,6 +40,7 @@ class UpmButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
+          elevation: MaterialStateProperty.all(0.3),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
@@ -56,7 +57,10 @@ class UpmButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: mainAxisAlignment,
           children: <Widget>[
-            if (startIcon != null) ...[startIcon!],
+            if (startIcon != null) ...[
+              startIcon!,
+              const SizedBox(width: AppSize.fieldSpacingS),
+            ],
             if (label != null) ...[
               UpmText(
                 text: label!,
@@ -66,7 +70,10 @@ class UpmButton extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ],
-            if (endIcon != null) ...[endIcon!],
+            if (endIcon != null) ...[
+              const SizedBox(width: AppSize.fieldSpacingS),
+              endIcon!
+            ],
           ],
         ),
       ),

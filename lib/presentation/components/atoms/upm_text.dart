@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:upm/common/app_colors.dart';
 
 class UpmText extends StatelessWidget {
   const UpmText({
     Key? key,
     required this.text,
-    this.textColor,
+    this.textColor = AppColors.textColor,
     this.fontSize,
     this.fontWeight = FontWeight.normal,
     this.textAlign = TextAlign.start,

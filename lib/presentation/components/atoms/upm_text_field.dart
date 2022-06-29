@@ -33,7 +33,7 @@ class UpmTextField extends StatelessWidget {
           RichText(
             text: TextSpan(
               text: labelText,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.textColor),
               children: <TextSpan>[
                 if (isRequired) ...[
                   const TextSpan(
@@ -57,12 +57,9 @@ class UpmTextField extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(AppSize.borderRadiusField),
             filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
-            ),
+            fillColor: AppColors.cardLightColor,
             hintText: hintText,
-            hintStyle: const TextStyle(color: AppColors.colorGrey),
+            hintStyle: const TextStyle(color: AppColors.dividerColor),
             alignLabelWithHint: true,
 
             // suffix: GestureDetector(

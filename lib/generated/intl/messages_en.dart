@@ -22,32 +22,35 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "agree_and_continue":
-            MessageLookupByLibrary.simpleMessage("Agree and continue"),
-        "countinue_with_apple":
+        "adventure_start_here":
+            MessageLookupByLibrary.simpleMessage("Adventure starts here 🚀"),
+        "aldready_have_account":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "continue_with_apple":
             MessageLookupByLibrary.simpleMessage("Continue with Apple"),
-        "countinue_with_facebook":
+        "continue_with_facebook":
             MessageLookupByLibrary.simpleMessage("Continue with Facebook"),
-        "countinue_with_google":
+        "continue_with_google":
             MessageLookupByLibrary.simpleMessage("Continue with Google"),
-        "dont_have_account":
-            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "forgot_password":
-            MessageLookupByLibrary.simpleMessage("Forgot your password?"),
-        "hi": MessageLookupByLibrary.simpleMessage("Hi!"),
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("I agree to"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "login_instead": MessageLookupByLibrary.simpleMessage("Login instead"),
+        "new_on_platform":
+            MessageLookupByLibrary.simpleMessage("New on our platform?"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "signin": MessageLookupByLibrary.simpleMessage("Sign in"),
-        "signup": MessageLookupByLibrary.simpleMessage("Sign up"),
-        "signup_policy": MessageLookupByLibrary.simpleMessage(
-            "By selecting Agree and continue below,"),
-        "signup_title": MessageLookupByLibrary.simpleMessage(
-            "Looks like you don\'t have an account. Let\'s create a new account for"),
-        "term_of_service_and_privacy": MessageLookupByLibrary.simpleMessage(
-            "Terms of Service and Privacy Policy"),
-        "text_continue": MessageLookupByLibrary.simpleMessage("Continue"),
-        "username": MessageLookupByLibrary.simpleMessage("Username")
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("privacy policy & terms"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "register_title": MessageLookupByLibrary.simpleMessage(
+            "Make your app management easy and fun!"),
+        "signin_title": MessageLookupByLibrary.simpleMessage(
+            "Please sign-in to your account and start the adventure"),
+        "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "welcome_to":
+            MessageLookupByLibrary.simpleMessage("Welcome to UPM! 👋🏻")
       };
 }
