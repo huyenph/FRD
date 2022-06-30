@@ -1,4 +1,4 @@
-package com.hpdev.upm
+package com.upm.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `Please sign-in to your account and start the adventure`
+  /// `Please login to your account and start the adventure`
   String get signin_title {
     return Intl.message(
-      'Please sign-in to your account and start the adventure',
+      'Please login to your account and start the adventure',
       name: 'signin_title',
       desc: '',
       args: [],

@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_title": MessageLookupByLibrary.simpleMessage(
             "Make your app management easy and fun!"),
         "signin_title": MessageLookupByLibrary.simpleMessage(
-            "Please sign-in to your account and start the adventure"),
+            "Please login to your account and start the adventure"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "welcome_to":
             MessageLookupByLibrary.simpleMessage("Welcome to UPM! 👋🏻")
