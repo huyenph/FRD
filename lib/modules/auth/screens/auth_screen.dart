@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
+import 'package:upm/core/services/firebase_fcm.dart';
+import 'package:upm/di/injector_setup.dart';
 import 'package:upm/modules/auth/screens/forms/signin_form.dart';
 import 'package:upm/modules/auth/screens/forms/signup_form.dart';
 import 'package:upm/presentation/base/base_ui.dart';
@@ -27,6 +30,17 @@ class _AuthScreenState extends BaseState<AuthScreen>
   @override
   void initState() {
     super.initState();
+    // // _initFirebaseFCM();
+    // /// Create an Android Notification Channel.
+    // ///
+    // /// We use this channel in the `AndroidManifest.xml` file to override the
+    // /// default FCM channel to enable heads up notifications.
+    // await injector<FlutterLocalNotificationsPlugin>()
+    //     .resolvePlatformSpecificImplementation<
+    //         AndroidFlutterLocalNotificationsPlugin>()
+    //     ?.createNotificationChannel(
+    //       injector<AndroidNotificationChannel>(),
+    //     );
     _tabController = TabController(
       initialIndex: _formIndex,
       length: forms.length,
@@ -34,8 +48,13 @@ class _AuthScreenState extends BaseState<AuthScreen>
     );
   }
 
+  void _initFirebaseFCM(BuildContext context) {
+    FirebaseFCM(context).registerNotification();
+  }
+
   @override
   Widget buildBody(BuildContext context) {
+    _initFirebaseFCM(context);
     return SingleChildScrollView(
       child: Container(
         height: MediaQuery.of(context).size.height - kToolbarHeight,
