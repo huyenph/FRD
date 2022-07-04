@@ -74,7 +74,10 @@ class FirebaseFCM {
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
-    _messaging.getToken().then((value) => {_messaging.subscribeToTopic('upm')});
+    _messaging.getToken().then((value) {
+      print(value);
+      _messaging.subscribeToTopic('upm');
+    });
 
     // On iOS, this helps to take the user permissions
     NotificationSettings settings = await _messaging.requestPermission(
