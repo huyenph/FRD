@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
 import 'package:upm/common/constants.dart';
 import 'package:upm/generated/l10n.dart';
+import 'package:upm/modules/auth/blocs/authentication.dart';
 import 'package:upm/presentation/components/atoms/upm_button.dart';
 import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/atoms/upm_text_field.dart';
@@ -19,72 +21,81 @@ class SigninForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          UpmText(
-            text: S.of(context).welcome_to,
-            fontWeight: FontWeight.bold,
-            fontSize: 30.0,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmText(
-            text: S.of(context).signin_title,
-            fontWeight: FontWeight.w300,
-            fontSize: 15.0,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingXL),
-          UpmTextField(
-            controller: _emailController,
-            labelText: S.of(context).email,
-            hintText: emailEg,
-            isRequired: false,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmTextField(
-            controller: _passwordController,
-            labelText: S.of(context).password,
-            hintText: passwordEg,
-            isRequired: false,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmButton(
-            onPressed: () {},
-            labelColor: AppColors.backgroundLightColor,
-            label: S.of(context).login,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingL),
-          Row(
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Expanded(
-                flex: 2,
-                child: Divider(color: AppColors.dividerColor),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // UpmText(
+              //   text: S.of(context).welcome_to,
+              //   fontWeight: FontWeight.bold,
+              //   fontSize: 30.0,
+              // ),
+              // const SizedBox(height: AppSize.fieldSpacingS),
+              // UpmText(
+              //   text: S.of(context).signin_title,
+              //   fontWeight: FontWeight.w300,
+              //   fontSize: 15.0,
+              // ),
+              const SizedBox(height: AppSize.fieldSpacingXL),
+              UpmTextField(
+                controller: _emailController,
+                labelText: S.of(context).email,
+                hintText: emailEg,
+                isRequired: false,
               ),
-              const SizedBox(width: AppSize.fieldSpacingM),
-              UpmText(text: S.of(context).or.toLowerCase()),
-              const SizedBox(width: AppSize.fieldSpacingM),
-              const Expanded(
-                flex: 2,
-                child: Divider(color: AppColors.dividerColor),
+              const SizedBox(height: AppSize.fieldSpacingS),
+              UpmTextField(
+                controller: _passwordController,
+                labelText: S.of(context).password,
+                hintText: passwordEg,
+                isRequired: false,
               ),
+              const SizedBox(height: AppSize.fieldSpacingS),
+              UpmButton(
+                onPressed: () {},
+                labelColor: AppColors.backgroundLightColor,
+                label: S.of(context).login,
+              ),
+              const SizedBox(height: AppSize.fieldSpacingL),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Expanded(
+                    flex: 2,
+                    child: Divider(color: AppColors.dividerColor),
+                  ),
+                  const SizedBox(width: AppSize.fieldSpacingM),
+                  UpmText(text: S.of(context).or.toLowerCase()),
+                  const SizedBox(width: AppSize.fieldSpacingM),
+                  const Expanded(
+                    flex: 2,
+                    child: Divider(color: AppColors.dividerColor),
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSize.fieldSpacingL),
+              ..._buildSignInOptions(context),
+              const SizedBox(height: AppSize.fieldSpacingL),
+              ..._buildSignupSection(context),
             ],
           ),
-          const SizedBox(height: AppSize.fieldSpacingL),
-          ..._buildSignInOptions(context),
-          const SizedBox(height: AppSize.fieldSpacingL),
-          ..._buildSignupSection(context),
-        ],
-      ),
+        );
+      },
     );
   }
 
   List<Widget> _buildSignInOptions(BuildContext context) => [
         UpmButton(
-          onPressed: () {},
+          onPressed: () {
+            context.read<AuthBloc>().add(
+                  const OnSocialSignInEvent(SocialSignInEventOptions.facebook),
+                );
+          },
           label: S.of(context).continue_with_facebook,
           backgroundColor: AppColors.cardLightColor,
           startIcon: Image.asset(
@@ -95,7 +106,11 @@ class SigninForm extends StatelessWidget {
         ),
         const SizedBox(height: AppSize.fieldSpacingS),
         UpmButton(
-          onPressed: () {},
+          onPressed: () {
+            context.read<AuthBloc>().add(
+                  const OnSocialSignInEvent(SocialSignInEventOptions.google),
+                );
+          },
           label: S.of(context).continue_with_google,
           backgroundColor: AppColors.cardLightColor,
           startIcon: Image.asset(

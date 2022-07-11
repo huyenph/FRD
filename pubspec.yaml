@@ -65,6 +65,11 @@ dependencies:
   uuid: ^3.0.6
   flutter_local_notifications: ^9.6.1
   overlay_support: ^2.0.1
+  google_sign_in: ^5.3.3
+  flutter_facebook_auth: ^4.3.4+2
+  sign_in_with_apple: ^4.0.0
+  twitter_login: ^4.2.3
+  github_sign_in: ^0.0.5-dev.4
 
 dev_dependencies:
   flutter_test:

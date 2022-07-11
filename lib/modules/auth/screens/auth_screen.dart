@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
-import 'package:upm/core/services/firebase_fcm.dart';
+import 'package:upm/core/services/firebases/firebase_fcm.dart';
+import 'package:upm/di/injector_setup.dart';
+import 'package:upm/modules/auth/blocs/authentication.dart';
+import 'package:upm/modules/auth/domain/usecases/auth_usecase.dart';
 import 'package:upm/modules/auth/screens/forms/signin_form.dart';
 import 'package:upm/modules/auth/screens/forms/signup_form.dart';
 import 'package:upm/presentation/base/base_ui.dart';
@@ -47,9 +51,12 @@ class _AuthScreenState extends BaseState<AuthScreen>
         height: MediaQuery.of(context).size.height - kToolbarHeight,
         padding: const EdgeInsets.symmetric(vertical: AppSize.fieldSpacingL),
         color: AppColors.backgroundLightColor,
-        child: TabBarView(
-          controller: _tabController,
-          children: forms,
+        child: BlocProvider(
+          create: (_) => AuthBloc(injector<AuthUseCase>()),
+          child: TabBarView(
+            controller: _tabController,
+            children: forms,
+          ),
         ),
       ),
     );
