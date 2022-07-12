@@ -20,116 +20,118 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          UpmText(
-            text: S.of(context).adventure_start_here,
-            fontWeight: FontWeight.bold,
-            fontSize: 30.0,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmText(
-            text: S.of(context).register_title,
-            fontWeight: FontWeight.w300,
-            fontSize: 15.0,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingXL),
-          UpmTextField(
-            controller: _usernameController,
-            labelText: S.of(context).username,
-            hintText: usernameEg,
-            isRequired: false,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmTextField(
-            controller: _emailController,
-            labelText: S.of(context).email,
-            hintText: emailEg,
-            isRequired: false,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmTextField(
-            controller: _passwordController,
-            labelText: S.of(context).password,
-            hintText: passwordEg,
-            isRequired: false,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          RichText(
-            text: TextSpan(
-              text: S.of(context).i_agree_to,
-              style: const TextStyle(color: AppColors.textColor),
-              children: [
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.middle,
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: UpmText(
-                        text: ' ${S.of(context).privacy_policy}',
-                        textColor: AppColors.primaryTextColor,
-                        fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            UpmText(
+              text: S.of(context).adventure_start_here,
+              fontWeight: FontWeight.bold,
+              fontSize: 30.0,
+            ),
+            const SizedBox(height: AppSize.fieldSpacingS),
+            UpmText(
+              text: S.of(context).register_title,
+              fontWeight: FontWeight.w300,
+              fontSize: 15.0,
+            ),
+            const SizedBox(height: AppSize.fieldSpacingXL),
+            UpmTextField(
+              controller: _usernameController,
+              labelText: S.of(context).username,
+              hintText: usernameEg,
+              isRequired: false,
+            ),
+            const SizedBox(height: AppSize.fieldSpacingS),
+            UpmTextField(
+              controller: _emailController,
+              labelText: S.of(context).email,
+              hintText: emailEg,
+              isRequired: false,
+            ),
+            const SizedBox(height: AppSize.fieldSpacingS),
+            UpmTextField(
+              controller: _passwordController,
+              labelText: S.of(context).password,
+              hintText: passwordEg,
+              isRequired: false,
+            ),
+            const SizedBox(height: AppSize.fieldSpacingS),
+            RichText(
+              text: TextSpan(
+                text: S.of(context).i_agree_to,
+                style: const TextStyle(color: AppColors.textColor),
+                children: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: UpmText(
+                          text: ' ${S.of(context).privacy_policy}',
+                          textColor: AppColors.primaryTextColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(height: AppSize.fieldSpacingS),
+            UpmButton(
+              onPressed: () {},
+              labelColor: AppColors.backgroundLightColor,
+              label: S.of(context).register,
+            ),
+            const SizedBox(height: AppSize.fieldSpacingL),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Expanded(
+                  flex: 2,
+                  child: Divider(color: AppColors.dividerColor),
+                ),
+                const SizedBox(width: AppSize.fieldSpacingM),
+                UpmText(text: S.of(context).or.toLowerCase()),
+                const SizedBox(width: AppSize.fieldSpacingM),
+                const Expanded(
+                  flex: 2,
+                  child: Divider(color: AppColors.dividerColor),
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmButton(
-            onPressed: () {},
-            labelColor: AppColors.backgroundLightColor,
-            label: S.of(context).register,
-          ),
-          const SizedBox(height: AppSize.fieldSpacingL),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Expanded(
-                flex: 2,
-                child: Divider(color: AppColors.dividerColor),
-              ),
-              const SizedBox(width: AppSize.fieldSpacingM),
-              UpmText(text: S.of(context).or.toLowerCase()),
-              const SizedBox(width: AppSize.fieldSpacingM),
-              const Expanded(
-                flex: 2,
-                child: Divider(color: AppColors.dividerColor),
-              ),
-            ],
-          ),
-          const SizedBox(height: AppSize.fieldSpacingL),
-          ..._buildSignInOptions(context),
-          const SizedBox(height: AppSize.fieldSpacingL),
-          RichText(
-            text: TextSpan(
-              text: S.of(context).aldready_have_account,
-              style: const TextStyle(color: AppColors.textColor),
-              children: [
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.middle,
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: UpmText(
-                        text: ' ${S.of(context).login_instead}',
-                        textColor: AppColors.primaryTextColor,
-                        fontWeight: FontWeight.bold,
+            const SizedBox(height: AppSize.fieldSpacingL),
+            ..._buildSignInOptions(context),
+            const SizedBox(height: AppSize.fieldSpacingL),
+            RichText(
+              text: TextSpan(
+                text: S.of(context).aldready_have_account,
+                style: const TextStyle(color: AppColors.textColor),
+                children: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: UpmText(
+                          text: ' ${S.of(context).login_instead}',
+                          textColor: AppColors.primaryTextColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
