@@ -23,7 +23,8 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply from: "../../flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion flutter.compileSdkVersion
@@ -44,13 +45,14 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.hpdev.upm"
+        applicationId "com.upm.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 21
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -63,15 +65,15 @@ android {
 
     flavorDimensions "app"
     productFlavors {
-        def PRODUCTION_APP_ID = "com.hpdev.upm"
+        def PRODUCTION_APP_ID = "com.upm.app"
         def PRODUCTION_VERSION_CODE = 1
         def PRODUCTION_VERSION_NAME = "1.0"
 
-        def STAGING_APP_ID = "com.hpdev.upm.staging"
+        def STAGING_APP_ID = "com.upm.app.staging"
         def STAGING_VERSION_CODE = 1
         def STAGING_VERSION_NAME = "1.0"
 
-        def DEVELOP_APP_ID = "com.hpdev.upm.dev"
+        def DEVELOP_APP_ID = "com.upm.app.dev"
         def DEVELOP_VERSION_CODE = 1
         def DEVELOP_VERSION_NAME = "1.0"
 
@@ -105,4 +107,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform ('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 }

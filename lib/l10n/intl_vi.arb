@@ -1,0 +1,21 @@
+{
+  "welcome_to": "Chào mừng đến với UPM! 👋🏻",
+  "signin_title": "Vui lòng đăng nhập vào tài khoản của bạn",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "username": "Tên tài khoản",
+  "login": "Đăng nhập",
+  "register": "Đăng ký",
+  "forgot_password": "Quên mật khẩu?",
+  "new_on_platform": "Bạn chưa có tài khoản?",
+  "or": "Hoặc",
+  "continue_with_facebook": "Đăng nhập bằng Facebook",
+  "continue_with_google": "Đăng nhập bằng Google",
+  "continue_with_apple": "Đăng nhập bằng Apple",
+  "adventure_start_here": "Cuộc phiêu lưu bắt đầu từ đây 🚀",
+  "register_title": "Giúp quản lý ứng dụng của bạn dễ dàng và thú vị!",
+  "i_agree_to": "Tôi đồng ý với",
+  "privacy_policy": "Chính sách và điều khoản bảo mật",
+  "aldready_have_account": "Bạn đã có tài khoản?",
+  "login_instead": "Đăng nhập"
+}
