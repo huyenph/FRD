@@ -17,7 +17,9 @@ class RouteGenerator {
       case '/home':
         return CupertinoPageRoute(
           builder: (_) => HomeScreen(
-            message: settings.arguments as RemoteMessage,
+            message: settings.arguments != null
+                ? settings.arguments as RemoteMessage
+                : null,
           ),
         );
       case '/settings':
