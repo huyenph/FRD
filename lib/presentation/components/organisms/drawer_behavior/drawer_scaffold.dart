@@ -93,8 +93,10 @@ class DrawerScaffold extends StatefulWidget {
   @override
   _DrawerScaffoldState createState() => _DrawerScaffoldState();
 
-  static MenuController currentController(BuildContext context,
-      {bool nullOk = true}) {
+  static MenuController currentController(
+    BuildContext context, {
+    bool nullOk = true,
+  }) {
     final _DrawerScaffoldState? result =
         context.findAncestorStateOfType<_DrawerScaffoldState>();
     if (nullOk || result != null) return result!._controller;
@@ -278,47 +280,48 @@ class _DrawerScaffoldState<T> extends State<DrawerScaffold>
 
   PreferredSizeWidget? createAppBar() {
     if (widget.appBar != null) {
-      if (widget.appBar is AppBar) {
-        final appBar = widget.appBar as AppBar;
-        return AppBar(
-            actionsIconTheme: appBar.actionsIconTheme,
-            excludeHeaderSemantics: appBar.excludeHeaderSemantics,
-            shape: appBar.shape,
-            key: appBar.key,
-            backgroundColor: appBar.backgroundColor,
-            leading: appBar.leading ??
-                IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {
-                    focusDrawerIndex = mainDrawerIndex;
-                    menuControllers![mainDrawerIndex].toggle();
-                  },
-                ),
-            title: appBar.title,
-            automaticallyImplyLeading: appBar.automaticallyImplyLeading,
-            actions: appBar.actions,
-            flexibleSpace: appBar.flexibleSpace,
-            bottom: appBar.bottom,
-            elevation: appBar.elevation,
-            // brightness: appBar.brightness,
-            iconTheme: appBar.iconTheme,
-            // textTheme: appBar.textTheme,
-            primary: appBar.primary,
-            centerTitle: appBar.centerTitle,
-            titleSpacing: appBar.titleSpacing,
-            toolbarHeight: appBar.toolbarHeight,
-            // backwardsCompatibility: appBar.backwardsCompatibility,
-            foregroundColor: appBar.foregroundColor,
-            leadingWidth: appBar.leadingWidth,
-            shadowColor: appBar.shadowColor,
-            systemOverlayStyle: appBar.systemOverlayStyle,
-            titleTextStyle: appBar.titleTextStyle,
-            toolbarTextStyle: appBar.toolbarTextStyle,
-            toolbarOpacity: appBar.toolbarOpacity,
-            bottomOpacity: appBar.bottomOpacity);
-      } else {
-        return widget.appBar;
-      }
+      return widget.appBar;
+      // if (widget.appBar is AppBar) {
+      //   final appBar = widget.appBar as AppBar;
+      //   return AppBar(
+      //       actionsIconTheme: appBar.actionsIconTheme,
+      //       excludeHeaderSemantics: appBar.excludeHeaderSemantics,
+      //       shape: appBar.shape,
+      //       key: appBar.key,
+      //       backgroundColor: appBar.backgroundColor,
+      //       leading: appBar.leading ??
+      //           IconButton(
+      //             icon: const Icon(Icons.menu),
+      //             onPressed: () {
+      //               focusDrawerIndex = mainDrawerIndex;
+      //               menuControllers![mainDrawerIndex].toggle();
+      //             },
+      //           ),
+      //       title: appBar.title,
+      //       automaticallyImplyLeading: appBar.automaticallyImplyLeading,
+      //       actions: appBar.actions,
+      //       flexibleSpace: appBar.flexibleSpace,
+      //       bottom: appBar.bottom,
+      //       elevation: appBar.elevation,
+      //       // brightness: appBar.brightness,
+      //       iconTheme: appBar.iconTheme,
+      //       // textTheme: appBar.textTheme,
+      //       primary: appBar.primary,
+      //       centerTitle: appBar.centerTitle,
+      //       titleSpacing: appBar.titleSpacing,
+      //       toolbarHeight: appBar.toolbarHeight,
+      //       // backwardsCompatibility: appBar.backwardsCompatibility,
+      //       foregroundColor: appBar.foregroundColor,
+      //       leadingWidth: appBar.leadingWidth,
+      //       shadowColor: appBar.shadowColor,
+      //       systemOverlayStyle: appBar.systemOverlayStyle,
+      //       titleTextStyle: appBar.titleTextStyle,
+      //       toolbarTextStyle: appBar.toolbarTextStyle,
+      //       toolbarOpacity: appBar.toolbarOpacity,
+      //       bottomOpacity: appBar.bottomOpacity);
+      // } else {
+      //   return widget.appBar;
+      // }
     }
     return null;
   }
@@ -369,6 +372,7 @@ class _DrawerScaffoldState<T> extends State<DrawerScaffold>
 
     double maxSlideAmount =
         widget.drawers![focusDrawerIndex].maxSlideAmount(context);
+
     Widget content = !widget.enableGestures!
         ? scaffoldWidget
         : GestureDetector(
