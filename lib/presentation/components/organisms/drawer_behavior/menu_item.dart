@@ -15,6 +15,7 @@ class DrawerMenuItem<T> {
     this.suffix,
     this.textStyle,
     this.data,
+    required this.widgetContent,
   }) : assert(prefix == null || icon == null);
 
   final T? id;
@@ -35,6 +36,9 @@ class DrawerMenuItem<T> {
   /// append data with [MenuItem], then can be use on itemBuilder
   final dynamic data;
 
+  /// set widget content for item
+  final Widget widgetContent;
+
   DrawerMenuItem<T> copyWith({
     T? id,
     String? title,
@@ -43,6 +47,7 @@ class DrawerMenuItem<T> {
     Widget? suffix,
     TextStyle? textStyle,
     dynamic data,
+    Widget? widgetContent,
   }) {
     return DrawerMenuItem<T>(
       id: id ?? this.id,
@@ -52,6 +57,7 @@ class DrawerMenuItem<T> {
       suffix: suffix,
       textStyle: textStyle ?? this.textStyle,
       data: data ?? this.data,
+      widgetContent: widgetContent ?? this.widgetContent,
     );
   }
 }
