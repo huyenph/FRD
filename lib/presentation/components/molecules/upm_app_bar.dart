@@ -9,6 +9,7 @@ class UpmAppBar extends StatelessWidget with PreferredSizeWidget {
     this.actions,
     this.centerTitle = false,
     this.backgroundColor,
+    this.titleColor,
     this.elevation,
   }) : super(key: key);
 
@@ -17,13 +18,18 @@ class UpmAppBar extends StatelessWidget with PreferredSizeWidget {
   final List<Widget>? actions;
   final bool centerTitle;
   final Color? backgroundColor;
+  final Color? titleColor;
   final double? elevation;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading,
-      title: UpmText(text: title),
+      title: UpmText(
+        text: title,
+        textColor: titleColor,
+        fontWeight: FontWeight.bold,
+      ),
       actions: actions,
       backgroundColor: backgroundColor,
       elevation: elevation,

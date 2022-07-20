@@ -1,6 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:upm/common/app_colors.dart';
 import 'package:upm/presentation/base/base_ui.dart';
+import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/molecules/upm_app_bar.dart';
 import 'package:upm/presentation/components/organisms/drawer_behavior/drawer_behavior.dart';
 
@@ -61,7 +63,8 @@ class _HomeScreenState extends BaseState<HomeScreen> {
     return DrawerScaffold(
       controller: controller,
       appBar: UpmAppBar(
-        title: 'UPM Home',
+        title: 'Dashboard',
+        titleColor: AppColors.textLightColor,
         leading: GestureDetector(
           onTap: () => controller.toggle(),
           child: const Icon(Icons.menu),
@@ -70,19 +73,68 @@ class _HomeScreenState extends BaseState<HomeScreen> {
       drawers: [
         SideDrawer(
           percentage: 1,
-          textStyle: const TextStyle(color: Colors.white, fontSize: 24.0),
+          elevation: 0.0,
           menu: menu,
-          animation: false,
+          animation: true,
           alignment: Alignment.topLeft,
-          color: Theme.of(context).primaryColor,
+          color: AppColors.backgroundLightColor,
           selectedItemId: selectedMenuItemId,
           onMenuItemSelected: (itemId) {
             setState(() {
               selectedMenuItemId = itemId;
             });
           },
+          selectorColor: AppColors.primaryColor,
+          footerView: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: UpmText(text: 'Version 1.0.0'),
+          ),
+          itemBuilder: (
+            context,
+            menuItem,
+            isSelected,
+          ) {
+            return Container(
+              decoration: BoxDecoration(
+                gradient: isSelected
+                    ? LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          AppColors.primaryColor.withOpacity(0.15),
+                          AppColors.primaryColor.withOpacity(0.25),
+                          AppColors.primaryColor.withOpacity(0.35),
+                        ],
+                      )
+                    : null,
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(50.0),
+                  bottomRight: Radius.circular(50.0),
+                ),
+              ),
+              margin: const EdgeInsets.only(right: 5.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 16,
+              ),
+              child: UpmText(
+                text: menuItem.title,
+                textColor:
+                    isSelected ? AppColors.cardDarkColor : AppColors.textColor,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+              ),
+            );
+          },
         ),
       ],
+      // builder: (context, id) => IndexedStack(
+      //   index: id,
+      //   children: menu.items
+      //       .map((e) => Center(
+      //             child: Text("Page~${e.title}"),
+      //           ))
+      //       .toList(),
+      // ),
     );
   }
 
