@@ -95,9 +95,10 @@ class SigninForm extends StatelessWidget {
   List<Widget> _buildSignInOptions(BuildContext context) => [
         UpmButton(
           onPressed: () {
-            context.read<AuthBloc>().add(
-                  const OnSocialSignInEvent(SocialSignInEventOptions.facebook),
-                );
+            Navigator.pushReplacementNamed(context, '/home', arguments: null);
+            // context.read<AuthBloc>().add(
+            //       const OnSocialSignInEvent(SocialSignInEventOptions.facebook),
+            //     );
           },
           label: S.of(context).continue_with_facebook,
           backgroundColor: AppColors.cardLightColor,
