@@ -1,4 +1,5 @@
 import 'package:logger/logger.dart';
+import 'dart:math';
 
 void appLogging() {
   Logger.level = Level.info;
@@ -9,4 +10,9 @@ void appLogging() {
       printTime: true,
     ),
   );
+}
+
+double fixed(double value, int decimal) {
+  num fac = pow(10, decimal);
+  return (value * fac).round() / fac;
 }

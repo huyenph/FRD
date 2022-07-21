@@ -17,7 +17,9 @@ class RouteGenerator {
       case '/home':
         return CupertinoPageRoute(
           builder: (_) => HomeScreen(
-            message: settings.arguments as RemoteMessage,
+            message: settings.arguments != null
+                ? settings.arguments as RemoteMessage
+                : null,
           ),
         );
       case '/settings':
@@ -47,22 +49,5 @@ class RouteGenerator {
                 child: Text('Oops!\nSomething went wrong.'),
               ),
             ));
-  }
-
-  @optionalTypeArgs
-  static Future<T?> push<T extends Object>(
-    BuildContext context,
-    Route<T> route,
-  ) {
-    return Navigator.of(context).push(route);
-  }
-
-  @optionalTypeArgs
-  static Future<T?> pushNamed<T extends Object>(
-    BuildContext context,
-    String routeName, {
-    Object? arguments,
-  }) {
-    return Navigator.pushNamed<T>(context, routeName, arguments: arguments);
   }
 }

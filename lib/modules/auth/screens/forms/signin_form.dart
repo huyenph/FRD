@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
 import 'package:upm/common/constants.dart';
+import 'package:upm/core/navigation/navigation_service.dart';
+import 'package:upm/di/injector_setup.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/modules/auth/blocs/authentication.dart';
 import 'package:upm/presentation/components/atoms/upm_button.dart';
@@ -95,9 +97,11 @@ class SigninForm extends StatelessWidget {
   List<Widget> _buildSignInOptions(BuildContext context) => [
         UpmButton(
           onPressed: () {
-            context.read<AuthBloc>().add(
-                  const OnSocialSignInEvent(SocialSignInEventOptions.facebook),
-                );
+            injector<NavigationService>().replaceTo('/home', arguments: null);
+            // Navigator.pushReplacementNamed(context, '/home', arguments: null);
+            // context.read<AuthBloc>().add(
+            //       const OnSocialSignInEvent(SocialSignInEventOptions.facebook),
+            //     );
           },
           label: S.of(context).continue_with_facebook,
           backgroundColor: AppColors.cardLightColor,
