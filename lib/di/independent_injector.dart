@@ -7,9 +7,10 @@ void setupIndependent() {
   injector.registerSingleton<TokenExpiredHandler>(
     TokenExpiredHandler(),
   );
-  injector.registerSingleton<DatabaseHelper>(
-    DatabaseHelper.instance,
+  injector.registerLazySingleton<DatabaseHelper>(
+    () => DatabaseHelper.instance,
   );
+  injector.registerLazySingleton(() => NavigationService());
   // injector.registerSingleton<AndroidNotificationChannel>(
   //   const AndroidNotificationChannel(
   //     'high_importance_channel', // id
