@@ -32,6 +32,7 @@ class _AuthScreenState extends BaseState<AuthScreen>
   @override
   void initState() {
     super.initState();
+    _initFirebaseFCM();
     _tabController = TabController(
       initialIndex: _formIndex,
       length: forms.length,
@@ -39,13 +40,12 @@ class _AuthScreenState extends BaseState<AuthScreen>
     );
   }
 
-  void _initFirebaseFCM(BuildContext context) {
-    FirebaseFCM(context).registerNotification();
+  void _initFirebaseFCM() {
+    FirebaseFCM().registerNotification();
   }
 
   @override
   Widget buildBody(BuildContext context) {
-    _initFirebaseFCM(context);
     return SingleChildScrollView(
       child: Container(
         height: MediaQuery.of(context).size.height - kToolbarHeight,
