@@ -50,21 +50,4 @@ class RouteGenerator {
               ),
             ));
   }
-
-  @optionalTypeArgs
-  static Future<T?> push<T extends Object>(
-    BuildContext context,
-    Route<T> route,
-  ) {
-    return Navigator.of(context).push(route);
-  }
-
-  @optionalTypeArgs
-  static Future<T?> pushNamed<T extends Object>(
-    BuildContext context,
-    String routeName, {
-    Object? arguments,
-  }) {
-    return Navigator.pushNamed<T>(context, routeName, arguments: arguments);
-  }
 }

@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:upm/core/navigation/navigation_service.dart';
+import 'package:upm/di/injector_setup.dart';
 
 /// Create a [AndroidNotificationChannel] for heads up notifications
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -52,9 +54,7 @@ void _handleNotification(RemoteMessage message) {
 }
 
 class FirebaseFCM {
-  FirebaseFCM(this.context);
-
-  final BuildContext context;
+  FirebaseFCM();
 
   late FirebaseMessaging _messaging;
 
@@ -101,14 +101,23 @@ class FirebaseFCM {
       // Handle open app when terminated
       _messaging.getInitialMessage().then((RemoteMessage? message) {
         if (message != null) {
-          Navigator.pushNamed(context, '/home', arguments: message);
+          injector<NavigationService>().navigateTo(
+            '/home',
+            arguments: message,
+          );
+          // Navigator.pushNamed(context, '/home', arguments: message);
         }
       });
 
       // For handling the received notifications in app
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         _handleNotification(message);
-        Navigator.pushNamed(context, '/task', arguments: message);
+        injector<NavigationService>().navigateTo(
+          '/task',
+          arguments: message,
+        );
+
+        // Navigator.pushNamed(context, '/task', arguments: message);
       });
 
       FirebaseMessaging.onBackgroundMessage(
@@ -118,7 +127,12 @@ class FirebaseFCM {
       // Handle open app when background
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? message) {
         if (message != null) {
-          Navigator.pushNamed(context, '/settings', arguments: message);
+          injector<NavigationService>().navigateTo(
+            '/settings',
+            arguments: message,
+          );
+
+          // Navigator.pushNamed(context, '/settings', arguments: message);
         }
       });
     } else {
