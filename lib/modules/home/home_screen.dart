@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:upm/common/app_colors.dart';
+import 'package:upm/modules/player/video_player_screen.dart';
 import 'package:upm/presentation/base/base_ui.dart';
 import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/molecules/upm_app_bar.dart';
@@ -9,23 +10,25 @@ import 'package:upm/presentation/components/organisms/drawer_behavior/drawer_beh
 List<DrawerMenuItem<int>> items = [
   DrawerMenuItem<int>(
     id: 0,
-    title: 'THE PADDOCK',
+    title: 'Video Player',
     prefix: const Icon(Icons.fastfood),
+    widgetContent: VideoPlayerScreen(),
   ),
   DrawerMenuItem<int>(
     id: 1,
-    title: 'THE HERO',
+    title: 'Music Player',
     prefix: const Icon(Icons.person),
+    widgetContent: const Center(
+      child: Text('Music Player'),
+    ),
   ),
   DrawerMenuItem<int>(
     id: 2,
-    title: 'HELP US GROW',
-    prefix: const Icon(Icons.terrain),
-  ),
-  DrawerMenuItem<int>(
-    id: 3,
-    title: 'SETTINGS',
+    title: 'Settings',
     prefix: const Icon(Icons.settings),
+    widgetContent: const Center(
+      child: Text('Settings'),
+    ),
   ),
 ];
 
@@ -63,7 +66,7 @@ class _HomeScreenState extends BaseState<HomeScreen> {
     return DrawerScaffold(
       controller: controller,
       appBar: UpmAppBar(
-        title: 'Dashboard',
+        title: items[selectedMenuItemId!].title,
         titleColor: AppColors.textLightColor,
         leading: GestureDetector(
           onTap: () => controller.toggle(),
@@ -127,14 +130,10 @@ class _HomeScreenState extends BaseState<HomeScreen> {
           },
         ),
       ],
-      // builder: (context, id) => IndexedStack(
-      //   index: id,
-      //   children: menu.items
-      //       .map((e) => Center(
-      //             child: Text("Page~${e.title}"),
-      //           ))
-      //       .toList(),
-      // ),
+      builder: (context, id) => IndexedStack(
+        index: id,
+        children: menu.items.map((e) => e.widgetContent).toList(),
+      ),
     );
   }
 
