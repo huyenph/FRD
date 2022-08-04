@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
-import 'package:upm/common/constants.dart';
 import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/di/injector_setup.dart';
 import 'package:upm/generated/l10n.dart';
@@ -13,7 +12,7 @@ import 'package:upm/presentation/components/atoms/upm_button.dart';
 import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/atoms/upm_text_field.dart';
 
-const iconSize = 20.0;
+const iconSize = 32.0;
 
 class SigninForm extends StatelessWidget {
   SigninForm({Key? key}) : super(key: key);
@@ -28,10 +27,12 @@ class SigninForm extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           child: Container(
+            height: MediaQuery.of(context).size.height - kToolbarHeight,
+            alignment: AlignmentDirectional.bottomCenter,
             margin:
                 const EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UpmText(
@@ -49,21 +50,36 @@ class SigninForm extends StatelessWidget {
                 UpmTextField(
                   controller: _emailController,
                   labelText: S.of(context).email,
-                  hintText: emailEg,
+                  // hintText: emailEg,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 UpmTextField(
                   controller: _passwordController,
                   labelText: S.of(context).password,
-                  hintText: passwordEg,
-                  isRequired: false,
+                  // hintText: passwordEg,
+                  isRequired: true,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 UpmButton(
                   onPressed: () {},
                   labelColor: AppColors.backgroundLightColor,
                   label: S.of(context).login,
+                ),
+                const SizedBox(height: AppSize.fieldSpacingM),
+                GestureDetector(
+                  onTap: (() {}),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: UpmText(
+                        text: S.of(context).forgot_password,
+                        textColor: AppColors.primaryTextColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingL),
                 Row(
@@ -83,9 +99,9 @@ class SigninForm extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: AppSize.fieldSpacingL),
-                ..._buildSignInOptions(context),
-                const SizedBox(height: AppSize.fieldSpacingL),
-                ..._buildSignupSection(context),
+                _buildSignInOptions(context),
+                const SizedBox(height: AppSize.fieldSpacingXXL),
+                _buildSignupSection(context),
               ],
             ),
           ),
@@ -94,55 +110,47 @@ class SigninForm extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildSignInOptions(BuildContext context) => [
-        UpmButton(
-          onPressed: () {
-            injector<NavigationService>().replaceTo('/home', arguments: null);
-            // Navigator.pushReplacementNamed(context, '/home', arguments: null);
-            // context.read<AuthBloc>().add(
-            //       const OnSocialSignInEvent(SocialSignInEventOptions.facebook),
-            //     );
-          },
-          label: S.of(context).continue_with_facebook,
-          backgroundColor: AppColors.cardLightColor,
-          startIcon: Image.asset(
-            'assets/icons/ic_facebook.png',
-            height: iconSize,
-            width: iconSize,
-          ),
-        ),
-        const SizedBox(height: AppSize.fieldSpacingS),
-        UpmButton(
-          onPressed: () {
-            context.read<AuthBloc>().add(
-                  const OnSocialSignInEvent(SocialSignInEventOptions.google),
-                );
-          },
-          label: S.of(context).continue_with_google,
-          backgroundColor: AppColors.cardLightColor,
-          startIcon: Image.asset(
-            'assets/icons/ic_google.png',
-            height: 22.0,
-            width: 22.0,
-          ),
-        ),
-        if (Platform.isIOS) ...[
-          const SizedBox(height: AppSize.fieldSpacingS),
-          UpmButton(
-            onPressed: () {},
-            label: S.of(context).continue_with_apple,
-            backgroundColor: AppColors.cardLightColor,
-            startIcon: Image.asset(
-              'assets/icons/ic_apple.png',
-              height: 22.0,
-              width: 22.0,
+  Widget _buildSignInOptions(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              injector<NavigationService>().replaceTo('/home', arguments: null);
+            },
+            child: Image.asset(
+              'assets/icons/ic_facebook.png',
+              height: iconSize,
+              width: iconSize,
             ),
           ),
+          GestureDetector(
+            onTap: () {
+              context.read<AuthBloc>().add(
+                    const OnSocialSignInEvent(SocialSignInEventOptions.google),
+                  );
+            },
+            child: Image.asset(
+              'assets/icons/ic_google.png',
+              height: iconSize,
+              width: iconSize,
+            ),
+          ),
+          if (Platform.isIOS) ...[
+            GestureDetector(
+              onTap: () {},
+              child: Image.asset(
+                'assets/icons/ic_apple.png',
+                height: iconSize,
+                width: iconSize,
+              ),
+            ),
+          ],
         ],
-      ];
+      );
 
-  List<Widget> _buildSignupSection(BuildContext context) => [
-        RichText(
+  Widget _buildSignupSection(BuildContext context) => Center(
+        child: RichText(
           text: TextSpan(
             text: S.of(context).new_on_platform,
             style: const TextStyle(color: AppColors.textColor),
@@ -150,7 +158,9 @@ class SigninForm extends StatelessWidget {
               WidgetSpan(
                 alignment: PlaceholderAlignment.middle,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.read<AuthBloc>().add(const OnTabChangeEvent(1));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: UpmText(
@@ -164,17 +174,5 @@ class SigninForm extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: AppSize.fieldSpacingS),
-        GestureDetector(
-          onTap: (() {}),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: UpmText(
-              text: S.of(context).forgot_password,
-              textColor: AppColors.primaryTextColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        )
-      ];
+      );
 }

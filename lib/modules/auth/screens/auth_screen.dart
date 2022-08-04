@@ -9,7 +9,6 @@ import 'package:upm/modules/auth/domain/usecases/auth_usecase.dart';
 import 'package:upm/modules/auth/screens/forms/signin_form.dart';
 import 'package:upm/modules/auth/screens/forms/signup_form.dart';
 import 'package:upm/presentation/base/base_ui.dart';
-import 'package:upm/presentation/components/molecules/upm_app_bar.dart';
 
 List<Widget> forms = [
   SigninForm(),
@@ -46,38 +45,43 @@ class _AuthScreenState extends BaseState<AuthScreen>
 
   @override
   Widget buildBody(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: MediaQuery.of(context).size.height - kToolbarHeight,
-        padding: const EdgeInsets.symmetric(vertical: AppSize.fieldSpacingL),
-        color: AppColors.backgroundLightColor,
-        child: BlocProvider(
-          create: (_) => AuthBloc(injector<AuthUseCase>()),
-          child: TabBarView(
-            controller: _tabController,
-            children: forms,
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            padding:
+                const EdgeInsets.symmetric(vertical: AppSize.fieldSpacingL),
+            color: AppColors.backgroundLightColor,
+            child: BlocProvider(
+              create: (_) => AuthBloc(injector<AuthUseCase>()),
+              child: BlocListener<AuthBloc, AuthState>(
+                listener: (context, state) {
+                  if (state is OnTabChangedState) {
+                    _tabController.animateTo(state.tabIndex);
+                  }
+                },
+                child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: _tabController,
+                  children: forms,
+                ),
+              ),
+            ),
           ),
         ),
-      ),
+        Positioned(
+          top: kToolbarHeight,
+          right: kToolbarHeight / 2,
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.language_outlined),
+          ),
+        )
+      ],
     );
   }
 
   @override
-  PreferredSizeWidget? buildAppBar() => UpmAppBar(
-        title: '',
-        backgroundColor: AppColors.backgroundLightColor,
-        elevation: 0.0,
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: const Padding(
-              padding: EdgeInsets.all(AppSize.fieldSpacingM),
-              child: Icon(
-                Icons.language_outlined,
-                color: AppColors.primaryColor,
-              ),
-            ),
-          )
-        ],
-      );
+  PreferredSizeWidget? buildAppBar() => null;
 }

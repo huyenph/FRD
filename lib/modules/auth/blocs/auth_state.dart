@@ -38,3 +38,12 @@ class OnSocialSignInState extends AuthState {
   @override
   List<Object?> get props => [status, userCredential];
 }
+
+class OnTabChangedState extends AuthState {
+  const OnTabChangedState(this.tabIndex);
+
+  final int tabIndex;
+
+  @override
+  List<Object?> get props => [tabIndex];
+}
