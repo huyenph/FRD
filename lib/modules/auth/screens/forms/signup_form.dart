@@ -52,21 +52,18 @@ class SignupForm extends StatelessWidget {
                 UpmTextField(
                   controller: _usernameController,
                   labelText: S.of(context).username,
-                  hintText: usernameEg,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 UpmTextField(
                   controller: _emailController,
                   labelText: S.of(context).email,
-                  hintText: emailEg,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 UpmTextField(
                   controller: _passwordController,
                   labelText: S.of(context).password,
-                  hintText: passwordEg,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),

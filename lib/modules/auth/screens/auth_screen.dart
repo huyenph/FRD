@@ -26,14 +26,12 @@ class _AuthScreenState extends BaseState<AuthScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
-  int _formIndex = 0;
-
   @override
   void initState() {
     super.initState();
     _initFirebaseFCM();
     _tabController = TabController(
-      initialIndex: _formIndex,
+      initialIndex: 0,
       length: forms.length,
       vsync: this,
     );
