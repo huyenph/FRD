@@ -1,6 +1,7 @@
 library injector_setup;
 
 import 'package:get_it/get_it.dart';
+import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/data/datasource/local/database_helper.dart';
 import 'package:upm/data/datasource/local/shared_preferences_manager.dart';

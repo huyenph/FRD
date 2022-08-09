@@ -10,6 +10,7 @@ class UpmTextField extends StatelessWidget {
     this.textInputType = TextInputType.text,
     this.hintText = '',
     this.labelText,
+    this.fillColor,
     this.isRequired = true,
     this.isReadOnly = false,
     this.maxLines = 1,
@@ -20,6 +21,7 @@ class UpmTextField extends StatelessWidget {
   final TextInputType textInputType;
   final String hintText;
   final String? labelText;
+  final Color? fillColor;
   final bool isRequired;
   final bool isReadOnly;
   final int maxLines;
@@ -54,10 +56,11 @@ class UpmTextField extends StatelessWidget {
           readOnly: isReadOnly,
           keyboardType: textInputType,
           autovalidateMode: AutovalidateMode.onUserInteraction,
+          // style: const TextStyle(color: AppColors.textColor),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(AppSize.borderRadiusField),
             filled: true,
-            fillColor: AppColors.cardLightColor,
+            fillColor: fillColor,
             hintText: hintText,
             hintStyle: const TextStyle(color: AppColors.dividerColor),
             alignLabelWithHint: true,

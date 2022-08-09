@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 
 class UpmText extends StatelessWidget {
@@ -24,7 +26,11 @@ class UpmText extends StatelessWidget {
     return Text(
       isAllCaps ? text.toUpperCase() : text,
       style: TextStyle(
-        color: textColor,
+        color: textColor != null
+            ? context.read<AppBloc>().isDarkMode()
+                ? AppColors.textLightColor
+                : AppColors.textColor
+            : textColor,
         fontSize: fontSize,
         fontWeight: fontWeight,
       ),

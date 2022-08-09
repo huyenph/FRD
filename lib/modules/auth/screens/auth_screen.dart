@@ -73,7 +73,10 @@ class _AuthScreenState extends BaseState<AuthScreen>
           right: kToolbarHeight / 2,
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.language_outlined),
+            icon: const Icon(
+              Icons.language_outlined,
+              color: AppColors.primaryColor,
+            ),
           ),
         )
       ],

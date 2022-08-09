@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upm/modules/auth/screens/auth_screen.dart';
-import 'package:upm/modules/home/home_screen.dart';
+import 'package:upm/modules/main/main_screen.dart';
 import 'package:upm/modules/settings/setting_screen.dart';
 import 'package:upm/modules/task/task_screen.dart';
 import 'package:upm/presentation/screens/splash_screen.dart';
@@ -16,7 +16,7 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const AuthScreen());
       case '/home':
         return CupertinoPageRoute(
-          builder: (_) => HomeScreen(
+          builder: (_) => MainScreen(
             message: settings.arguments != null
                 ? settings.arguments as RemoteMessage
                 : null,

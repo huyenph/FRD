@@ -25,6 +25,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
           drawer: buildDrawer(),
           bottomNavigationBar: buildBottomNavigationBar(),
           floatingActionButton: buildFloatingActionButton(),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: buildBody(context),
         ),
       ),

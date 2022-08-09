@@ -1,7 +1,12 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/app_colors.dart';
+import 'package:upm/modules/events/screens/event_screen.dart';
 import 'package:upm/modules/player/video_player_screen.dart';
+import 'package:upm/modules/settings/setting_screen.dart';
 import 'package:upm/presentation/base/base_ui.dart';
 import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/molecules/upm_app_bar.dart';
@@ -10,9 +15,9 @@ import 'package:upm/presentation/components/organisms/drawer_behavior/drawer_beh
 List<DrawerMenuItem<int>> items = [
   DrawerMenuItem<int>(
     id: 0,
-    title: 'Video Player',
-    prefix: const Icon(Icons.fastfood),
-    widgetContent: VideoPlayerScreen(),
+    title: 'Events',
+    prefix: const Icon(CupertinoIcons.calendar),
+    widgetContent: const EventScreen(),
   ),
   DrawerMenuItem<int>(
     id: 1,
@@ -26,9 +31,7 @@ List<DrawerMenuItem<int>> items = [
     id: 2,
     title: 'Settings',
     prefix: const Icon(Icons.settings),
-    widgetContent: const Center(
-      child: Text('Settings'),
-    ),
+    widgetContent: const SettingScreen(),
   ),
 ];
 
@@ -40,16 +43,16 @@ final menuWithIcon = DrawerMenu<int>(
   items: items,
 );
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key, this.message}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key, this.message}) : super(key: key);
 
   final RemoteMessage? message;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends BaseState<HomeScreen> {
+class _MainScreenState extends BaseState<MainScreen> {
   late RemoteNotification? notification;
   int? selectedMenuItemId;
   DrawerScaffoldController controller = DrawerScaffoldController();
@@ -66,8 +69,8 @@ class _HomeScreenState extends BaseState<HomeScreen> {
     return DrawerScaffold(
       controller: controller,
       appBar: UpmAppBar(
+        elevation: 0.0,
         title: items[selectedMenuItemId!].title,
-        titleColor: AppColors.textLightColor,
         leading: GestureDetector(
           onTap: () => controller.toggle(),
           child: const Icon(Icons.menu),
@@ -80,7 +83,7 @@ class _HomeScreenState extends BaseState<HomeScreen> {
           menu: menu,
           animation: true,
           alignment: Alignment.topLeft,
-          color: AppColors.backgroundLightColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
           selectedItemId: selectedMenuItemId,
           onMenuItemSelected: (itemId) {
             setState(() {
@@ -122,9 +125,8 @@ class _HomeScreenState extends BaseState<HomeScreen> {
               ),
               child: UpmText(
                 text: menuItem.title,
-                textColor:
-                    isSelected ? AppColors.cardDarkColor : AppColors.textColor,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                fontSize: 18.0,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
             );
           },
