@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
 
 class UpmAppBar extends StatelessWidget with PreferredSizeWidget {
   const UpmAppBar({
@@ -25,10 +24,9 @@ class UpmAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading,
-      title: UpmText(
-        text: title,
-        textColor: titleColor,
-        fontWeight: FontWeight.bold,
+      title: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: actions,
       backgroundColor: backgroundColor,

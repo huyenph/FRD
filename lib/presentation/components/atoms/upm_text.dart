@@ -26,11 +26,10 @@ class UpmText extends StatelessWidget {
     return Text(
       isAllCaps ? text.toUpperCase() : text,
       style: TextStyle(
-        color: textColor != null
-            ? context.read<AppBloc>().isDarkMode()
+        color: textColor ??
+            (context.read<AppBloc>().isDarkMode()
                 ? AppColors.textLightColor
-                : AppColors.textColor
-            : textColor,
+                : AppColors.textColor),
         fontSize: fontSize,
         fontWeight: fontWeight,
       ),

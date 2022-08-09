@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
-import 'package:upm/common/constants.dart';
 import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/di/injector_setup.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/modules/auth/blocs/authentication.dart';
 import 'package:upm/presentation/components/atoms/upm_button.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/atoms/upm_text_field.dart';
 
 const iconSize = 32.0;
@@ -37,16 +35,22 @@ class SignupForm extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                UpmText(
-                  text: S.of(context).adventure_start_here,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0,
+                Text(
+                  S.of(context).adventure_start_here,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                    color: AppColors.textColor,
+                  ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
-                UpmText(
-                  text: S.of(context).register_title,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15.0,
+                Text(
+                  S.of(context).register_title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15.0,
+                    color: AppColors.textColor,
+                  ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingXL),
                 UpmTextField(
@@ -81,10 +85,12 @@ class SignupForm extends StatelessWidget {
                           onTap: () {},
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: UpmText(
-                              text: ' ${S.of(context).privacy_policy}',
-                              textColor: AppColors.primaryTextColor,
-                              fontWeight: FontWeight.bold,
+                            child: Text(
+                              ' ${S.of(context).privacy_policy}',
+                              style: const TextStyle(
+                                color: AppColors.primaryTextColor,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -107,7 +113,10 @@ class SignupForm extends StatelessWidget {
                       child: Divider(color: AppColors.dividerColor),
                     ),
                     const SizedBox(width: AppSize.fieldSpacingM),
-                    UpmText(text: S.of(context).or.toLowerCase()),
+                    Text(
+                      S.of(context).or.toLowerCase(),
+                      style: const TextStyle(color: AppColors.textColor),
+                    ),
                     const SizedBox(width: AppSize.fieldSpacingM),
                     const Expanded(
                       flex: 2,
@@ -135,10 +144,12 @@ class SignupForm extends StatelessWidget {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 8.0),
-                              child: UpmText(
-                                text: ' ${S.of(context).login_instead}',
-                                textColor: AppColors.primaryTextColor,
-                                fontWeight: FontWeight.bold,
+                              child: Text(
+                                ' ${S.of(context).login_instead}',
+                                style: const TextStyle(
+                                  color: AppColors.primaryTextColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),

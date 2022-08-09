@@ -23,6 +23,16 @@ class NavigationService {
     return Future.value(null);
   }
 
+  Future<dynamic> removeUntil(String routeName, {dynamic arguments}) {
+    if (navigatorKey.currentState != null) {
+      return navigatorKey.currentState!.pushNamedAndRemoveUntil(
+        routeName,
+        (Route<dynamic> route) => false,
+      );
+    }
+    return Future.value(null);
+  }
+
   void goBack() {
     if (navigatorKey.currentState != null) {
       return navigatorKey.currentState!.pop();
