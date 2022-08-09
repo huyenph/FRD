@@ -621,7 +621,7 @@ class _ItemSelectorState extends AnimatedWidgetBaseState<ItemSelector> {
       child: Opacity(
         opacity: _opacity?.evaluate(animation) ?? 0,
         child: Container(
-          width: 5.0,
+          // width: 1.0,
           height: _bottomY!.evaluate(animation)! - _topY!.evaluate(animation)!,
           color: widget.selectorColor,
         ),

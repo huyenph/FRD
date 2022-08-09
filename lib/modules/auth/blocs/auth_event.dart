@@ -21,3 +21,12 @@ class OnSocialSignInEvent extends AuthEvent {
   @override
   List<Object?> get props => [options];
 }
+
+class OnTabChangeEvent extends AuthEvent {
+  const OnTabChangeEvent(this.tabIndex);
+
+  final int tabIndex;
+
+  @override
+  List<Object?> get props => [tabIndex];
+}

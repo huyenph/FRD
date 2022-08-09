@@ -3,6 +3,9 @@ part of authentication;
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authUseCase) : super(const OnSocialSignInState.unknown()) {
     on<OnSocialSignInEvent>(_onSocialSignInEvent);
+    on<OnTabChangeEvent>(
+      (event, emit) => emit(OnTabChangedState(event.tabIndex)),
+    );
   }
 
   final AuthUseCase _authUseCase;
