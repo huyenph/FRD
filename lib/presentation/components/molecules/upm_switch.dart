@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upm/common/app_colors.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
 
 typedef OnSwitchChanged = Function(bool value);
 
@@ -25,14 +24,16 @@ class UpmSwitch extends StatelessWidget {
       leading: icon != null
           ? Icon(
               icon,
-              color: Theme.of(context).iconTheme.color,
+              // color: Theme.of(context).iconTheme.color,
               size: 30.0,
             )
           : null,
       minLeadingWidth: 10,
-      title: UpmText(
-        text: label,
-        textColor: value ? AppColors.textLightColor : AppColors.textColor,
+      title: Text(
+        label,
+        // style: TextStyle(
+        //   color: value ? AppColors.textLightColor : AppColors.textColor,
+        // ),
       ),
       trailing: CupertinoSwitch(
         activeColor: AppColors.primaryColor,

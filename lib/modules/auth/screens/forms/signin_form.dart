@@ -9,7 +9,6 @@ import 'package:upm/di/injector_setup.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/modules/auth/blocs/authentication.dart';
 import 'package:upm/presentation/components/atoms/upm_button.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/atoms/upm_text_field.dart';
 
 const iconSize = 32.0;
@@ -35,16 +34,22 @@ class SigninForm extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                UpmText(
-                  text: S.of(context).welcome_to,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0,
+                Text(
+                  S.of(context).welcome_to,
+                  style: const TextStyle(
+                    color: AppColors.textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                  ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
-                UpmText(
-                  text: S.of(context).signin_title,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15.0,
+                Text(
+                  S.of(context).signin_title,
+                  style: const TextStyle(
+                    color: AppColors.textColor,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15.0,
+                  ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingXL),
                 UpmTextField(
@@ -75,10 +80,12 @@ class SigninForm extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: UpmText(
-                        text: S.of(context).forgot_password,
-                        textColor: AppColors.primaryTextColor,
-                        fontWeight: FontWeight.bold,
+                      child: Text(
+                        S.of(context).forgot_password,
+                        style: const TextStyle(
+                          color: AppColors.primaryTextColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -92,7 +99,12 @@ class SigninForm extends StatelessWidget {
                       child: Divider(color: AppColors.dividerColor),
                     ),
                     const SizedBox(width: AppSize.fieldSpacingM),
-                    UpmText(text: S.of(context).or.toLowerCase()),
+                    Text(
+                      S.of(context).or.toLowerCase(),
+                      style: const TextStyle(
+                        color: AppColors.textColor,
+                      ),
+                    ),
                     const SizedBox(width: AppSize.fieldSpacingM),
                     const Expanded(
                       flex: 2,
@@ -165,10 +177,12 @@ class SigninForm extends StatelessWidget {
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: UpmText(
-                      text: ' ${S.of(context).register}',
-                      textColor: AppColors.primaryTextColor,
-                      fontWeight: FontWeight.bold,
+                    child: Text(
+                      ' ${S.of(context).register}',
+                      style: const TextStyle(
+                        color: AppColors.primaryTextColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

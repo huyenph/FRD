@@ -7,7 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/constants.dart';
 import 'package:upm/configs/theme/app_theme.dart';
+import 'package:upm/core/navigation/navigation_service.dart';
+import 'package:upm/di/injector_setup.dart';
 import 'package:upm/presentation/base/base_ui.dart';
+import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/molecules/upm_switch.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -68,6 +71,15 @@ class _SettingScreenState extends BaseState<SettingScreen> {
                   ),
                 );
           },
+        ),
+        ListTile(
+          onTap: () => injector<NavigationService>().removeUntil('/auth'),
+          leading: const Icon(
+            Icons.logout_outlined,
+            size: 30.0,
+          ),
+          minLeadingWidth: 10,
+          title: const Text('Logout'),
         ),
       ],
     );

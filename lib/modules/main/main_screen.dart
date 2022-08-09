@@ -1,14 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/modules/events/screens/event_screen.dart';
-import 'package:upm/modules/player/video_player_screen.dart';
 import 'package:upm/modules/settings/setting_screen.dart';
 import 'package:upm/presentation/base/base_ui.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
 import 'package:upm/presentation/components/molecules/upm_app_bar.dart';
 import 'package:upm/presentation/components/organisms/drawer_behavior/drawer_behavior.dart';
 
@@ -93,7 +89,7 @@ class _MainScreenState extends BaseState<MainScreen> {
           selectorColor: AppColors.primaryColor,
           footerView: const Padding(
             padding: EdgeInsets.all(8.0),
-            child: UpmText(text: 'Version 1.0.0'),
+            child: Text('Version 1.0.0'),
           ),
           itemBuilder: (
             context,
@@ -123,10 +119,12 @@ class _MainScreenState extends BaseState<MainScreen> {
                 horizontal: 24,
                 vertical: 16,
               ),
-              child: UpmText(
-                text: menuItem.title,
-                fontSize: 18.0,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              child: Text(
+                menuItem.title,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
               ),
             );
           },
