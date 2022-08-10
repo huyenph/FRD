@@ -8,8 +8,8 @@ import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/di/injector_setup.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/modules/auth/blocs/authentication.dart';
-import 'package:upm/presentation/components/atoms/upm_button.dart';
-import 'package:upm/presentation/components/atoms/upm_text_field.dart';
+import 'package:upm/presentation/components/upm_button.dart';
+import 'package:upm/presentation/components/upm_text_field.dart';
 
 const iconSize = 32.0;
 

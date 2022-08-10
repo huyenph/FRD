@@ -1,17 +1,14 @@
-import 'dart:developer';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/constants.dart';
-import 'package:upm/configs/theme/app_theme.dart';
 import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/di/injector_setup.dart';
+import 'package:upm/generated/l10n.dart';
 import 'package:upm/presentation/base/base_ui.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
-import 'package:upm/presentation/components/molecules/upm_switch.dart';
+import 'package:upm/presentation/components/option_field.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key, this.message}) : super(key: key);
@@ -44,23 +41,14 @@ class _SettingScreenState extends BaseState<SettingScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text('settings ${notification?.title ?? 'no message'}'),
-        UpmSwitch(
+        OptionField(
           icon: Icons.language_outlined,
-          label: 'Language',
-          value: context.read<AppBloc>().isDarkMode(),
-          onChanged: (value) {
-            context.read<AppBloc>().add(
-                  OnThemeChangeEvent(
-                    context.read<AppBloc>().isDarkMode()
-                        ? lightTheme
-                        : darkTheme,
-                  ),
-                );
-          },
+          label: S.of(context).language,
+          value: context.read<AppBloc>().appLocale.toUpperCase(),
         ),
-        UpmSwitch(
+        OptionField(
           icon: Icons.nights_stay_outlined,
-          label: 'Dark Mode',
+          label: S.of(context).darkMode,
           value: context.read<AppBloc>().isDarkMode(),
           onChanged: (value) {
             context.read<AppBloc>().add(
@@ -72,14 +60,10 @@ class _SettingScreenState extends BaseState<SettingScreen> {
                 );
           },
         ),
-        ListTile(
+        OptionField(
           onTap: () => injector<NavigationService>().removeUntil('/auth'),
-          leading: const Icon(
-            Icons.logout_outlined,
-            size: 30.0,
-          ),
-          minLeadingWidth: 10,
-          title: const Text('Logout'),
+          label: S.of(context).logout,
+          icon: Icons.logout_outlined,
         ),
       ],
     );

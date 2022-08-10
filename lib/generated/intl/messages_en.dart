@@ -32,12 +32,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continue with Facebook"),
         "continue_with_google":
             MessageLookupByLibrary.simpleMessage("Continue with Google"),
+        "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "events": MessageLookupByLibrary.simpleMessage("Events"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("I agree to"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_instead": MessageLookupByLibrary.simpleMessage("Login instead"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "new_on_platform":
             MessageLookupByLibrary.simpleMessage("New on our platform?"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
@@ -47,9 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "register_title": MessageLookupByLibrary.simpleMessage(
             "Make your app management easy and fun!"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signin_title": MessageLookupByLibrary.simpleMessage(
             "Please login to your account and start the adventure"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "version": MessageLookupByLibrary.simpleMessage("Version"),
         "welcome_to":
             MessageLookupByLibrary.simpleMessage("Welcome to UPM! 👋🏻")
       };

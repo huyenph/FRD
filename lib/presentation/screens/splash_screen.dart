@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:upm/presentation/base/base_ui.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
+import 'package:upm/presentation/components/upm_text.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

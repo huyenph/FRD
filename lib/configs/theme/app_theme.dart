@@ -8,6 +8,7 @@ class AppTheme {
         brightness: Brightness.light,
         primary: AppColors.primaryColor,
       ),
+      // splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         color: AppColors.backgroundLightColor,
         titleTextStyle: TextStyle(
@@ -16,7 +17,7 @@ class AppTheme {
         ),
         iconTheme: IconThemeData(color: AppColors.primaryColor),
       ),
-      iconTheme: const IconThemeData(color: AppColors.iconColor),
+      // iconTheme: const IconThemeData(color: AppColors.iconColor),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           foregroundColor:
@@ -66,6 +67,7 @@ class AppTheme {
         brightness: Brightness.dark,
         primary: AppColors.primaryColor,
       ),
+      // splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         color: AppColors.backgroundDarkColor,
         titleTextStyle: TextStyle(
@@ -74,7 +76,7 @@ class AppTheme {
         ),
         iconTheme: IconThemeData(color: AppColors.textLightColor),
       ),
-      iconTheme: const IconThemeData(color: AppColors.iconLightColor),
+      // iconTheme: const IconThemeData(color: AppColors.iconLightColor),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
