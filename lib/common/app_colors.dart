@@ -10,6 +10,4 @@ class AppColors {
   static const dividerColor = Colors.grey;
   static const textColor = Color(0xFF000000);
   static const textLightColor = Color(0xFFFFFFFF);
-  static const iconColor = Color(0xFF575757);
-  static const iconLightColor = Color(0xFFadadad);
 }

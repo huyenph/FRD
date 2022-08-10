@@ -19,10 +19,10 @@ class OnThemeChangeEvent extends AppEvent {
 }
 
 class OnLanguageChangeEvent extends AppEvent {
-  const OnLanguageChangeEvent(this.language);
+  const OnLanguageChangeEvent(this.locale);
 
-  final String language;
+  final String locale;
 
   @override
-  List<Object?> get props => [language];
+  List<Object?> get props => [locale];
 }

@@ -17,5 +17,11 @@
   "i_agree_to": "Tôi đồng ý với",
   "privacy_policy": "Chính sách và điều khoản bảo mật",
   "aldready_have_account": "Bạn đã có tài khoản?",
-  "login_instead": "Đăng nhập"
+  "login_instead": "Đăng nhập",
+  "events": "Sự kiện",
+  "settings": "Cài đặt",
+  "version": "Phiên bản",
+  "language": "Ngôn ngữ",
+  "darkMode": "Chế độ tối",
+  "logout": "Đăng xuất"
 }

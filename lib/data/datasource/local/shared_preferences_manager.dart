@@ -32,8 +32,19 @@ class SharedPreferencesManager {
     return prefsTheme == lightTheme ? AppTheme.light : AppTheme.dark;
   }
 
+  Future setLocale(String locale) async {
+    SharedPreferences prefs = await _getPrefs();
+    prefs.setString(prefsLocaleKey, locale);
+  }
+
+  Future<String> get locale async {
+    SharedPreferences prefs = await _getPrefs();
+    return prefs.getString(prefsLocaleKey) ?? enLocale;
+  }
+
   Future logout() async {
     await setToken('');
     await setTheme(lightTheme);
+    await setLocale(enLocale);
   }
 }

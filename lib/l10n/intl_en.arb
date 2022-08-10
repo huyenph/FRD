@@ -17,5 +17,11 @@
   "i_agree_to": "I agree to",
   "privacy_policy": "privacy policy & terms",
   "aldready_have_account": "Already have an account?",
-  "login_instead": "Login instead"
+  "login_instead": "Login instead",
+  "events": "Events",
+  "settings": "Settings",
+  "version": "Version",
+  "language": "Language",
+  "darkMode": "Dark Mode",
+  "logout": "Logout"
 }

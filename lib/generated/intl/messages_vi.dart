@@ -32,12 +32,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Facebook"),
         "continue_with_google":
             MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Google"),
+        "darkMode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "events": MessageLookupByLibrary.simpleMessage("Sự kiện"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("Tôi đồng ý với"),
+        "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_instead": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "new_on_platform":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản?"),
         "or": MessageLookupByLibrary.simpleMessage("Hoặc"),
@@ -47,9 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "register_title": MessageLookupByLibrary.simpleMessage(
             "Giúp quản lý ứng dụng của bạn dễ dàng và thú vị!"),
+        "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "signin_title": MessageLookupByLibrary.simpleMessage(
             "Vui lòng đăng nhập vào tài khoản của bạn"),
         "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
+        "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
         "welcome_to":
             MessageLookupByLibrary.simpleMessage("Chào mừng đến với UPM! 👋🏻")
       };
