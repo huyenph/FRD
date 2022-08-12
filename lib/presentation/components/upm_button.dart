@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
-import 'package:upm/presentation/components/atoms/upm_text.dart';
+import 'package:upm/presentation/components/upm_text.dart';
 
 class UpmButton extends StatelessWidget {
   const UpmButton({
