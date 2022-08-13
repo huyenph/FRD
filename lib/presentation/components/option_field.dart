@@ -23,8 +23,7 @@ class OptionField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => (onChanged == null && onTap != null) ? onTap!() : null,
-      tileColor: Colors.transparent,
+      onTap: (onChanged == null && onTap != null) ? () => onTap!() : null,
       leading: icon != null ? Icon(icon, size: 30.0) : null,
       minLeadingWidth: 10,
       title: Text(label),

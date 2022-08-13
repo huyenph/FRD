@@ -1,53 +1,77 @@
 library app_bloc;
 
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/common/constants.dart';
-import 'package:upm/configs/theme/app_theme.dart';
-import 'package:upm/data/datasource/local/shared_preferences_manager.dart';
-import 'package:upm/di/injector_setup.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:upm/domain/models/config_model.dart';
+import 'package:upm/domain/models/language_model.dart';
+import 'package:upm/domain/usecases/app_usecase.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(OnInitialState()) {
+  AppBloc(this._appUseCase) : super(OnInitialState()) {
+    // configModel = ConfigModel(
+    //   theme: lightTheme,
+    //   language: LanguageModel(
+    //     name: 'English',
+    //     locale: 'en',
+    //     subName: 'English',
+    //   ),
+    // );
     on<OnAppConfigEvent>(_onAppConfigEvent);
-    on<OnThemeChangeEvent>(_onThemeChangeEvent);
-    on<OnLanguageChangeEvent>(_onLanguageChangeEvent);
+    on<OnGetLanguageEvent>(_onGetLanguageEvent);
   }
 
-  final SharedPreferencesManager _prefs = injector<SharedPreferencesManager>();
-  ThemeData appTheme = AppTheme.light;
-  String appLocale = enLocale;
+  final AppUseCase _appUseCase;
+  // late ConfigModel configModel;
 
   void _onAppConfigEvent(
     OnAppConfigEvent event,
     Emitter<AppState> emitter,
   ) async {
-    appTheme = await _prefs.theme;
-    appLocale = await _prefs.locale;
-    return emitter(OnAppConfigState(appTheme, appLocale));
+    switch (event.type) {
+      case AppConfigType.all:
+        await _appUseCase.updateAppConfig(AppConfigType.all);
+        break;
+      // return emitter(OnAppConfigChangeState.all(configModel));
+
+      case AppConfigType.theme:
+        // configModel.theme = event.theme!;
+        _appUseCase.updateAppConfig(
+          AppConfigType.theme,
+          theme: event.theme,
+        );
+        break;
+      // return emitter(OnAppConfigChangeState.theme(ConfigModel(
+      //   theme: configModel.theme,
+      //   language: configModel.language,
+      // )));
+      case AppConfigType.locale:
+        // configModel.language = event.language!;
+        _appUseCase.updateAppConfig(
+          AppConfigType.locale,
+          language: event.language,
+        );
+        break;
+      // return emitter(OnAppConfigChangeState.locale(ConfigModel(
+      //   theme: configModel.theme,
+      //   language: configModel.language,
+      // )));
+    }
   }
 
-  void _onThemeChangeEvent(
-    OnThemeChangeEvent event,
+  void _onGetLanguageEvent(
+    OnGetLanguageEvent event,
     Emitter<AppState> emitter,
   ) async {
-    await _prefs.setTheme(event.theme);
-    appTheme = await _prefs.theme;
-    return emitter(OnThemeChangeState(appTheme));
+    final data = await rootBundle.loadString('assets/json/languages.json');
+    final languages = jsonDecode(data);
+    return emitter(OnGetLanguageState(languages));
   }
-
-  void _onLanguageChangeEvent(
-    OnLanguageChangeEvent event,
-    Emitter<AppState> emitter,
-  ) async {
-    await _prefs.setLocale(event.locale);
-    appLocale = await _prefs.locale;
-    return emitter(OnLanguageChangeState(appLocale));
-  }
-
-  bool isDarkMode() => appTheme.brightness == AppTheme.dark.brightness;
 }

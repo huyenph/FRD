@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:upm/common/constants.dart';
-import 'package:upm/configs/theme/app_theme.dart';
 
 class SharedPreferencesManager {
   static SharedPreferences? _prefs;
@@ -21,30 +19,7 @@ class SharedPreferencesManager {
     return prefs.getString(prefsTokenKey) ?? '';
   }
 
-  Future setTheme(String theme) async {
-    SharedPreferences prefs = await _getPrefs();
-    prefs.setString(prefsThemeKey, theme);
-  }
-
-  Future<ThemeData> get theme async {
-    SharedPreferences prefs = await _getPrefs();
-    String prefsTheme = prefs.getString(prefsThemeKey) ?? lightTheme;
-    return prefsTheme == lightTheme ? AppTheme.light : AppTheme.dark;
-  }
-
-  Future setLocale(String locale) async {
-    SharedPreferences prefs = await _getPrefs();
-    prefs.setString(prefsLocaleKey, locale);
-  }
-
-  Future<String> get locale async {
-    SharedPreferences prefs = await _getPrefs();
-    return prefs.getString(prefsLocaleKey) ?? enLocale;
-  }
-
   Future logout() async {
     await setToken('');
-    await setTheme(lightTheme);
-    await setLocale(enLocale);
   }
 }
