@@ -31,7 +31,8 @@ class UpmApp extends StatelessWidget {
       child: ValueListenableBuilder<Box<ConfigModel>>(
         valueListenable: Boxes.getConfig().listenable(),
         builder: (context, box, _) {
-          final ConfigModel config = box.values.last;
+          final ConfigModel? config =
+              box.values.isNotEmpty ? box.values.last : null;
           return MaterialApp(
             navigatorKey: injector<NavigationService>().navigatorKey,
             localizationsDelegates: const [
@@ -41,8 +42,12 @@ class UpmApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            locale: Locale(config.language.locale),
-            theme: config.theme == lightTheme ? AppTheme.light : AppTheme.dark,
+            locale: Locale(config != null ? config.language.locale : enLocale),
+            theme: config != null
+                ? config.theme == lightTheme
+                    ? AppTheme.light
+                    : AppTheme.dark
+                : AppTheme.light,
             darkTheme: AppTheme.dark,
             debugShowCheckedModeBanner: false,
             initialRoute: initRoute,

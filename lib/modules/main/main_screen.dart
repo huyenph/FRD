@@ -52,30 +52,8 @@ class _MainScreenState extends BaseState<MainScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    print('didChangeDependencies');
     if (!_isMenuInitialized) {
-      _items = [
-        DrawerMenuItem<int>(
-          id: 0,
-          title: S.of(context).events,
-          prefix: const Icon(CupertinoIcons.calendar),
-          widgetContent: const EventScreen(),
-        ),
-        DrawerMenuItem<int>(
-          id: 1,
-          title: 'Music Player',
-          prefix: const Icon(Icons.person),
-          widgetContent: const Center(
-            child: Text('Music Player'),
-          ),
-        ),
-        DrawerMenuItem<int>(
-          id: 2,
-          title: S.of(context).settings,
-          prefix: const Icon(Icons.settings),
-          widgetContent: const SettingScreen(),
-        ),
-      ];
+      _initMenuItems(context);
       _menu = DrawerMenu(items: _items);
       selectedMenuItemId = _menu.items[0].id;
       _isMenuInitialized = true;
@@ -87,6 +65,18 @@ class _MainScreenState extends BaseState<MainScreen> {
     return BlocConsumer<AppBloc, AppState>(
       listener: (context, state) {},
       builder: (context, state) {
+        if (state is OnAppConfigChangeState) {
+          switch (state.type) {
+            case AppConfigType.all:
+              break;
+            case AppConfigType.theme:
+              break;
+            case AppConfigType.locale:
+              _initMenuItems(context);
+              _menu = DrawerMenu(items: _items);
+              break;
+          }
+        }
         return DrawerScaffold(
           controller: controller,
           appBar: UpmAppBar(
@@ -172,4 +162,29 @@ class _MainScreenState extends BaseState<MainScreen> {
 
   @override
   PreferredSizeWidget? buildAppBar() => null;
+
+  void _initMenuItems(BuildContext context) {
+    _items = [
+      DrawerMenuItem<int>(
+        id: 0,
+        title: S.of(context).events,
+        prefix: const Icon(CupertinoIcons.calendar),
+        widgetContent: const EventScreen(),
+      ),
+      DrawerMenuItem<int>(
+        id: 1,
+        title: 'Music Player',
+        prefix: const Icon(Icons.person),
+        widgetContent: const Center(
+          child: Text('Music Player'),
+        ),
+      ),
+      DrawerMenuItem<int>(
+        id: 2,
+        title: S.of(context).settings,
+        prefix: const Icon(Icons.settings),
+        widgetContent: const SettingScreen(),
+      ),
+    ];
+  }
 }

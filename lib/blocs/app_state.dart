@@ -11,16 +11,6 @@ abstract class AppState extends Equatable {
 
 class OnInitialState extends AppState {}
 
-class OnAppConfigState extends AppState {
-  const OnAppConfigState(this.theme, this.language);
-
-  final ThemeData theme;
-  final String language;
-
-  @override
-  List<Object?> get props => [theme, language];
-}
-
 class OnGetLanguageState extends AppState {
   const OnGetLanguageState(this.languages);
 
@@ -31,32 +21,16 @@ class OnGetLanguageState extends AppState {
 }
 
 class OnAppConfigChangeState extends AppState {
-  const OnAppConfigChangeState._({
-    this.type = AppConfigType.all,
-    this.configModel,
-  });
+  const OnAppConfigChangeState._({this.type = AppConfigType.all});
 
-  const OnAppConfigChangeState.all(ConfigModel configModel)
-      : this._(
-          type: AppConfigType.all,
-          configModel: configModel,
-        );
+  const OnAppConfigChangeState.all() : this._(type: AppConfigType.all);
 
-  const OnAppConfigChangeState.theme(ConfigModel configModel)
-      : this._(
-          type: AppConfigType.theme,
-          configModel: configModel,
-        );
+  const OnAppConfigChangeState.theme() : this._(type: AppConfigType.theme);
 
-  const OnAppConfigChangeState.locale(ConfigModel configModel)
-      : this._(
-          type: AppConfigType.locale,
-          configModel: configModel,
-        );
+  const OnAppConfigChangeState.locale() : this._(type: AppConfigType.locale);
 
   final AppConfigType type;
-  final ConfigModel? configModel;
 
   @override
-  List<Object?> get props => [type, configModel];
+  List<Object?> get props => [type];
 }
