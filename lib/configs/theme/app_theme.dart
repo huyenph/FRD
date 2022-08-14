@@ -8,7 +8,7 @@ class AppTheme {
         brightness: Brightness.light,
         primary: AppColors.primaryColor,
       ),
-      // splashColor: Colors.transparent,
+      splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         color: AppColors.backgroundLightColor,
         titleTextStyle: TextStyle(
@@ -67,7 +67,7 @@ class AppTheme {
         brightness: Brightness.dark,
         primary: AppColors.primaryColor,
       ),
-      // splashColor: Colors.transparent,
+      splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         color: AppColors.backgroundDarkColor,
         titleTextStyle: TextStyle(

@@ -1,13 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:upm/blocs/app_bloc.dart';
+import 'package:upm/common/constants.dart';
 import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/core/navigation/route_generator.dart';
 import 'package:upm/configs/theme/app_theme.dart';
+import 'package:upm/data/datasource/local/boxes.dart';
 import 'package:upm/di/injector_setup.dart';
+import 'package:upm/domain/models/config_model.dart';
+import 'package:upm/domain/usecases/app_usecase.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/presentation/screens/splash_screen.dart';
 
@@ -21,18 +25,13 @@ class UpmApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return BlocProvider(
-      create: (_) => AppBloc()..add(OnAppConfigEvent()),
-      child: BlocBuilder<AppBloc, AppState>(
-        builder: (context, state) {
-          ThemeData appTheme = AppTheme.light;
-          String language = 'en';
-          if (state is OnAppConfigState) {
-            appTheme = state.theme;
-            language = state.language;
-          }
-          if (state is OnThemeChangeState) {
-            appTheme = state.theme;
-          }
+      create: (_) => AppBloc(injector<AppUseCase>())
+        ..add(const OnAppConfigEvent(AppConfigType.all)),
+      child: ValueListenableBuilder<Box<ConfigModel>>(
+        valueListenable: Boxes.getConfig().listenable(),
+        builder: (context, box, _) {
+          final ConfigModel? config =
+              box.values.isNotEmpty ? box.values.last : null;
           return MaterialApp(
             navigatorKey: injector<NavigationService>().navigatorKey,
             localizationsDelegates: const [
@@ -42,11 +41,15 @@ class UpmApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            locale: Locale(language),
-            theme: appTheme,
+            locale: Locale(config != null ? config.language.locale : enLocale),
+            theme: config != null
+                ? config.theme == lightTheme
+                    ? AppTheme.light
+                    : AppTheme.dark
+                : AppTheme.light,
             darkTheme: AppTheme.dark,
             debugShowCheckedModeBanner: false,
-            initialRoute: '/',
+            initialRoute: initRoute,
             onGenerateRoute: RouteGenerator.generateRoute,
             home: const SplashScreen(),
           );

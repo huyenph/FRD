@@ -36,7 +36,10 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   void dismissLoading() {}
 
-  PreferredSizeWidget? buildAppBar() => UpmAppBar(title: appBarTitle);
+  PreferredSizeWidget? buildAppBar() => UpmAppBar(
+        elevation: 0.0,
+        title: appBarTitle,
+      );
 
   Drawer? buildDrawer() => null;
 

@@ -3,14 +3,24 @@ const usernameEg = 'e.g. username123';
 const passwordEg = 'e.g. password!@#123';
 
 // Prefs keys
-const prefsTokenKey = 'token';
-const prefsThemeKey = 'theme';
-const prefsLocaleKey = 'locale';
+const String prefsTokenKey = 'token';
+const String prefsThemeKey = 'theme';
+const String prefsLanguageKey = 'language';
+
+// Hive keys
+const String boxConfig = 'appConfig';
 
 // App Themes
-const lightTheme = 'light';
-const darkTheme = 'dark';
+const String lightTheme = 'light';
+const String darkTheme = 'dark';
 
 // App Locales
-const enLocale = 'en';
-const viLocale = 'vi';
+const String enLocale = 'en';
+const String viLocale = 'vi';
+
+// Routes
+const String initRoute = '/';
+const String authRoute = '/auth';
+const String homeRoute = '/home';
+const String settingRoute = 'settings';
+const String languageRoute = '/language';

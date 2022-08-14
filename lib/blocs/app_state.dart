@@ -1,5 +1,7 @@
 part of app_bloc;
 
+enum AppConfigType { all, theme, locale }
+
 abstract class AppState extends Equatable {
   const AppState();
 
@@ -9,30 +11,26 @@ abstract class AppState extends Equatable {
 
 class OnInitialState extends AppState {}
 
-class OnAppConfigState extends AppState {
-  const OnAppConfigState(this.theme, this.language);
+class OnGetLanguageState extends AppState {
+  const OnGetLanguageState(this.languages);
 
-  final ThemeData theme;
-  final String language;
+  final List<dynamic> languages;
 
   @override
-  List<Object?> get props => [theme, language];
+  List<Object?> get props => [languages];
 }
 
-class OnThemeChangeState extends AppState {
-  const OnThemeChangeState(this.theme);
+class OnAppConfigChangeState extends AppState {
+  const OnAppConfigChangeState._({this.type = AppConfigType.all});
 
-  final ThemeData theme;
+  const OnAppConfigChangeState.all() : this._(type: AppConfigType.all);
 
-  @override
-  List<Object?> get props => [theme];
-}
+  const OnAppConfigChangeState.theme() : this._(type: AppConfigType.theme);
 
-class OnLanguageChangeState extends AppState {
-  const OnLanguageChangeState(this.language);
+  const OnAppConfigChangeState.locale() : this._(type: AppConfigType.locale);
 
-  final String language;
+  final AppConfigType type;
 
   @override
-  List<Object?> get props => [language];
+  List<Object?> get props => [type];
 }

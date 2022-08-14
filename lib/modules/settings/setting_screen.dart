@@ -1,11 +1,12 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/constants.dart';
 import 'package:upm/core/navigation/navigation_service.dart';
+import 'package:upm/data/datasource/local/boxes.dart';
 import 'package:upm/di/injector_setup.dart';
+import 'package:upm/domain/models/config_model.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/presentation/base/base_ui.dart';
 import 'package:upm/presentation/components/option_field.dart';
@@ -21,7 +22,7 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends BaseState<SettingScreen> {
   late RemoteNotification? notification;
-  // ThemeData _appTheme = AppTheme.light;
+  ConfigModel? _config;
 
   @override
   void initState() {
@@ -32,7 +33,9 @@ class _SettingScreenState extends BaseState<SettingScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // _appTheme = context.read<AppBloc>().appTheme;
+    if (Boxes.getConfig().values.isNotEmpty) {
+      _config = Boxes.getConfig().values.last;
+    }
   }
 
   @override
@@ -42,20 +45,20 @@ class _SettingScreenState extends BaseState<SettingScreen> {
       children: [
         Text('settings ${notification?.title ?? 'no message'}'),
         OptionField(
+          onTap: () => injector<NavigationService>().navigateTo('/language'),
           icon: Icons.language_outlined,
           label: S.of(context).language,
-          value: context.read<AppBloc>().appLocale.toUpperCase(),
+          value: _config != null ? _config!.language.name : '',
         ),
         OptionField(
           icon: Icons.nights_stay_outlined,
           label: S.of(context).darkMode,
-          value: context.read<AppBloc>().isDarkMode(),
+          value: _config != null ? _config!.theme == darkTheme : false,
           onChanged: (value) {
             context.read<AppBloc>().add(
-                  OnThemeChangeEvent(
-                    context.read<AppBloc>().isDarkMode()
-                        ? lightTheme
-                        : darkTheme,
+                  OnAppConfigEvent(
+                    AppConfigType.theme,
+                    theme: value ? darkTheme : lightTheme,
                   ),
                 );
           },
