@@ -22,20 +22,20 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends BaseState<SettingScreen> {
   late RemoteNotification? notification;
-  // ThemeData _appTheme = AppTheme.light;
-  late ConfigModel _config;
+  ConfigModel? _config;
 
   @override
   void initState() {
     super.initState();
     notification = widget.message?.notification;
-    _config = Boxes.getConfig().values.last;
+    if (Boxes.getConfig().values.isNotEmpty) {
+      _config = Boxes.getConfig().values.last;
+    }
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // _appTheme = context.read<AppBloc>().appTheme;
   }
 
   @override
@@ -48,12 +48,12 @@ class _SettingScreenState extends BaseState<SettingScreen> {
           onTap: () => injector<NavigationService>().navigateTo('/language'),
           icon: Icons.language_outlined,
           label: S.of(context).language,
-          value: _config.language.name,
+          value: _config != null ? _config!.language.name : '',
         ),
         OptionField(
           icon: Icons.nights_stay_outlined,
           label: S.of(context).darkMode,
-          value: _config.theme == darkTheme,
+          value: _config != null ? _config!.theme == darkTheme : false,
           onChanged: (value) {
             context.read<AppBloc>().add(
                   OnAppConfigEvent(
