@@ -28,14 +28,14 @@ class _SettingScreenState extends BaseState<SettingScreen> {
   void initState() {
     super.initState();
     notification = widget.message?.notification;
-    if (Boxes.getConfig().values.isNotEmpty) {
-      _config = Boxes.getConfig().values.last;
-    }
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (Boxes.getConfig().values.isNotEmpty) {
+      _config = Boxes.getConfig().values.last;
+    }
   }
 
   @override
