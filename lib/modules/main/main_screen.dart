@@ -5,12 +5,16 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/app_colors.dart';
+import 'package:upm/common/app_size.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/modules/events/screens/event_screen.dart';
 import 'package:upm/modules/settings/setting_screen.dart';
 import 'package:upm/presentation/base/base_ui.dart';
+import 'package:upm/presentation/components/bottom_menu_bar/bottom_menu_bar.dart';
+import 'package:upm/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
 import 'package:upm/presentation/components/upm_app_bar.dart';
 import 'package:upm/presentation/components/drawer_behavior/drawer_behavior.dart';
+import 'package:upm/presentation/components/upm_text_field.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key, this.message}) : super(key: key);
@@ -33,6 +37,9 @@ class _MainScreenState extends BaseState<MainScreen> {
   late RemoteNotification? notification;
   int? selectedMenuItemId;
   DrawerScaffoldController controller = DrawerScaffoldController();
+  TextEditingController searchController = TextEditingController();
+  int _selectedScreenIndex = 0;
+  List<BottomMenuItem> _menuItems = [];
 
   @override
   void initState() {
@@ -61,6 +68,12 @@ class _MainScreenState extends BaseState<MainScreen> {
   }
 
   @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget buildBody(BuildContext context) {
     return BlocConsumer<AppBloc, AppState>(
       listener: (context, state) {},
@@ -79,14 +92,7 @@ class _MainScreenState extends BaseState<MainScreen> {
         }
         return DrawerScaffold(
           controller: controller,
-          appBar: UpmAppBar(
-            elevation: 0.0,
-            title: _items[selectedMenuItemId!].title,
-            leading: GestureDetector(
-              onTap: () => controller.toggle(),
-              child: const Icon(Icons.menu),
-            ),
-          ),
+          appBar: _buildAppBar(context),
           drawers: [
             SideDrawer(
               percentage: 1,
@@ -151,6 +157,7 @@ class _MainScreenState extends BaseState<MainScreen> {
               },
             ),
           ],
+          bottomNavigationBar: _buildBottomNavigationBar(context),
           builder: (context, id) => IndexedStack(
             index: id,
             children: _menu.items.map((e) => e.widgetContent).toList(),
@@ -186,5 +193,74 @@ class _MainScreenState extends BaseState<MainScreen> {
         widgetContent: const SettingScreen(),
       ),
     ];
+
+    _menuItems = [
+      BottomMenuItem(
+        icon: const Icon(CupertinoIcons.calendar),
+        title: Text(
+          S.of(context).events,
+        ),
+      ),
+      BottomMenuItem(
+        icon: const Icon(Icons.person),
+        title: const Text('Music Player'),
+      ),
+      BottomMenuItem(
+        icon: const Icon(Icons.settings),
+        title: Text(
+          S.of(context).events,
+        ),
+      ),
+    ];
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      leading: GestureDetector(
+        onTap: () => controller.toggle(),
+        child: const SizedBox(
+          height: 30.0,
+          width: 30.0,
+          child: CircleAvatar(),
+        ),
+      ),
+      title: TextFormField(
+        controller: searchController,
+        maxLines: 1,
+        keyboardType: TextInputType.text,
+        // style: const TextStyle(color: AppColors.textColor),
+        decoration: const InputDecoration(
+          contentPadding: EdgeInsets.all(AppSize.borderRadiusField),
+          // filled: true,
+          // fillColor: Colors.transparent,
+          hintText: 'Search...',
+          hintStyle: TextStyle(color: AppColors.dividerColor),
+          // alignLabelWithHint: true,
+          border: OutlineInputBorder(),
+          prefix: Icon(
+            CupertinoIcons.search,
+            color: Colors.grey,
+            size: 20.0,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar(BuildContext context) {
+    return BottomMenuBar(
+      items: _menuItems,
+      onItemSelected: (int index) {
+        setState(() {
+          _selectedScreenIndex = index;
+        });
+      },
+      selectedIndex: _selectedScreenIndex,
+      backgroundColor: Theme.of(context).canvasColor,
+      bottomBarRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20.0),
+        topRight: Radius.circular(20.0),
+      ),
+    );
   }
 }
