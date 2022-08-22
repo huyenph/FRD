@@ -8,6 +8,7 @@ class AppTheme {
         brightness: Brightness.light,
         primary: AppColors.primaryColor,
       ),
+      canvasColor: AppColors.backgroundLightColor,
       splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         color: AppColors.backgroundLightColor,
@@ -33,8 +34,9 @@ class AppTheme {
       ),
       scaffoldBackgroundColor: AppColors.backgroundLightColor,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.backgroundLightColor,
         selectedItemColor: AppColors.primaryColor,
+        unselectedItemColor: AppColors.primaryColor,
       ),
       inputDecorationTheme: const InputDecorationTheme(
         fillColor: AppColors.cardLightColor,
@@ -68,6 +70,7 @@ class AppTheme {
         primary: AppColors.primaryColor,
       ),
       splashColor: Colors.transparent,
+      canvasColor: AppColors.backgroundDarkColor,
       appBarTheme: const AppBarTheme(
         color: AppColors.backgroundDarkColor,
         titleTextStyle: TextStyle(
@@ -91,9 +94,9 @@ class AppTheme {
       ),
       scaffoldBackgroundColor: AppColors.backgroundDarkColor,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: Color(0xFF263238),
-        selectedItemColor: AppColors.primaryColor,
-      ),
+          backgroundColor: AppColors.backgroundDarkColor,
+          selectedItemColor: AppColors.cardLightColor,
+          unselectedItemColor: AppColors.backgroundLightColor),
       inputDecorationTheme: const InputDecorationTheme(
         fillColor: AppColors.primaryColor,
         enabledBorder: OutlineInputBorder(
