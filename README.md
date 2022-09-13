@@ -1,4 +1,4 @@
-# UPM Mobile App
+# UPM Mobile App - Using BloC, Clean Architecture, Getit, etc, ...
 
 ## Folder structure
 
@@ -64,3 +64,9 @@ Then add the block below to your launch.json file and put it inside the .vscode 
     ]
   },
 ```
+
+## Terminal
+
+Development: flutter run --flavor development -t lib/main_dev.dart
+Staging: flutter run --flavor staging -t lib/main_stag.dart
+Production: flutter run --flavor production -t lib/main_prod.dart
