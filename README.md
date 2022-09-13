@@ -1,50 +1,34 @@
 # UPM Mobile App - Using BloC, Clean Architecture, Getit, etc, ...
 
-## Folder structure
+## Project Structure
 
-```
-android/
-  app/
-    src/
-      debug/
-      development/
-      main/
-      production/
-      profile/
-      staging/
-ios/
-  Config/
-    development/
-    production/
-    staging/
-lib/
-  src/
-    blocs/
-    common/
-    configs/
-    core/
-    data/
-      datasources/
-      repositories/
-    di/
-    domain/
-      models/
-      repositories/
-      usecases/
-    modules/
-    presentation/
-      widgets/
-      components/
-      screens/
-  main_dev.dart
-  main_stag.dart
-  main_prod.dart
-  upm_app.dart
-  test/
-  pubspec.lock
-  pubspec.yaml
-  README.md
-```
+* [android](./android)
+* [ios](./ios)
+* [lib](./lib)
+  * [common](./lib/common)
+  * [blocs](./lib/blocs)
+  * [configs](./lib/configs)
+  * [core](./lib/core)
+  * [data](./lib/data)
+    * [datasource](./lib/data/datasource)
+      * [local](./lib/data/datasource/local)
+      * [remote](./lib/data/datasource/remote)
+    * [repositories](./lib/data/repositories)
+  * [di](./lib/di)
+  * [domain](./lib/domain)
+    * [models](./lib/domain/models)
+    * [repositories](./lib/domain/repositories)
+    * [usecases](./lib/domain/usecases)
+  * [modules](./lib/modules)
+  * [presentation](./lib/presentation)
+    * [base](./lib/presentation/base) 
+    * [components](./lib/presentation/components)
+    * [screens](./lib/presentation/screens)
+ * [main_dev.dart](./lib/main_dev.dart)
+ * [main_stag.dart](./lib/main_stag.dart)
+ * [main_prod.dart](./lib/main_prod.dart)
+ * [upm_app.dart](./lib/upm_app.dart)
+
 
 ## Visual Studio Code
 
@@ -66,7 +50,8 @@ Then add the block below to your launch.json file and put it inside the .vscode 
 ```
 
 ## Terminal
-
+```
 Development: flutter run --flavor development -t lib/main_dev.dart
 Staging: flutter run --flavor staging -t lib/main_stag.dart
 Production: flutter run --flavor production -t lib/main_prod.dart
+```
