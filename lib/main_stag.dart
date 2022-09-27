@@ -5,7 +5,7 @@ import 'package:upm/configs/app_configs.dart';
 import 'package:upm/core/application_observer.dart';
 import 'package:upm/data/datasource/local/boxes.dart';
 import 'package:upm/di/injector_setup.dart';
-import 'package:upm/upm_app.dart';
+import 'package:upm/frd_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,7 @@ void main() async {
   await Boxes.init();
   appLogging();
   BlocOverrides.runZoned(
-    () => runApp(const UpmApp()),
+    () => runApp(const FrdApp()),
     blocObserver: ApplicationObserver(),
   );
 }

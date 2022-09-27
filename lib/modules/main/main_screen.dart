@@ -12,9 +12,9 @@ import 'package:upm/modules/settings/setting_screen.dart';
 import 'package:upm/presentation/base/base_ui.dart';
 import 'package:upm/presentation/components/bottom_menu_bar/bottom_menu_bar.dart';
 import 'package:upm/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
-import 'package:upm/presentation/components/upm_app_bar.dart';
+import 'package:upm/presentation/components/frd_app_bar.dart';
 import 'package:upm/presentation/components/drawer_behavior/drawer_behavior.dart';
-import 'package:upm/presentation/components/upm_text_field.dart';
+import 'package:upm/presentation/components/frd_text_field.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key, this.message}) : super(key: key);

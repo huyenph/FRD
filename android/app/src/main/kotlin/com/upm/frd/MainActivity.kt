@@ -1,4 +1,4 @@
-package com.upm.app
+package com.upm.frd
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.pm.PackageManager
@@ -15,7 +15,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
-    private val channelName = "com.upm.app/notification"
+    private val channelName = "com.upm.frd/notification"
     private lateinit var channel: MethodChannel
 
 //    @RequiresApi(33)

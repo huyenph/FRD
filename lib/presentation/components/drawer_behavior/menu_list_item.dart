@@ -44,7 +44,7 @@ class MenuListItem extends StatelessWidget {
     }
     children.add(
       Expanded(
-        child: UpmText(
+        child: FrdText(
           text: title,
           textColor: style.color,
         ),

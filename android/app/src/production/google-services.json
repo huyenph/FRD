@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:643158513261:android:d4d6a9e709adb810c6d164",
+        "mobilesdk_app_id": "1:643158513261:android:dea803c866774e3fc6d164",
         "android_client_info": {
-          "package_name": "com.upm.app"
+          "package_name": "com.upm.frd"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "643158513261-pm4d5bdntjh3levhv3q7d26kp79krmc0.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "643158513261-2gaivl4qlfof2mnkg4mbdsjdn964gq7r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.upm.app.stag"
+              }
             }
           ]
         }

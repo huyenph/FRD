@@ -67,7 +67,7 @@
 	<key>FacebookClientToken</key>
 	<string>7c817513bf33cdb5f21d44db94b959d5</string>
 	<key>FacebookDisplayName</key>
-	<string>UPM</string>
+	<string>upm</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

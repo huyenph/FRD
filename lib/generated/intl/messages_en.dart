@@ -57,6 +57,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
         "welcome_to":
-            MessageLookupByLibrary.simpleMessage("Welcome to UPM! 👋🏻")
+            MessageLookupByLibrary.simpleMessage("Welcome to upm! 👋🏻")
       };
 }

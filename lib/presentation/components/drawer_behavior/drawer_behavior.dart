@@ -4,7 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:upm/common/utils.dart';
-import 'package:upm/presentation/components/upm_text.dart';
+import 'package:upm/presentation/components/frd_text.dart';
 
 part 'drawer_scaffold.dart';
 part 'builder.dart';

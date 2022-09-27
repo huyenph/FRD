@@ -15,8 +15,8 @@ import 'package:upm/domain/usecases/app_usecase.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/presentation/screens/splash_screen.dart';
 
-class UpmApp extends StatelessWidget {
-  const UpmApp({Key? key}) : super(key: key);
+class FrdApp extends StatelessWidget {
+  const FrdApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

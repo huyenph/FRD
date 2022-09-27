@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
 
-class UpmTextField extends StatelessWidget {
-  const UpmTextField({
+class FrdTextField extends StatelessWidget {
+  const FrdTextField({
     Key? key,
     required this.controller,
     this.onTap,

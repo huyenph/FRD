@@ -59,7 +59,7 @@ class FirebaseFCM {
   late FirebaseMessaging _messaging;
 
   void registerNotification() async {
-    // Initialize the Firebase app
+    // Initialize the Firebase upm
     await Firebase.initializeApp();
 
     // Instantiate Firebase Messaging
@@ -98,7 +98,7 @@ class FirebaseFCM {
         sound: true,
       );
 
-      // Handle open app when terminated
+      // Handle open upm when terminated
       _messaging.getInitialMessage().then((RemoteMessage? message) {
         if (message != null) {
           injector<NavigationService>().navigateTo(
@@ -109,7 +109,7 @@ class FirebaseFCM {
         }
       });
 
-      // For handling the received notifications in app
+      // For handling the received notifications in upm
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         _handleNotification(message);
         injector<NavigationService>().navigateTo(
@@ -124,7 +124,7 @@ class FirebaseFCM {
         _firebaseMessagingBackgroundHandler,
       );
 
-      // Handle open app when background
+      // Handle open upm when background
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? message) {
         if (message != null) {
           injector<NavigationService>().navigateTo(

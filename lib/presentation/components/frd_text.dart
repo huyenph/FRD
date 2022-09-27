@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:upm/blocs/app_bloc.dart';
 import 'package:upm/common/app_colors.dart';
 
-class UpmText extends StatelessWidget {
-  const UpmText({
+class FrdText extends StatelessWidget {
+  const FrdText({
     Key? key,
     required this.text,
     this.textColor = AppColors.textColor,

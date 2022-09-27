@@ -57,6 +57,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
         "welcome_to":
-            MessageLookupByLibrary.simpleMessage("Chào mừng đến với UPM! 👋🏻")
+            MessageLookupByLibrary.simpleMessage("Chào mừng đến với upm! 👋🏻")
       };
 }

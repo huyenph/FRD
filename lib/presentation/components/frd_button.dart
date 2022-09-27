@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:upm/common/app_colors.dart';
 import 'package:upm/common/app_size.dart';
-import 'package:upm/presentation/components/upm_text.dart';
+import 'package:upm/presentation/components/frd_text.dart';
 
-class UpmButton extends StatelessWidget {
-  const UpmButton({
+class FrdButton extends StatelessWidget {
+  const FrdButton({
     Key? key,
     required this.onPressed,
     this.startIcon,
@@ -62,7 +62,7 @@ class UpmButton extends StatelessWidget {
               const SizedBox(width: AppSize.fieldSpacingS),
             ],
             if (label != null) ...[
-              UpmText(
+              FrdText(
                 text: label!,
                 fontSize: labelSize,
                 textColor: labelColor,

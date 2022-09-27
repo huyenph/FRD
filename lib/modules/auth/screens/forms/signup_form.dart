@@ -8,8 +8,8 @@ import 'package:upm/core/navigation/navigation_service.dart';
 import 'package:upm/di/injector_setup.dart';
 import 'package:upm/generated/l10n.dart';
 import 'package:upm/modules/auth/blocs/authentication.dart';
-import 'package:upm/presentation/components/upm_button.dart';
-import 'package:upm/presentation/components/upm_text_field.dart';
+import 'package:upm/presentation/components/frd_button.dart';
+import 'package:upm/presentation/components/frd_text_field.dart';
 
 const iconSize = 32.0;
 
@@ -53,21 +53,21 @@ class SignupForm extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingXL),
-                UpmTextField(
+                FrdTextField(
                   controller: _usernameController,
                   labelText: S.of(context).username,
                   fillColor: AppColors.cardLightColor,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
-                UpmTextField(
+                FrdTextField(
                   controller: _emailController,
                   labelText: S.of(context).email,
                   fillColor: AppColors.cardLightColor,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
-                UpmTextField(
+                FrdTextField(
                   controller: _passwordController,
                   labelText: S.of(context).password,
                   fillColor: AppColors.cardLightColor,
@@ -99,7 +99,7 @@ class SignupForm extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
-                UpmButton(
+                FrdButton(
                   onPressed: () {},
                   labelColor: AppColors.backgroundLightColor,
                   label: S.of(context).register,
