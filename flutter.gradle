@@ -27,26 +27,26 @@ import org.gradle.api.tasks.bundling.Jar
 import org.gradle.internal.os.OperatingSystem
 import org.gradle.util.VersionNumber
 
-/** For apps only. Provides the flutter extension used in upm/build.gradle. */
+/** For apps only. Provides the flutter extension used in app/build.gradle. */
 class FlutterExtension {
-    /** Sets the compileSdkVersion used by default in Flutter upm projects. */
+    /** Sets the compileSdkVersion used by default in Flutter app projects. */
     static int compileSdkVersion = 33
 
-    /** Sets the minSdkVersion used by default in Flutter upm projects. */
+    /** Sets the minSdkVersion used by default in Flutter app projects. */
     static int minSdkVersion = 21
 
-    /** Sets the targetSdkVersion used by default in Flutter upm projects. */
+    /** Sets the targetSdkVersion used by default in Flutter app projects. */
     static int targetSdkVersion = 32
 
     /**
-     * Sets the ndkVersion used by default in Flutter upm projects.
+     * Sets the ndkVersion used by default in Flutter app projects.
      * Chosen as default version of the AGP version below.
      */
     static String ndkVersion = "21.1.6352462"
 
     /**
      * Specifies the relative directory to the Flutter project directory.
-     * In an upm project, this is ../.. since the upm's build.gradle is under android/upm.
+     * In an app project, this is ../.. since the app's build.gradle is under android/app.
      */
     String source
 
@@ -67,7 +67,7 @@ buildscript {
 
 /**
  * Some apps don't set default compile options.
- * Apps can change these values in android/upm/build.gradle.
+ * Apps can change these values in android/app/build.gradle.
  * This just ensures that default values are set.
  */
 android {
@@ -246,7 +246,7 @@ class FlutterPlugin implements Plugin<Project> {
             // TODO(garyq): Shrinking is only false for multi apk split aot builds, where shrinking is not allowed yet.
             // This limitation has been removed experimentally in gradle plugin version 4.2, so we can remove
             // this check when we upgrade to 4.2+ gradle. Currently, deferred components apps may see
-            // increased upm size due to this.
+            // increased app size due to this.
             if (shouldShrinkResources(project)) {
                 release {
                     // Enables code shrinking, obfuscation, and optimization for only
@@ -256,7 +256,7 @@ class FlutterPlugin implements Plugin<Project> {
                     // Android Gradle plugin.
                     // NOTE: The resource shrinker can't be used for libraries.
                     shrinkResources isBuiltAsApp(project)
-                    // Fallback to `android/upm/proguard-rules.pro`.
+                    // Fallback to `android/app/proguard-rules.pro`.
                     // This way, custom Proguard rules can be configured as needed.
                     proguardFiles project.android.getDefaultProguardFile("proguard-android.txt"), flutterProguardRules, "proguard-rules.pro"
                 }
@@ -271,7 +271,7 @@ class FlutterPlugin implements Plugin<Project> {
             project.android {
                 defaultConfig {
                     multiDexEnabled true
-                    manifestPlaceholders = [applicationName: "io.flutter.upm.FlutterMultiDexApplication"]
+                    manifestPlaceholders = [applicationName: "io.flutter.app.FlutterMultiDexApplication"]
                 }
                 buildTypes {
                     release {
@@ -283,13 +283,13 @@ class FlutterPlugin implements Plugin<Project> {
                 implementation "androidx.multidex:multidex:2.0.1"
             }
         } else {
-            String baseApplicationName = "android.frd.Application"
+            String baseApplicationName = "android.app.Application"
             if (project.hasProperty("base-application-name")) {
                 baseApplicationName = project.property("base-application-name")
             }
             project.android {
                 defaultConfig {
-                    // Setting to android.upm.Application is the same as omitting the attribute.
+                    // Setting to android.app.Application is the same as omitting the attribute.
                     manifestPlaceholders = [applicationName: baseApplicationName]
                 }
             }
@@ -327,10 +327,10 @@ class FlutterPlugin implements Plugin<Project> {
             return
         }
         // The embedding is set as an API dependency in a Flutter plugin.
-        // Therefore, don't make the upm project depend on the embedding if there are Flutter
+        // Therefore, don't make the app project depend on the embedding if there are Flutter
         // plugins.
         // This prevents duplicated classes when using custom build types. That is, a custom build
-        // type like profile is used, and the plugin and upm projects have API dependencies on the
+        // type like profile is used, and the plugin and app projects have API dependencies on the
         // embedding.
         if (!isFlutterAppProject() || getPluginList().size() == 0) {
             addApiDependencies(project, buildType.name,
@@ -373,14 +373,14 @@ class FlutterPlugin implements Plugin<Project> {
         getPluginDependencies().each this.&configurePluginDependencies
     }
 
-    /** Adds the plugin project dependency to the upm project. */
+    /** Adds the plugin project dependency to the app project. */
     private void configurePluginProject(String pluginName, String _) {
         Project pluginProject = project.rootProject.findProject(":$pluginName")
         if (pluginProject == null) {
             project.logger.error("Plugin project :$pluginName not found. Please update settings.gradle.")
             return
         }
-        // Add plugin dependency to the upm project.
+        // Add plugin dependency to the app project.
         project.dependencies {
             api pluginProject
         }
@@ -395,7 +395,7 @@ class FlutterPlugin implements Plugin<Project> {
             if (!pluginProject.hasProperty('android')) {
                 return
             }
-            // Copy build types from the upm to the plugin.
+            // Copy build types from the app to the plugin.
             // This allows to build apps with plugins and custom build types or flavors.
             pluginProject.android.buildTypes {
                 "${buildType.name}" {}
@@ -426,7 +426,7 @@ class FlutterPlugin implements Plugin<Project> {
 
     /**
      * Compares semantic versions ignoring labels.
-     * 
+     *
      * If the versions are equal (ignoring labels), returns one of the two strings arbitrarily.
      *
      * If minor or patch are omitted (non-conformant to semantic versioning), they are considered zero.
@@ -458,7 +458,10 @@ class FlutterPlugin implements Plugin<Project> {
     /** Prints error message and fix for any plugin compileSdkVersion or ndkVersion that are higher than the project. */
     private void detectLowCompileSdkVersionOrNdkVersion() {
         project.afterEvaluate {
-            int projectCompileSdkVersion = project.android.compileSdkVersion.substring(8) as int
+            int projectCompileSdkVersion = Integer.MAX_VALUE // Default to int max if using a preview version to skip the sdk check.
+            if (project.android.compileSdkVersion.substring(8).isInteger()) { // Stable versions use ints, legacy preview uses string.
+                projectCompileSdkVersion = project.android.compileSdkVersion.substring(8) as int
+            }
             int maxPluginCompileSdkVersion = projectCompileSdkVersion
             String ndkVersionIfUnspecified = "21.1.6352462" /* The default for AGP 4.1.0 used in old templates. */
             String projectNdkVersion = project.android.ndkVersion ?: ndkVersionIfUnspecified
@@ -484,7 +487,7 @@ class FlutterPlugin implements Plugin<Project> {
                     }
                 }
             }
-        }  
+        }
     }
 
     /**
@@ -637,7 +640,7 @@ class FlutterPlugin implements Plugin<Project> {
         return false
     }
 
-    /** Whether to build the debug upm in "fast-start" mode. */
+    /** Whether to build the debug app in "fast-start" mode. */
     private Boolean isFastStart() {
         if (project.hasProperty("fast-start")) {
             return project.property("fast-start").toBoolean()
@@ -753,14 +756,14 @@ class FlutterPlugin implements Plugin<Project> {
      *
      * Tested cases:
      * * `./gradlew assembleRelease`
-     * * `./gradlew upm:assembleRelease.`
+     * * `./gradlew app:assembleRelease.`
      * * `./gradlew assemble{flavorName}Release`
-     * * `./gradlew upm:assemble{flavorName}Release`
+     * * `./gradlew app:assemble{flavorName}Release`
      * * `./gradlew assemble.`
-     * * `./gradlew upm:assemble.`
+     * * `./gradlew app:assemble.`
      * * `./gradlew bundle.`
      * * `./gradlew bundleRelease.`
-     * * `./gradlew upm:bundleRelease.`
+     * * `./gradlew app:bundleRelease.`
      *
      * Related issues:
      * https://issuetracker.google.com/issues/158060799
@@ -921,7 +924,7 @@ class FlutterPlugin implements Plugin<Project> {
                     String abi = PLATFORM_ARCH_MAP[targetPlatform]
                     from("${compileTask.intermediateDir}/${abi}") {
                         include "*.so"
-                        // Move `upm.so` to `lib/<abi>/libapp.so`
+                        // Move `app.so` to `lib/<abi>/libapp.so`
                         rename { String filename ->
                             return "lib/${abi}/lib${filename}"
                         }
@@ -933,7 +936,7 @@ class FlutterPlugin implements Plugin<Project> {
             })
             // We build an AAR when this property is defined.
             boolean isBuildingAar = project.hasProperty('is-plugin')
-            // In add to upm scenarios, a Gradle project contains a `:flutter` and `:upm` project.
+            // In add to app scenarios, a Gradle project contains a `:flutter` and `:app` project.
             // We know that `:flutter` is used as a subproject when these tasks exists and we aren't building an AAR.
             Task packageAssets = project.tasks.findByPath(":flutter:package${variant.name.capitalize()}Assets")
             Task cleanPackageAssets = project.tasks.findByPath(":flutter:cleanPackage${variant.name.capitalize()}Assets")
@@ -980,12 +983,12 @@ class FlutterPlugin implements Plugin<Project> {
                 processResources.dependsOn(copyFlutterAssetsTask)
 
                 // Copy the output APKs into a known location, so `flutter run` or `flutter build apk`
-                // can discover them. By default, this is `<upm-dir>/build/upm/outputs/flutter-apk/<filename>.apk`.
+                // can discover them. By default, this is `<app-dir>/build/app/outputs/flutter-apk/<filename>.apk`.
                 //
-                // The filename consists of `upm<-abi>?<-flavor-name>?-<build-mode>.apk`.
+                // The filename consists of `app<-abi>?<-flavor-name>?-<build-mode>.apk`.
                 // Where:
                 //   * `abi` can be `armeabi-v7a|arm64-v8a|x86|x86_64` only if the flag `split-per-abi` is set.
-                //   * `flavor-name` is the flavor used to build the upm in lower case if the assemble task is called.
+                //   * `flavor-name` is the flavor used to build the app in lower case if the assemble task is called.
                 //   * `build-mode` can be `release|debug|profile`.
                 variant.outputs.all { output ->
                     assembleTask.doLast {
@@ -997,7 +1000,7 @@ class FlutterPlugin implements Plugin<Project> {
                         String outputDirectoryStr = outputDirectory.metaClass.respondsTo(outputDirectory, "get")
                             ? outputDirectory.get()
                             : outputDirectory
-                        String filename = "frd"
+                        String filename = "app"
                         String abi = output.getFilter(OutputFile.ABI)
                         if (abi != null && !abi.isEmpty()) {
                             filename += "-${abi}"
@@ -1020,11 +1023,11 @@ class FlutterPlugin implements Plugin<Project> {
             detectLowCompileSdkVersionOrNdkVersion()
             return
         }
-        // Flutter host module project (Add-to-upm).
-        String hostAppProjectName = project.rootProject.hasProperty('flutter.hostAppProjectName') ? project.rootProject.property('flutter.hostAppProjectName') : "upm"
+        // Flutter host module project (Add-to-app).
+        String hostAppProjectName = project.rootProject.hasProperty('flutter.hostAppProjectName') ? project.rootProject.property('flutter.hostAppProjectName') : "app"
         Project appProject = project.rootProject.findProject(":${hostAppProjectName}")
-        assert appProject != null : "Project :${hostAppProjectName} doesn't exist. To custom the host upm project name, set `org.gradle.project.flutter.hostAppProjectName=<project-name>` in gradle.properties."
-        // Wait for the host upm project configuration.
+        assert appProject != null : "Project :${hostAppProjectName} doesn't exist. To custom the host app project name, set `org.gradle.project.flutter.hostAppProjectName=<project-name>` in gradle.properties."
+        // Wait for the host app project configuration.
         appProject.afterEvaluate {
             assert appProject.android != null
             project.android.libraryVariants.all { libraryVariant ->
@@ -1034,9 +1037,9 @@ class FlutterPlugin implements Plugin<Project> {
                     if (!shouldConfigureFlutterTask(appAssembleTask)) {
                         return
                     }
-                    // Find a compatible application variant in the host upm.
+                    // Find a compatible application variant in the host app.
                     //
-                    // For example, consider a host upm that defines the following variants:
+                    // For example, consider a host app that defines the following variants:
                     // | ----------------- | ----------------------------- |
                     // |   Build Variant   |   Flutter Equivalent Variant  |
                     // | ----------------- | ----------------------------- |
@@ -1047,9 +1050,9 @@ class FlutterPlugin implements Plugin<Project> {
                     // | ----------------- | ----------------------------- |
                     //
                     // This mapping is based on the following rules:
-                    // 1. If the host upm build variant name is `profile` then the equivalent
+                    // 1. If the host app build variant name is `profile` then the equivalent
                     //    Flutter variant is `profile`.
-                    // 2. If the host upm build variant is debuggable
+                    // 2. If the host app build variant is debuggable
                     //    (e.g. `buildType.debuggable = true`), then the equivalent Flutter
                     //    variant is `debug`.
                     // 3. Otherwise, the equivalent Flutter variant is `release`.
@@ -1238,7 +1241,7 @@ class FlutterTask extends BaseFlutterTask {
 
             if (buildMode == 'release' || buildMode == 'profile') {
                 targetPlatformValues.each {
-                    include "${PLATFORM_ARCH_MAP[targetArch]}/upm.so"
+                    include "${PLATFORM_ARCH_MAP[targetArch]}/app.so"
                 }
             }
         }
