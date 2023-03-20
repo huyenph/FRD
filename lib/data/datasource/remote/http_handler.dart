@@ -14,12 +14,12 @@ class HttpHandler implements RestApiFactoryListener {
   @override
   void onError(DioError error) {
     switch (error.type) {
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
       case DioErrorType.receiveTimeout:
         throw ManuallyException('Server not response, please try again.');
       case DioErrorType.cancel:
         throw ManuallyException('The request is cancelled');
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         final statusCode = error.response!.statusCode;
         if (statusCode == 401 || statusCode == 416) {
           _tokenExpiredHandler.call(statusCode == 401
@@ -31,7 +31,7 @@ class HttpHandler implements RestApiFactoryListener {
           throw ManuallyException("You don't have permission to access this.");
         }
         throw ManuallyException('Oops! Error occurred, please try again.');
-      case DioErrorType.other:
+      case DioErrorType.unknown:
       default:
         throw ManuallyException('Oops! Error occurred, please try again.');
     }

@@ -92,8 +92,8 @@ class RestApiFactory {
 
     options.baseUrl = AppConfig.instance!.rootUrl;
     options.headers.addAll(headers);
-    options.connectTimeout = timeOut;
-    options.receiveTimeout = timeOut;
+    options.connectTimeout = timeOut as Duration?;
+    options.receiveTimeout = timeOut as Duration?;
     return options;
   }
 
