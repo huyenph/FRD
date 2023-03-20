@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upm/common/app_colors.dart';
+import 'package:hpcompose/common/app_colors.dart';
 
 class MenuItemWidget extends StatelessWidget {
   final double iconSize;

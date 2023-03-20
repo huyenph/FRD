@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>upm</string>
+	<string>hpcompose</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -67,7 +67,7 @@
 	<key>FacebookClientToken</key>
 	<string>7c817513bf33cdb5f21d44db94b959d5</string>
 	<key>FacebookDisplayName</key>
-	<string>upm</string>
+	<string>hpcompose</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

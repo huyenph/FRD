@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:upm/common/constants.dart';
+import 'package:hpcompose/common/constants.dart';
 
 class SharedPreferencesManager {
   static SharedPreferences? _prefs;

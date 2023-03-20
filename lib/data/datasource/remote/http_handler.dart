@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:upm/core/exceptions.dart';
-import 'package:upm/data/datasource/remote/rest_api_factory.dart';
-import 'package:upm/data/datasource/remote/token_expired_handler.dart';
+import 'package:hpcompose/core/exceptions.dart';
+import 'package:hpcompose/data/datasource/remote/rest_api_factory.dart';
+import 'package:hpcompose/data/datasource/remote/token_expired_handler.dart';
 
 class HttpHandler implements RestApiFactoryListener {
   final TokenExpiredHandler _tokenExpiredHandler;

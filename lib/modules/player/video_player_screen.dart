@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:upm/presentation/base/base_ui.dart';
-import 'package:upm/presentation/components/frd_text.dart';
+import 'package:hpcompose/presentation/base/base_ui.dart';
+import 'package:hpcompose/presentation/components/frd_text.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerScreen extends StatefulWidget {

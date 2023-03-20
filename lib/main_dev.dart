@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:upm/common/utils.dart';
-import 'package:upm/configs/app_configs.dart';
-import 'package:upm/core/application_observer.dart';
-import 'package:upm/data/datasource/local/boxes.dart';
-import 'package:upm/di/injector_setup.dart';
-import 'package:upm/frd_app.dart';
+import 'package:hpcompose/common/utils.dart';
+import 'package:hpcompose/configs/app_configs.dart';
+import 'package:hpcompose/core/application_observer.dart';
+import 'package:hpcompose/data/datasource/local/boxes.dart';
+import 'package:hpcompose/di/injector_setup.dart';
+import 'package:hpcompose/frd_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:upm/blocs/app_bloc.dart';
-import 'package:upm/common/app_colors.dart';
-import 'package:upm/common/app_size.dart';
-import 'package:upm/core/navigation/navigation_service.dart';
-import 'package:upm/data/datasource/local/boxes.dart';
-import 'package:upm/di/injector_setup.dart';
-import 'package:upm/domain/models/language_model.dart';
-import 'package:upm/generated/l10n.dart';
-import 'package:upm/presentation/base/base_ui.dart';
+import 'package:hpcompose/blocs/app_bloc.dart';
+import 'package:hpcompose/common/app_colors.dart';
+import 'package:hpcompose/common/app_size.dart';
+import 'package:hpcompose/core/navigation/navigation_service.dart';
+import 'package:hpcompose/data/datasource/local/boxes.dart';
+import 'package:hpcompose/di/injector_setup.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:hpcompose/generated/l10n.dart';
+import 'package:hpcompose/presentation/base/base_ui.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({Key? key}) : super(key: key);

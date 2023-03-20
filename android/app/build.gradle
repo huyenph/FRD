@@ -45,14 +45,12 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.upm.frd"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 24
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -65,41 +63,41 @@ android {
 
     flavorDimensions "app"
     productFlavors {
-        def PRODUCTION_APP_ID = "com.upm.frd"
-        def PRODUCTION_VERSION_CODE = 1
-        def PRODUCTION_VERSION_NAME = "1.0"
+        def PROD_APP_ID = "com.hpcompose.frd"
+        def PROD_VERSION_CODE = 1
+        def PROD_VERSION_NAME = "1.0"
 
-        def STAGING_APP_ID = "com.upm.frd.stag"
-        def STAGING_VERSION_CODE = 1
-        def STAGING_VERSION_NAME = "1.0"
+        def STAG_APP_ID = "com.hpcompose.frd.stag"
+        def STAG_VERSION_CODE = 1
+        def STAG_VERSION_NAME = "1.0"
 
-        def DEVELOP_APP_ID = "com.upm.frd.dev"
-        def DEVELOP_VERSION_CODE = 1
-        def DEVELOP_VERSION_NAME = "1.0"
+        def DEV_APP_ID = "com.hpcompose.frd.dev"
+        def DEV_VERSION_CODE = 1
+        def DEV_VERSION_NAME = "1.0"
 
-        production {
+        prod {
             dimension "app"
-            applicationId PRODUCTION_APP_ID
-            versionCode PRODUCTION_VERSION_CODE
-            versionName PRODUCTION_VERSION_NAME
+            applicationId PROD_APP_ID
+            versionCode PROD_VERSION_CODE
+            versionName PROD_VERSION_NAME
             resValue "string", "app_name", "FRD"
         }
-        staging {
+        stag {
             dimension "app"
-            applicationId STAGING_APP_ID
-            versionCode STAGING_VERSION_CODE
-            versionName STAGING_VERSION_NAME
+            applicationId STAG_APP_ID
+            versionCode STAG_VERSION_CODE
+            versionName STAG_VERSION_NAME
             resValue "string", "app_name", "FRD STAG"
         }
-        development {
+        dev {
             dimension "app"
-            applicationId DEVELOP_APP_ID
-            versionCode DEVELOP_VERSION_CODE
-            versionName DEVELOP_VERSION_NAME
+            applicationId DEV_APP_ID
+            versionCode DEV_VERSION_CODE
+            versionName DEV_VERSION_NAME
             resValue "string", "app_name", "FRD DEV"
         }
     }
-    namespace 'com.upm.frd'
+    namespace 'com.hpcompose.frd'
 }
 
 flutter {

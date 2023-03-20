@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:upm/core/navigation/navigation_service.dart';
-import 'package:upm/di/injector_setup.dart';
+import 'package:hpcompose/core/navigation/navigation_service.dart';
+import 'package:hpcompose/di/injector_setup.dart';
 
 /// Create a [AndroidNotificationChannel] for heads up notifications
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -59,7 +59,7 @@ class FirebaseFCM {
   late FirebaseMessaging _messaging;
 
   void registerNotification() async {
-    // Initialize the Firebase upm
+    // Initialize the Firebase hpcompose
     await Firebase.initializeApp();
 
     // Instantiate Firebase Messaging
@@ -76,7 +76,7 @@ class FirebaseFCM {
 
     _messaging.getToken().then((value) {
       print(value);
-      _messaging.subscribeToTopic('upm');
+      _messaging.subscribeToTopic('hpcompose');
     });
 
     // On iOS, this helps to take the user permissions
@@ -98,7 +98,7 @@ class FirebaseFCM {
         sound: true,
       );
 
-      // Handle open upm when terminated
+      // Handle open hpcompose when terminated
       _messaging.getInitialMessage().then((RemoteMessage? message) {
         if (message != null) {
           injector<NavigationService>().navigateTo(
@@ -109,7 +109,7 @@ class FirebaseFCM {
         }
       });
 
-      // For handling the received notifications in upm
+      // For handling the received notifications in hpcompose
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         _handleNotification(message);
         injector<NavigationService>().navigateTo(
@@ -124,7 +124,7 @@ class FirebaseFCM {
         _firebaseMessagingBackgroundHandler,
       );
 
-      // Handle open upm when background
+      // Handle open hpcompose when background
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? message) {
         if (message != null) {
           injector<NavigationService>().navigateTo(

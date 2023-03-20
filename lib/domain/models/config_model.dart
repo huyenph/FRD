@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:upm/domain/models/language_model.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
 
 part 'config_model.g.dart';
 

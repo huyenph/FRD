@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:upm/common/constants.dart';
-import 'package:upm/domain/models/config_model.dart';
-import 'package:upm/domain/models/language_model.dart';
+import 'package:hpcompose/common/constants.dart';
+import 'package:hpcompose/domain/models/config_model.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
 
 class Boxes {
   static init() async {
