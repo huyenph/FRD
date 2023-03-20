@@ -42,7 +42,7 @@ void _handleNotification(RemoteMessage message) {
           channelDescription: channel.description,
           icon: 'ic_stat_ic_notification',
         ),
-        iOS: IOSNotificationDetails(
+        iOS: DarwinNotificationDetails(
             presentAlert: true,
             badgeNumber: 1,
             presentBadge: true,
