@@ -10,24 +10,16 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        if (Navigator.of(context).userGestureInProgress) {
-          return Platform.isIOS;
-        }
-        return true;
-      },
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_focusNode),
-        child: Scaffold(
-          key: _scaffoldKey,
-          appBar: buildAppBar(),
-          drawer: buildDrawer(),
-          bottomNavigationBar: buildBottomNavigationBar(),
-          floatingActionButton: buildFloatingActionButton(),
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          body: buildBody(context),
-        ),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_focusNode),
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: buildAppBar(),
+        drawer: buildDrawer(),
+        bottomNavigationBar: buildBottomNavigationBar(),
+        floatingActionButton: buildFloatingActionButton(),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: buildBody(context),
       ),
     );
   }
