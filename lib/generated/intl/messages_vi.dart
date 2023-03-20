@@ -56,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Vui lòng đăng nhập vào tài khoản của bạn"),
         "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
-        "welcome_to":
-            MessageLookupByLibrary.simpleMessage("Chào mừng đến với upm! 👋🏻")
+        "welcome_to": MessageLookupByLibrary.simpleMessage(
+            "Chào mừng đến với hpcompose! 👋🏻")
       };
 }

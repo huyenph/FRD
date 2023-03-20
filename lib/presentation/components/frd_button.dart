@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:upm/common/app_colors.dart';
-import 'package:upm/common/app_size.dart';
-import 'package:upm/presentation/components/frd_text.dart';
+import 'package:hpcompose/common/app_colors.dart';
+import 'package:hpcompose/common/app_size.dart';
+import 'package:hpcompose/presentation/components/frd_text.dart';
 
 class FrdButton extends StatelessWidget {
   const FrdButton({

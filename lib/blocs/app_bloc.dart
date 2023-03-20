@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:upm/domain/models/language_model.dart';
-import 'package:upm/domain/usecases/app_usecase.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:hpcompose/domain/usecases/app_usecase.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

@@ -1,7 +1,7 @@
 library bottom_menu_bar;
 
 import 'package:flutter/material.dart';
-import 'package:upm/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
+import 'package:hpcompose/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
 
 class BottomMenuBar extends StatelessWidget {
   const BottomMenuBar({

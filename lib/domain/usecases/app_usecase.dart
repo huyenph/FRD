@@ -1,6 +1,6 @@
-import 'package:upm/blocs/app_bloc.dart';
-import 'package:upm/domain/models/language_model.dart';
-import 'package:upm/domain/repositories/app_repositoy.dart';
+import 'package:hpcompose/blocs/app_bloc.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:hpcompose/domain/repositories/app_repositoy.dart';
 
 class AppUseCase {
   const AppUseCase(this._appRepository);

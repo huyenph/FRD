@@ -1,10 +1,10 @@
-import 'package:upm/blocs/app_bloc.dart';
-import 'package:upm/common/constants.dart';
-import 'package:upm/data/datasource/local/boxes.dart';
-import 'package:upm/data/datasource/local/shared_preferences_manager.dart';
-import 'package:upm/domain/models/config_model.dart';
-import 'package:upm/domain/models/language_model.dart';
-import 'package:upm/domain/repositories/app_repositoy.dart';
+import 'package:hpcompose/blocs/app_bloc.dart';
+import 'package:hpcompose/common/constants.dart';
+import 'package:hpcompose/data/datasource/local/boxes.dart';
+import 'package:hpcompose/data/datasource/local/shared_preferences_manager.dart';
+import 'package:hpcompose/domain/models/config_model.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:hpcompose/domain/repositories/app_repositoy.dart';
 
 class AppRepositoryImpl extends AppRepository {
   AppRepositoryImpl(this.prefs);

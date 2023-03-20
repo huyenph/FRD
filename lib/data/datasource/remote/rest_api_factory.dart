@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/src/adapters/io_adapter.dart';
 import 'package:flutter/services.dart';
-import 'package:upm/configs/app_configs.dart';
-import 'package:upm/data/datasource/local/shared_preferences_manager.dart';
-import 'package:upm/modules/auth/data/auth_service.dart';
+import 'package:hpcompose/configs/app_configs.dart';
+import 'package:hpcompose/data/datasource/local/shared_preferences_manager.dart';
+import 'package:hpcompose/modules/auth/data/auth_service.dart';
 
 abstract class RestApiFactoryListener {
   void onResponse(Response response);

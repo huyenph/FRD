@@ -1,5 +1,5 @@
-import 'package:upm/blocs/app_bloc.dart';
-import 'package:upm/domain/models/language_model.dart';
+import 'package:hpcompose/blocs/app_bloc.dart';
+import 'package:hpcompose/domain/models/language_model.dart';
 
 abstract class AppRepository {
   Future<bool> updateAppConfig(

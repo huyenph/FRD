@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:643158513261:android:dea803c866774e3fc6d164",
         "android_client_info": {
-          "package_name": "com.upm.frd"
+          "package_name": "com.hpcompose.frd"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "643158513261-2gaivl4qlfof2mnkg4mbdsjdn964gq7r.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.upm.app.stag"
+                "bundle_id": "com.hpcompose.app.stag"
               }
             }
           ]
@@ -45,7 +45,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:643158513261:android:3cf4e59c433f5419c6d164",
         "android_client_info": {
-          "package_name": "com.upm.frd.stag"
+          "package_name": "com.hpcompose.frd.stag"
         }
       },
       "oauth_client": [
@@ -70,7 +70,7 @@
               "client_id": "643158513261-2gaivl4qlfof2mnkg4mbdsjdn964gq7r.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.upm.app.stag"
+                "bundle_id": "com.hpcompose.app.stag"
               }
             }
           ]

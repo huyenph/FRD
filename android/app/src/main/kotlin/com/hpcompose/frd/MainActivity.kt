@@ -1,21 +1,18 @@
-package com.upm.frd
+package com.hpcompose.frd
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.OnLifecycleEvent
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
-    private val channelName = "com.upm.frd/notification"
+    private val channelName = "com.hpcompose.frd/notification"
     private lateinit var channel: MethodChannel
 
 //    @RequiresApi(33)

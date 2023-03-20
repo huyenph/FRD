@@ -3,17 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:upm/blocs/app_bloc.dart';
-import 'package:upm/common/constants.dart';
-import 'package:upm/core/navigation/navigation_service.dart';
-import 'package:upm/core/navigation/route_generator.dart';
-import 'package:upm/configs/theme/app_theme.dart';
-import 'package:upm/data/datasource/local/boxes.dart';
-import 'package:upm/di/injector_setup.dart';
-import 'package:upm/domain/models/config_model.dart';
-import 'package:upm/domain/usecases/app_usecase.dart';
-import 'package:upm/generated/l10n.dart';
-import 'package:upm/presentation/screens/splash_screen.dart';
+import 'package:hpcompose/blocs/app_bloc.dart';
+import 'package:hpcompose/common/constants.dart';
+import 'package:hpcompose/core/navigation/navigation_service.dart';
+import 'package:hpcompose/core/navigation/route_generator.dart';
+import 'package:hpcompose/configs/theme/app_theme.dart';
+import 'package:hpcompose/data/datasource/local/boxes.dart';
+import 'package:hpcompose/di/injector_setup.dart';
+import 'package:hpcompose/domain/models/config_model.dart';
+import 'package:hpcompose/domain/usecases/app_usecase.dart';
+import 'package:hpcompose/generated/l10n.dart';
+import 'package:hpcompose/presentation/screens/splash_screen.dart';
 
 class FrdApp extends StatelessWidget {
   const FrdApp({Key? key}) : super(key: key);

@@ -11,7 +11,7 @@
       "program": "lib/main_prod.dart",
       "args": [
         "--flavor",
-        "production",
+        "prod",
       ]
     },
     {
@@ -21,7 +21,7 @@
       "program": "lib/main_stag.dart",
       "args": [
         "--flavor",
-        "staging",
+        "stag",
       ]
     },
     {
@@ -31,7 +31,7 @@
       "program": "lib/main_dev.dart",
       "args": [
         "--flavor",
-        "development",
+        "dev",
       ]
     },
   ]

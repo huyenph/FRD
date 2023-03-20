@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:upm/common/app_colors.dart';
-import 'package:upm/common/app_size.dart';
-import 'package:upm/core/services/firebases/firebase_fcm.dart';
-import 'package:upm/di/injector_setup.dart';
-import 'package:upm/modules/auth/blocs/authentication.dart';
-import 'package:upm/modules/auth/domain/usecases/auth_usecase.dart';
-import 'package:upm/modules/auth/screens/forms/signin_form.dart';
-import 'package:upm/modules/auth/screens/forms/signup_form.dart';
-import 'package:upm/presentation/base/base_ui.dart';
+import 'package:hpcompose/common/app_colors.dart';
+import 'package:hpcompose/common/app_size.dart';
+import 'package:hpcompose/core/services/firebases/firebase_fcm.dart';
+import 'package:hpcompose/di/injector_setup.dart';
+import 'package:hpcompose/modules/auth/blocs/authentication.dart';
+import 'package:hpcompose/modules/auth/domain/usecases/auth_usecase.dart';
+import 'package:hpcompose/modules/auth/screens/forms/signin_form.dart';
+import 'package:hpcompose/modules/auth/screens/forms/signup_form.dart';
+import 'package:hpcompose/presentation/base/base_ui.dart';
 
 List<Widget> forms = [
   SigninForm(),

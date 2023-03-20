@@ -1,4 +1,4 @@
-# upm Mobile App - Using BloC, Clean Architecture, Getit, etc, ...
+# FRD Mobile App - Using BloC, Clean Architecture, Getit, etc, ...
 
 ## Project Structure
 
@@ -27,7 +27,7 @@
 - [main_dev.dart](./lib/main_dev.dart)
 - [main_stag.dart](./lib/main_stag.dart)
 - [main_prod.dart](./lib/main_prod.dart)
-- [upm_app.dart](./lib/upm_app.dart)
+- [hpcompose_app.dart](./lib/hpcompose_app.dart)
 
 ## Visual Studio Code
 
@@ -43,7 +43,7 @@ Then add the block below to your launch.json file and put it inside the .vscode 
     "program": "lib/main_prod.dart",
     "args": [
       "--flavor",
-      "production",
+      "prod",
     ]
   },
 ```
@@ -51,7 +51,7 @@ Then add the block below to your launch.json file and put it inside the .vscode 
 ## Terminal
 
 ```
-Development: flutter run --flavor development -t lib/main_dev.dart
-Staging: flutter run --flavor staging -t lib/main_stag.dart
-Production: flutter run --flavor production -t lib/main_prod.dart
+Development: flutter run --flavor dev -t lib/main_dev.dart
+Staging: flutter run --flavor stag -t lib/main_stag.dart
+Production: flutter run --flavor prod -t lib/main_prod.dart
 ```

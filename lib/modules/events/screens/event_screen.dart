@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:upm/common/app_colors.dart';
-import 'package:upm/modules/events/domain/models/event.dart';
-import 'package:upm/presentation/base/base_ui.dart';
+import 'package:hpcompose/common/app_colors.dart';
+import 'package:hpcompose/modules/events/domain/models/event.dart';
+import 'package:hpcompose/presentation/base/base_ui.dart';
 
 class EventScreen extends StatefulWidget {
   const EventScreen({Key? key}) : super(key: key);

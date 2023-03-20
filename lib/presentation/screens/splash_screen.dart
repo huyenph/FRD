@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:upm/presentation/base/base_ui.dart';
-import 'package:upm/presentation/components/frd_text.dart';
+import 'package:hpcompose/presentation/base/base_ui.dart';
+import 'package:hpcompose/presentation/components/frd_text.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _SplashScreenState extends BaseState<SplashScreen> {
       color: Colors.white,
       child: const Center(
         child: FrdText(
-          text: 'upm',
+          text: 'hpcompose',
           fontSize: 30,
           fontWeight: FontWeight.bold,
         ),

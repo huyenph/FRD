@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:upm/domain/models/user_model.dart';
+import 'package:hpcompose/domain/models/user_model.dart';
 
 class DatabaseHelper {
   static const databaseName = 'app_database.db';

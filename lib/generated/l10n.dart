@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Welcome to upm! 👋🏻`
+  /// `Welcome to hpcompose! 👋🏻`
   String get welcome_to {
     return Intl.message(
-      'Welcome to upm! 👋🏻',
+      'Welcome to hpcompose! 👋🏻',
       name: 'welcome_to',
       desc: '',
       args: [],
