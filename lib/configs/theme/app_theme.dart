@@ -4,6 +4,10 @@ import 'package:hpcompose/common/app_colors.dart';
 class AppTheme {
   static ThemeData get light {
     return ThemeData(
+      pageTransitionsTheme: const PageTransitionsTheme(builders: {
+        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      }),
       colorScheme: const ColorScheme.light(
         brightness: Brightness.light,
         primary: AppColors.primaryColor,
@@ -65,6 +69,10 @@ class AppTheme {
 
   static ThemeData get dark {
     return ThemeData(
+      pageTransitionsTheme: const PageTransitionsTheme(builders: {
+        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      }),
       colorScheme: const ColorScheme.dark(
         brightness: Brightness.dark,
         primary: AppColors.primaryColor,
