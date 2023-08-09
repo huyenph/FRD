@@ -1,10 +1,10 @@
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:frd/blocs/app_bloc.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
 
 abstract class AppRepository {
   Future<bool> updateAppConfig(
     AppConfigType type, {
     String? theme,
-    LanguageModel? language,
+    LanguageEntity? language,
   });
 }

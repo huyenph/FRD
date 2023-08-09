@@ -1,20 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hpcompose/common/utils.dart';
-import 'package:hpcompose/configs/app_configs.dart';
-import 'package:hpcompose/core/application_observer.dart';
-import 'package:hpcompose/data/datasource/local/boxes.dart';
-import 'package:hpcompose/di/injector_setup.dart';
-import 'package:hpcompose/frd_app.dart';
+import 'package:frd/application.dart';
+import 'package:frd/configs/flavor_config.dart';
+import 'package:frd/core/app_logger.dart';
+import 'package:frd/data/datasource/local/boxes.dart';
+import 'package:frd/data/datasource/remote/http_overrides.dart';
+import 'package:frd/di/injector_setup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppConfig(flavor: Flavor.prod);
-  await initializeDependencies();
+  HttpOverrides.global = FrdOverrides();
+  FlavorConfig(flavor: Flavor.prod);
+  initializeDependencies();
   await Boxes.init();
-  appLogging();
-  BlocOverrides.runZoned(
-    () => runApp(const FrdApp()),
-    blocObserver: ApplicationObserver(),
-  );
+  AppLogger.logger;
+  runApp(const Application());
 }

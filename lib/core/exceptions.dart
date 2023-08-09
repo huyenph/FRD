@@ -1,8 +1,10 @@
-class HandledHttpException implements Exception {
-  HandledHttpException(this.errorCode, this.errorBody);
+import 'package:frd/domain/models/bad_response_model.dart';
 
-  int errorCode;
-  Object errorBody;
+class HandledHttpException implements Exception {
+  HandledHttpException(this.errorCode, this.errorMessage);
+
+  final int errorCode;
+  final String errorMessage;
 }
 
 class ConnectionException implements Exception {
@@ -16,17 +18,26 @@ class ConnectionException implements Exception {
 }
 
 class ManuallyException implements Exception {
-  ManuallyException(this.message, {this.code});
+  ManuallyException({this.message, this.data});
 
-  final int? code;
-  final String message;
+  final String? message;
+  final BadResponseModel? data;
 
   @override
   String toString() => "FormatException: $message";
 }
 
-class TokenExpiredException implements Exception {
-  TokenExpiredException();
+class UnauthorizedException implements Exception {
+  UnauthorizedException(this.data);
+
+  final BadResponseModel data;
+}
+
+class ForbiddenException implements Exception {
+  ForbiddenException(this.statusCode, this.message);
+
+  final int statusCode;
+  final String message;
 }
 
 class HaveNoPermissionException implements Exception {

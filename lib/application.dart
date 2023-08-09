@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:frd/blocs/app_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:frd/core/navigation/navigation_service.dart';
+import 'package:frd/di/injector_setup.dart';
+import 'package:frd/generated/l10n.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/common/constants.dart';
-import 'package:hpcompose/core/navigation/navigation_service.dart';
-import 'package:hpcompose/core/navigation/route_generator.dart';
-import 'package:hpcompose/configs/theme/app_theme.dart';
-import 'package:hpcompose/data/datasource/local/boxes.dart';
-import 'package:hpcompose/di/injector_setup.dart';
-import 'package:hpcompose/domain/models/config_model.dart';
-import 'package:hpcompose/domain/usecases/app_usecase.dart';
-import 'package:hpcompose/generated/l10n.dart';
-import 'package:hpcompose/presentation/screens/splash_screen.dart';
+import 'package:frd/data/datasource/local/entities/config_entity.dart';
+import 'package:frd/data/datasource/local/boxes.dart';
+import 'package:frd/core/navigation/route_generator.dart';
+import 'package:frd/core/theme/app_theme.dart';
+import 'package:frd/core/constants.dart';
+import 'package:frd/domain/usecases/app_usecase.dart';
+import 'package:frd/presentation/screens/splash_screen.dart';
 
-class FrdApp extends StatelessWidget {
-  const FrdApp({Key? key}) : super(key: key);
+class Application extends StatelessWidget {
+  const Application({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +26,11 @@ class FrdApp extends StatelessWidget {
     ]);
     return BlocProvider(
       create: (_) => AppBloc(injector<AppUseCase>())
-        ..add(const OnAppConfigEvent(AppConfigType.all)),
-      child: ValueListenableBuilder<Box<ConfigModel>>(
-        valueListenable: Boxes.getConfig().listenable(),
+        ..add(const OnAppConfigChangeRequested(AppConfigType.all)),
+      child: ValueListenableBuilder<Box<ConfigEntity>>(
+        valueListenable: Boxes.getAppConfig().listenable(),
         builder: (context, box, _) {
-          final ConfigModel? config =
+          final ConfigEntity? config =
               box.values.isNotEmpty ? box.values.last : null;
           return MaterialApp(
             navigatorKey: injector<NavigationService>().navigatorKey,

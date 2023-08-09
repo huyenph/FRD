@@ -10,17 +10,17 @@ class FlavorValues {
   const FlavorValues({required this.baseUrl});
 }
 
-class AppConfig {
+class FlavorConfig {
   final Flavor flavor;
 
-  static AppConfig? _instance;
+  static FlavorConfig? _instance;
 
-  static AppConfig? get instance => _instance;
+  static FlavorConfig? get instance => _instance;
 
-  AppConfig._internal(this.flavor);
+  FlavorConfig._internal(this.flavor);
 
-  factory AppConfig({required Flavor flavor}) {
-    _instance ??= AppConfig._internal(flavor);
+  factory FlavorConfig({required Flavor flavor}) {
+    _instance ??= FlavorConfig._internal(flavor);
     return _instance!;
   }
 

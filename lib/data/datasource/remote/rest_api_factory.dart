@@ -2,53 +2,25 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:dio/src/adapters/io_adapter.dart';
 import 'package:flutter/services.dart';
-import 'package:hpcompose/configs/app_configs.dart';
-import 'package:hpcompose/data/datasource/local/shared_preferences_manager.dart';
-import 'package:hpcompose/modules/auth/data/auth_service.dart';
-
-abstract class RestApiFactoryListener {
-  void onResponse(Response response);
-
-  void onError(DioError error);
-}
+import 'package:frd/configs/flavor_config.dart';
+import 'package:frd/core/exceptions.dart';
+import 'package:frd/core/extensions.dart';
+import 'package:frd/domain/models/bad_response_model.dart';
 
 class RestApiFactory {
   static const int timeOut = 5000;
   static Dio? _dio;
 
-  final SharedPreferencesManager _prefsManager;
-  final RestApiFactoryListener _listener;
-
-  const RestApiFactory(this._prefsManager, this._listener);
-
-  Dio _createDioClient() {
+  Dio createDioClient() {
     if (_dio == null) {
-      _dio = Dio();
+      _dio = Dio(
+        BaseOptions(
+          baseUrl: FlavorConfig.instance!.rootUrl,
+        ),
+      );
       _dio!
-        ..interceptors.add(
-          InterceptorsWrapper(
-            onRequest: (
-              RequestOptions options,
-              RequestInterceptorHandler handler,
-            ) async {
-              return await requestInterceptor(options);
-            },
-            onResponse: (
-              Response response,
-              ResponseInterceptorHandler handler,
-            ) async {
-              return _listener.onResponse(response);
-            },
-            onError: (
-              DioError error,
-              ErrorInterceptorHandler handler,
-            ) async {
-              return _listener.onError(error);
-            },
-          ),
-        )
+        ..interceptors.add(ApiInterceptors())
         ..interceptors.add(LogInterceptor(
           request: true,
           requestHeader: true,
@@ -57,11 +29,11 @@ class RestApiFactory {
           responseBody: true,
           error: true,
         ));
-      if (AppConfig.instance!.flavor == Flavor.prod ||
-          AppConfig.instance!.flavor == Flavor.stag) {
-        (_dio!.httpClientAdapter as DefaultHttpClientAdapter)
-            .onHttpClientCreate = _createHttpClient() as OnHttpClientCreate?;
-      }
+      // if (FlavorConfig.instance!.flavor == Flavor.prod ||
+      //     FlavorConfig.instance!.flavor == Flavor.stag) {
+      //   (_dio!.httpClientAdapter as IOHttpClientAdapter)
+      //       .onHttpClientCreate = _createHttpClient() as OnHttpClientCreate?;
+      // }
     }
     return _dio!;
   }
@@ -73,29 +45,70 @@ class RestApiFactory {
     scContext.setTrustedCertificatesBytes(bytes as List<int>);
     return HttpClient(context: scContext);
   }
+}
 
-  dynamic requestInterceptor(RequestOptions options) async {
-    final token = await _prefsManager.token;
-    Map<String, String> headers;
-    if (token.isNotEmpty) {
-      headers = {
-        'Content-type': 'Authorization/json',
-        'Authorization': 'Bearer $token',
-        'Accept': '*/*',
-      };
-    } else {
-      headers = {
-        'Content-type': 'Authorization/json',
-        'Accept': '*/*',
-      };
-    }
-
-    options.baseUrl = AppConfig.instance!.rootUrl;
-    options.headers.addAll(headers);
-    options.connectTimeout = timeOut as Duration?;
-    options.receiveTimeout = timeOut as Duration?;
-    return options;
+class ApiInterceptors extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    // final token = Boxes.getUserSession()?.idToken;
+    // if (token != null && token.isNotEmpty) {
+    //   options.headers = <String, dynamic>{
+    //     'Authorization': 'Bearer $token',
+    //   };
+    // }
+    return handler.next(options);
   }
 
-  AuthService provideAuthService() => AuthService(_createDioClient());
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    return handler.next(response);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.isNoConnectionError) {
+      throw ConnectionException();
+    }
+    switch (err.type) {
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.receiveTimeout:
+        throw ManuallyException(
+            message: 'Server not response, please try again.');
+      case DioExceptionType.cancel:
+        throw ManuallyException(message: 'The request is cancelled');
+      case DioExceptionType.badResponse:
+        final statusCode = err.response!.statusCode;
+        if (statusCode == 401) {
+          throw UnauthorizedException(
+            err.response?.data != null
+                ? BadResponseModel.fromJson(err.response?.data)
+                : BadResponseModel(
+                    statusCode: 401,
+                    success: false,
+                    errorMessage: 'Invalid credentials!',
+                  ),
+          );
+        }
+        if (statusCode == 403) {
+          throw ForbiddenException(
+            403,
+            "You don't have permission to access this.",
+          );
+        }
+        throw ManuallyException(
+          data: err.response?.data != null
+              ? BadResponseModel.fromJson(err.response?.data)
+              : BadResponseModel(
+                  statusCode: 500,
+                  success: false,
+                  errorMessage: 'Oops! Error occurred, please try again.',
+                ),
+        );
+      case DioExceptionType.unknown:
+      default:
+        throw ManuallyException(
+          message: 'Oops! Error occurred, please try again.',
+        );
+    }
+  }
 }

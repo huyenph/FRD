@@ -1,26 +1,23 @@
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/common/constants.dart';
-import 'package:hpcompose/data/datasource/local/boxes.dart';
-import 'package:hpcompose/data/datasource/local/shared_preferences_manager.dart';
-import 'package:hpcompose/domain/models/config_model.dart';
-import 'package:hpcompose/domain/models/language_model.dart';
-import 'package:hpcompose/domain/repositories/app_repositoy.dart';
+import 'package:frd/blocs/app_bloc.dart';
+import 'package:frd/core/constants.dart';
+import 'package:frd/data/datasource/local/boxes.dart';
+import 'package:frd/data/datasource/local/entities/config_entity.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
+import 'package:frd/domain/repositories/app_repositoy.dart';
 
 class AppRepositoryImpl extends AppRepository {
-  AppRepositoryImpl(this.prefs);
-
-  final SharedPreferencesManager prefs;
+  AppRepositoryImpl();
 
   @override
   Future<bool> updateAppConfig(
     AppConfigType type, {
     String? theme,
-    LanguageModel? language,
+    LanguageEntity? language,
   }) async {
     try {
-      var configBox = Boxes.getConfig();
+      var configBox = Boxes.getAppConfig();
       if (configBox.length > 0) {
-        ConfigModel? config = configBox.getAt(0);
+        ConfigEntity? config = configBox.getAt(0);
         if (config != null) {
           if (type == AppConfigType.theme) {
             config.theme = theme!;
@@ -30,12 +27,12 @@ class AppRepositoryImpl extends AppRepository {
           config.save();
         }
       } else {
-        configBox.add(ConfigModel(
+        configBox.add(ConfigEntity(
           theme: lightTheme,
-          language: LanguageModel(
-            name: 'English',
+          language: LanguageEntity(
+            title: 'English',
             locale: 'en',
-            subName: 'English',
+            subTitle: 'English',
           ),
         ));
       }

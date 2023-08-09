@@ -8,7 +8,7 @@ const String prefsThemeKey = 'theme';
 const String prefsLanguageKey = 'language';
 
 // Hive keys
-const String boxConfig = 'appConfig';
+const String boxAppConfig = 'boxAppConfig';
 
 // App Themes
 const String lightTheme = 'light';

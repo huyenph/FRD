@@ -1,29 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'config_model.dart';
+part of 'config_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ConfigModelAdapter extends TypeAdapter<ConfigModel> {
+class ConfigEntityAdapter extends TypeAdapter<ConfigEntity> {
   @override
   final int typeId = 0;
 
   @override
-  ConfigModel read(BinaryReader reader) {
+  ConfigEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ConfigModel(
+    return ConfigEntity(
       theme: fields[0] as String,
-      language: fields[1] as LanguageModel,
+      language: fields[1] as LanguageEntity,
     );
   }
 
   @override
-  void write(BinaryWriter writer, ConfigModel obj) {
+  void write(BinaryWriter writer, ConfigEntity obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -38,7 +38,7 @@ class ConfigModelAdapter extends TypeAdapter<ConfigModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConfigModelAdapter &&
+      other is ConfigEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

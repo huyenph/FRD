@@ -1,11 +1,11 @@
 import 'package:hive/hive.dart';
-import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
 
-part 'config_model.g.dart';
+part 'config_entity.g.dart';
 
 @HiveType(typeId: 0)
-class ConfigModel extends HiveObject {
-  ConfigModel({
+class ConfigEntity extends HiveObject {
+  ConfigEntity({
     required this.theme,
     required this.language,
   });
@@ -13,12 +13,12 @@ class ConfigModel extends HiveObject {
   @HiveField(0)
   String theme;
   @HiveField(1)
-  LanguageModel language;
+  LanguageEntity language;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConfigModel &&
+      other is ConfigEntity &&
           runtimeType == other.runtimeType &&
           theme == other.theme &&
           language == other.language;
@@ -26,20 +26,19 @@ class ConfigModel extends HiveObject {
   @override
   int get hashCode => theme.hashCode ^ language.hashCode;
 
-  @override
-  String toString() => '{theme: $theme, language: ${language.toString()}}';
-
-  set setTheme(String themeStr) {
-    theme = themeStr;
+  ConfigEntity copyWith({
+    String? theme,
+    LanguageEntity? language,
+  }) {
+    return ConfigEntity(
+      theme: theme ?? this.theme,
+      language: language ?? this.language,
+    );
   }
 
-  set setLanguage(LanguageModel languageModel) {
-    language = languageModel;
-  }
-
-  ConfigModel.fromJson(Map<String, dynamic> json)
+  ConfigEntity.fromJson(Map<String, dynamic> json)
       : theme = json['theme'],
-        language = LanguageModel.fromJson(json['language']);
+        language = LanguageEntity.fromJson(json['language']);
 
   Map<String, dynamic> toJson() {
     return {
