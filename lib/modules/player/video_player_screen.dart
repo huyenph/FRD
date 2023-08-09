@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:hpcompose/presentation/base/base_ui.dart';
-import 'package:hpcompose/presentation/components/frd_text.dart';
+import 'package:frd/core/ui/base_widget_state.dart';
+import 'package:frd/presentation/components/frd_text.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
@@ -11,7 +11,7 @@ class VideoPlayerScreen extends StatefulWidget {
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
 }
 
-class _VideoPlayerScreenState extends BaseState<VideoPlayerScreen> {
+class _VideoPlayerScreenState extends BaseWidgetState<VideoPlayerScreen> {
   late VideoPlayerController _networkController;
   late ChewieController _chewieController;
 

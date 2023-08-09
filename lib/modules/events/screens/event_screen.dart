@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/ui/base_widget_state.dart';
+import 'package:frd/modules/events/domain/models/event.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:hpcompose/common/app_colors.dart';
-import 'package:hpcompose/modules/events/domain/models/event.dart';
-import 'package:hpcompose/presentation/base/base_ui.dart';
 
 class EventScreen extends StatefulWidget {
   const EventScreen({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class EventScreen extends StatefulWidget {
   State<EventScreen> createState() => _EventScreenState();
 }
 
-class _EventScreenState extends BaseState<EventScreen> {
+class _EventScreenState extends BaseWidgetState<EventScreen> {
   @override
   Widget buildBody(BuildContext context) {
     return SfCalendar(

@@ -1,15 +1,13 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/common/constants.dart';
-import 'package:hpcompose/core/navigation/navigation_service.dart';
-import 'package:hpcompose/data/datasource/local/boxes.dart';
-import 'package:hpcompose/di/injector_setup.dart';
-import 'package:hpcompose/domain/models/config_model.dart';
-import 'package:hpcompose/generated/l10n.dart';
-import 'package:hpcompose/presentation/base/base_ui.dart';
-import 'package:hpcompose/presentation/components/option_field.dart';
+import 'package:frd/blocs/app_bloc.dart';
+import 'package:frd/core/constants.dart';
+import 'package:frd/core/ui/base_widget_state.dart';
+import 'package:frd/data/datasource/local/boxes.dart';
+import 'package:frd/data/datasource/local/entities/config_entity.dart';
+import 'package:frd/generated/l10n.dart';
+import 'package:frd/presentation/components/option_field.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key, this.message}) : super(key: key);
@@ -20,9 +18,9 @@ class SettingScreen extends StatefulWidget {
   State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _SettingScreenState extends BaseState<SettingScreen> {
+class _SettingScreenState extends BaseWidgetState<SettingScreen> {
   late RemoteNotification? notification;
-  ConfigModel? _config;
+  ConfigEntity? _config;
 
   @override
   void initState() {
@@ -33,8 +31,8 @@ class _SettingScreenState extends BaseState<SettingScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (Boxes.getConfig().values.isNotEmpty) {
-      _config = Boxes.getConfig().values.last;
+    if (Boxes.getAppConfig().values.isNotEmpty) {
+      _config = Boxes.getAppConfig().values.last;
     }
   }
 
@@ -45,10 +43,10 @@ class _SettingScreenState extends BaseState<SettingScreen> {
       children: [
         Text('settings ${notification?.title ?? 'no message'}'),
         OptionField(
-          onTap: () => injector<NavigationService>().navigateTo('/language'),
+          onTap: () => navService.navigateTo('/language'),
           icon: Icons.language_outlined,
           label: S.of(context).language,
-          value: _config != null ? _config!.language.name : '',
+          value: _config != null ? _config!.language.title : '',
         ),
         OptionField(
           icon: Icons.nights_stay_outlined,
@@ -56,7 +54,7 @@ class _SettingScreenState extends BaseState<SettingScreen> {
           value: _config != null ? _config!.theme == darkTheme : false,
           onChanged: (value) {
             context.read<AppBloc>().add(
-                  OnAppConfigEvent(
+                  OnAppConfigChangeRequested(
                     AppConfigType.theme,
                     theme: value ? darkTheme : lightTheme,
                   ),
@@ -64,7 +62,7 @@ class _SettingScreenState extends BaseState<SettingScreen> {
           },
         ),
         OptionField(
-          onTap: () => injector<NavigationService>().removeUntil('/auth'),
+          onTap: () => navService.removeAllUntil('/auth'),
           label: S.of(context).logout,
           icon: Icons.logout_outlined,
         ),

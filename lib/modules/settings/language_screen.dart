@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/common/app_colors.dart';
-import 'package:hpcompose/common/app_size.dart';
-import 'package:hpcompose/core/navigation/navigation_service.dart';
-import 'package:hpcompose/data/datasource/local/boxes.dart';
-import 'package:hpcompose/di/injector_setup.dart';
-import 'package:hpcompose/domain/models/language_model.dart';
-import 'package:hpcompose/generated/l10n.dart';
-import 'package:hpcompose/presentation/base/base_ui.dart';
+import 'package:frd/blocs/app_bloc.dart';
+import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_size.dart';
+import 'package:frd/core/ui/base_widget_state.dart';
+import 'package:frd/data/datasource/local/boxes.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
+import 'package:frd/generated/l10n.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({Key? key}) : super(key: key);
@@ -18,13 +16,13 @@ class LanguageScreen extends StatefulWidget {
   State<LanguageScreen> createState() => _LanguageScreenState();
 }
 
-class _LanguageScreenState extends BaseState<LanguageScreen> {
+class _LanguageScreenState extends BaseWidgetState<LanguageScreen> {
   List<dynamic> _languages = [];
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    context.read<AppBloc>().add(OnGetLanguageEvent());
+    context.read<AppBloc>().add(OnGetLanguageRequested());
   }
 
   @override
@@ -48,16 +46,16 @@ class _LanguageScreenState extends BaseState<LanguageScreen> {
             return ListTile(
               onTap: () {
                 context.read<AppBloc>().add(
-                      OnAppConfigEvent(
+                      OnAppConfigChangeRequested(
                         AppConfigType.locale,
-                        language: LanguageModel.fromJson(_languages[index]),
+                        language: LanguageEntity.fromJson(_languages[index]),
                       ),
                     );
-                injector<NavigationService>().goBack();
+                navService.goBack();
               },
-              title: Text(_languages[index]['name']),
-              subtitle: Text(_languages[index]['subName']),
-              trailing: Boxes.getConfig().values.last.language.locale ==
+              title: Text(_languages[index]['title']),
+              subtitle: Text(_languages[index]['subTitle']),
+              trailing: Boxes.getAppConfig().values.last.language.locale ==
                       _languages[index]['locale']
                   ? const Icon(CupertinoIcons.checkmark_alt)
                   : const SizedBox.shrink(),
