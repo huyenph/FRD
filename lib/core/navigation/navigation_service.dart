@@ -23,7 +23,7 @@ class NavigationService {
     return Future.value(null);
   }
 
-  Future<dynamic> removeUntil(String routeName, {dynamic arguments}) {
+  Future<dynamic> removeAllUntil(String routeName, {dynamic arguments}) {
     if (navigatorKey.currentState != null) {
       return navigatorKey.currentState!.pushNamedAndRemoveUntil(
         routeName,
@@ -33,9 +33,23 @@ class NavigationService {
     return Future.value(null);
   }
 
+  void popUntil(int routeCount) {
+    if (navigatorKey.currentState != null) {
+      int count = 0;
+      return navigatorKey.currentState!.popUntil((_) => count++ == routeCount);
+    }
+  }
+
   void goBack() {
     if (navigatorKey.currentState != null) {
       return navigatorKey.currentState!.pop();
     }
+  }
+
+  bool canBack() {
+    if (navigatorKey.currentState != null) {
+      return navigatorKey.currentState!.canPop();
+    }
+    return false;
   }
 }
