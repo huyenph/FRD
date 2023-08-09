@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hpcompose/common/app_colors.dart';
-import 'package:hpcompose/common/app_size.dart';
-import 'package:hpcompose/core/navigation/navigation_service.dart';
-import 'package:hpcompose/di/injector_setup.dart';
-import 'package:hpcompose/generated/l10n.dart';
-import 'package:hpcompose/modules/auth/blocs/authentication.dart';
-import 'package:hpcompose/presentation/components/frd_button.dart';
-import 'package:hpcompose/presentation/components/frd_text_field.dart';
+import 'package:frd/core/navigation/navigation_service.dart';
+import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_size.dart';
+import 'package:frd/di/injector_setup.dart';
+import 'package:frd/generated/l10n.dart';
+import 'package:frd/modules/auth/blocs/authentication.dart';
+import 'package:frd/presentation/components/frd_button.dart';
+import 'package:frd/presentation/components/frd_text_field.dart';
 
 const iconSize = 32.0;
 

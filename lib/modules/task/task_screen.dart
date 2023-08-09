@@ -1,6 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:hpcompose/presentation/base/base_ui.dart';
+import 'package:frd/core/ui/base_widget_state.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({Key? key, this.message}) : super(key: key);
@@ -11,7 +11,7 @@ class TaskScreen extends StatefulWidget {
   State<TaskScreen> createState() => _TaskScreenState();
 }
 
-class _TaskScreenState extends BaseState<TaskScreen> {
+class _TaskScreenState extends BaseWidgetState<TaskScreen> {
   late RemoteNotification? notification;
 
   @override

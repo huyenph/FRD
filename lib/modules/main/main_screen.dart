@@ -3,18 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/common/app_colors.dart';
-import 'package:hpcompose/common/app_size.dart';
-import 'package:hpcompose/generated/l10n.dart';
-import 'package:hpcompose/modules/events/screens/event_screen.dart';
-import 'package:hpcompose/modules/settings/setting_screen.dart';
-import 'package:hpcompose/presentation/base/base_ui.dart';
-import 'package:hpcompose/presentation/components/bottom_menu_bar/bottom_menu_bar.dart';
-import 'package:hpcompose/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
-import 'package:hpcompose/presentation/components/frd_app_bar.dart';
-import 'package:hpcompose/presentation/components/drawer_behavior/drawer_behavior.dart';
-import 'package:hpcompose/presentation/components/frd_text_field.dart';
+import 'package:frd/blocs/app_bloc.dart';
+import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_size.dart';
+import 'package:frd/core/ui/base_widget_state.dart';
+import 'package:frd/generated/l10n.dart';
+import 'package:frd/modules/events/screens/event_screen.dart';
+import 'package:frd/modules/settings/setting_screen.dart';
+import 'package:frd/presentation/components/bottom_menu_bar/bottom_menu_bar.dart';
+import 'package:frd/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
+import 'package:frd/presentation/components/drawer_behavior/drawer_behavior.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key, this.message}) : super(key: key);
@@ -25,7 +23,7 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends BaseState<MainScreen> {
+class _MainScreenState extends BaseWidgetState<MainScreen> {
   late List<DrawerMenuItem<int>> _items;
   late DrawerMenu _menu;
   bool _isMenuInitialized = false;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hpcompose/common/app_colors.dart';
-import 'package:hpcompose/common/app_size.dart';
+import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_size.dart';
 
 class FrdTextField extends StatelessWidget {
   const FrdTextField({

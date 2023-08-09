@@ -3,8 +3,8 @@ library drawer_behavior;
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:hpcompose/common/utils.dart';
-import 'package:hpcompose/presentation/components/frd_text.dart';
+import 'package:frd/core/utils.dart';
+import 'package:frd/presentation/components/frd_text.dart';
 
 part 'drawer_scaffold.dart';
 part 'builder.dart';

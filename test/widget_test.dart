@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:hpcompose/frd_app.dart';
+import 'package:frd/application.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our hpcompose and trigger a frame.
-    await tester.pumpWidget(const FrdApp());
+    await tester.pumpWidget(const Application());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
