@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hpcompose/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_colors.dart';
 
 class AppTheme {
   static ThemeData get light {
     return ThemeData(
+      useMaterial3: true,
       pageTransitionsTheme: const PageTransitionsTheme(builders: {
         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
@@ -69,6 +70,7 @@ class AppTheme {
 
   static ThemeData get dark {
     return ThemeData(
+      useMaterial3: true,
       pageTransitionsTheme: const PageTransitionsTheme(builders: {
         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),

@@ -5,50 +5,51 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:hpcompose/domain/models/language_model.dart';
-import 'package:hpcompose/domain/usecases/app_usecase.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
+import 'package:frd/domain/usecases/app_usecase.dart';
 
 part 'app_event.dart';
+
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc(this._appUseCase) : super(OnInitialState()) {
-    on<OnAppConfigEvent>(_onAppConfigEvent);
-    on<OnGetLanguageEvent>(_onGetLanguageEvent);
+    on<OnAppConfigChangeRequested>(_onAppConfigChangeRequested);
+    on<OnGetLanguageRequested>(_onGetLanguageRequested);
   }
 
   final AppUseCase _appUseCase;
 
-  void _onAppConfigEvent(
-    OnAppConfigEvent event,
-    Emitter<AppState> emitter,
+  void _onAppConfigChangeRequested(
+    OnAppConfigChangeRequested event,
+    Emitter<AppState> emit,
   ) async {
     switch (event.type) {
       case AppConfigType.all:
         await _appUseCase.updateAppConfig(AppConfigType.all);
-        return emitter(const OnAppConfigChangeState.all());
+        return emit(const OnAppConfigChangeState.all());
 
       case AppConfigType.theme:
         _appUseCase.updateAppConfig(
           AppConfigType.theme,
           theme: event.theme,
         );
-        return emitter(const OnAppConfigChangeState.theme());
+        return emit(const OnAppConfigChangeState.theme());
       case AppConfigType.locale:
         _appUseCase.updateAppConfig(
           AppConfigType.locale,
           language: event.language,
         );
-        return emitter(const OnAppConfigChangeState.locale());
+        return emit(const OnAppConfigChangeState.locale());
     }
   }
 
-  void _onGetLanguageEvent(
-    OnGetLanguageEvent event,
-    Emitter<AppState> emitter,
+  void _onGetLanguageRequested(
+    OnGetLanguageRequested event,
+    Emitter<AppState> emit,
   ) async {
     final data = await rootBundle.loadString('assets/json/languages.json');
     final languages = jsonDecode(data);
-    return emitter(OnGetLanguageState(languages));
+    return emit(OnGetLanguageState(languages));
   }
 }

@@ -1,6 +1,6 @@
-import 'package:hpcompose/blocs/app_bloc.dart';
-import 'package:hpcompose/domain/models/language_model.dart';
-import 'package:hpcompose/domain/repositories/app_repositoy.dart';
+import 'package:frd/blocs/app_bloc.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
+import 'package:frd/domain/repositories/app_repositoy.dart';
 
 class AppUseCase {
   const AppUseCase(this._appRepository);
@@ -10,7 +10,7 @@ class AppUseCase {
   Future<bool> updateAppConfig(
     AppConfigType type, {
     String? theme,
-    LanguageModel? language,
+    LanguageEntity? language,
   }) =>
       _appRepository.updateAppConfig(
         type,

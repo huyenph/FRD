@@ -1,12 +1,12 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:hpcompose/common/constants.dart';
-import 'package:hpcompose/modules/auth/screens/auth_screen.dart';
-import 'package:hpcompose/modules/main/main_screen.dart';
-import 'package:hpcompose/modules/settings/language_screen.dart';
-import 'package:hpcompose/modules/settings/setting_screen.dart';
-import 'package:hpcompose/modules/task/task_screen.dart';
-import 'package:hpcompose/presentation/screens/splash_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:frd/core/constants.dart';
+import 'package:frd/modules/auth/screens/auth_screen.dart';
+import 'package:frd/modules/main/main_screen.dart';
+import 'package:frd/modules/settings/language_screen.dart';
+import 'package:frd/modules/settings/setting_screen.dart';
+import 'package:frd/modules/task/task_screen.dart';
+import 'package:frd/presentation/screens/splash_screen.dart';
 
 class RouteGenerator {
   static Route<Object> generateRoute(RouteSettings settings) {

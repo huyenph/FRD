@@ -7,15 +7,15 @@ abstract class AppEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class OnAppConfigEvent extends AppEvent {
-  const OnAppConfigEvent(this.type, {this.theme, this.language});
+class OnAppConfigChangeRequested extends AppEvent {
+  const OnAppConfigChangeRequested(this.type, {this.theme, this.language});
 
   final AppConfigType type;
   final String? theme;
-  final LanguageModel? language;
+  final LanguageEntity? language;
 
   @override
   List<Object?> get props => [type, theme, language];
 }
 
-class OnGetLanguageEvent extends AppEvent {}
+class OnGetLanguageRequested extends AppEvent {}
