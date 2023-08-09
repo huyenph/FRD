@@ -29,11 +29,11 @@ class _SplashScreenState extends BaseState<SplashScreen> {
   Widget buildBody(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: const Center(
-        child: FrdText(
-          text: 'hpcompose',
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
+      child: Center(
+        child: Image.asset(
+          'assets/images/flutter_bird.png',
+          height: 120.0,
+          width: 120.0,
         ),
       ),
     );
