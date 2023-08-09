@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hpcompose/common/app_colors.dart';
+import 'package:frd/core/styles/app_colors.dart';
 
 typedef OnSwitchChanged = Function(bool value);
 
