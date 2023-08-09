@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:hpcompose/common/constants.dart';
-import 'package:hpcompose/domain/models/config_model.dart';
-import 'package:hpcompose/domain/models/language_model.dart';
+import 'package:frd/core/constants.dart';
+import 'package:frd/data/datasource/local/entities/config_entity.dart';
+import 'package:frd/data/datasource/local/entities/language_entity.dart';
 
 class Boxes {
   static init() async {
@@ -12,10 +12,11 @@ class Boxes {
     String appDocPath = appDocDir.path;
     Hive
       ..init(appDocPath)
-      ..registerAdapter(ConfigModelAdapter())
-      ..registerAdapter(LanguageModelAdapter());
-    await Hive.openBox<ConfigModel>(boxConfig);
+      ..registerAdapter(LanguageEntityAdapter())
+      ..registerAdapter(ConfigEntityAdapter());
+    await Hive.openBox<ConfigEntity>(boxAppConfig);
   }
 
-  static Box<ConfigModel> getConfig() => Hive.box<ConfigModel>(boxConfig);
+  static Box<ConfigEntity> getAppConfig() =>
+      Hive.box<ConfigEntity>(boxAppConfig);
 }
