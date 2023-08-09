@@ -27,7 +27,6 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -48,6 +47,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 24
+        compileSdk flutter.compileSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -61,7 +61,7 @@ android {
         }
     }
 
-    flavorDimensions "app"
+    flavorDimensions += "environment"
     productFlavors {
         def PROD_APP_ID = "com.hpcompose.frd"
         def PROD_VERSION_CODE = 1
@@ -76,21 +76,21 @@ android {
         def DEV_VERSION_NAME = "1.0"
 
         prod {
-            dimension "app"
+            dimension "environment"
             applicationId PROD_APP_ID
             versionCode PROD_VERSION_CODE
             versionName PROD_VERSION_NAME
             resValue "string", "app_name", "FRD"
         }
         stag {
-            dimension "app"
+            dimension "environment"
             applicationId STAG_APP_ID
             versionCode STAG_VERSION_CODE
             versionName STAG_VERSION_NAME
             resValue "string", "app_name", "FRD STAG"
         }
         dev {
-            dimension "app"
+            dimension "environment"
             applicationId DEV_APP_ID
             versionCode DEV_VERSION_CODE
             versionName DEV_VERSION_NAME
