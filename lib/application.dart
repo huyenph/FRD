@@ -13,7 +13,7 @@ import 'package:frd/core/navigation/route_generator.dart';
 import 'package:frd/core/theme/app_theme.dart';
 import 'package:frd/core/constants.dart';
 import 'package:frd/domain/usecases/app_usecase.dart';
-import 'package:frd/presentation/screens/splash_screen.dart';
+import 'package:frd/modules/splash/splash_screen.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);

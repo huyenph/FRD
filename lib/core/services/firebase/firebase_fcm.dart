@@ -59,7 +59,7 @@ class FirebaseFCM {
 
   void registerNotification() async {
     // Initialize the Firebase hpcompose
-    await Firebase.initializeApp();
+    // await Firebase.initializeApp();
 
     // Instantiate Firebase Messaging
     _messaging = FirebaseMessaging.instance;

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:frd/core/constants.dart';
@@ -6,17 +7,17 @@ import 'package:frd/modules/main/main_screen.dart';
 import 'package:frd/modules/settings/language_screen.dart';
 import 'package:frd/modules/settings/setting_screen.dart';
 import 'package:frd/modules/task/task_screen.dart';
-import 'package:frd/presentation/screens/splash_screen.dart';
+import 'package:frd/modules/splash/splash_screen.dart';
 
 class RouteGenerator {
   static Route<Object> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case initRoute:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
       case authRoute:
-        return MaterialPageRoute(builder: (_) => const AuthScreen());
+        return CupertinoPageRoute(builder: (_) => const AuthScreen());
       case homeRoute:
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
           builder: (_) => MainScreen(
             message: settings.arguments != null
                 ? settings.arguments as RemoteMessage
@@ -24,17 +25,17 @@ class RouteGenerator {
           ),
         );
       case settingRoute:
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
           builder: (_) => SettingScreen(
             message: settings.arguments as RemoteMessage,
           ),
         );
       case languageRoute:
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
           builder: (_) => LanguageScreen(),
         );
       case '/task':
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
           builder: (_) => TaskScreen(
             message: settings.arguments as RemoteMessage,
           ),
@@ -45,7 +46,7 @@ class RouteGenerator {
   }
 
   static Route<Object> _errorRoute() {
-    return MaterialPageRoute(
+    return CupertinoPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
                 title: const Text('Error'),
