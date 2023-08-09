@@ -3,12 +3,11 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:frd/di/injector_setup.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
-  const AuthService(this._dio);
-
-  final Dio _dio;
+  final Dio _dio = injector<Dio>();
 
   Future<GoogleSignInAuthentication?> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

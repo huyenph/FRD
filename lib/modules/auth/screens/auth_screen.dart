@@ -38,7 +38,7 @@ class _AuthScreenState extends BaseWidgetState<AuthScreen>
   }
 
   void _initFirebaseFCM() {
-    FirebaseFCM().registerNotification();
+    // FirebaseFCM().registerNotification();
   }
 
   @override
