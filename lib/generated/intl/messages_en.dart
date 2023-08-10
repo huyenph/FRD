@@ -38,13 +38,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("I agree to"),
+        "isRequired": MessageLookupByLibrary.simpleMessage("is required"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_instead": MessageLookupByLibrary.simpleMessage("Login instead"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "new_on_platform":
             MessageLookupByLibrary.simpleMessage("New on our platform?"),
-        "or": MessageLookupByLibrary.simpleMessage("Or"),
+        "orContinueWith":
+            MessageLookupByLibrary.simpleMessage("Or continue with"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("privacy policy & terms"),
@@ -52,11 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_title": MessageLookupByLibrary.simpleMessage(
             "Make your app management easy and fun!"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "signin_title": MessageLookupByLibrary.simpleMessage(
-            "Please login to your account and start the adventure"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
-        "welcome_to":
-            MessageLookupByLibrary.simpleMessage("Welcome to hpcompose! 👋🏻")
+        "welcome_to": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
       };
 }

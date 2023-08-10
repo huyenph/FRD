@@ -40,16 +40,6 @@ class FrdButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          elevation: MaterialStateProperty.all(0.3),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
-              side: BorderSide.none,
-            ),
-          ),
-          padding: MaterialStateProperty.all<EdgeInsets>(
-            const EdgeInsets.all(15.0),
-          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             backgroundColor,
           ),
@@ -63,10 +53,9 @@ class FrdButton extends StatelessWidget {
             ],
             if (label != null) ...[
               FrdText(
-                text: label!,
-                fontSize: labelSize,
-                textColor: labelColor,
-                isAllCaps: isAllCaps,
+                label!,
+                fontSize: labelSize ?? 16.0,
+                color: labelColor,
                 fontWeight: FontWeight.bold,
               ),
             ],

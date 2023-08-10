@@ -50,21 +50,11 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Welcome to hpcompose! 👋🏻`
+  /// `FRD! 👋🏻`
   String get welcome_to {
     return Intl.message(
-      'Welcome to hpcompose! 👋🏻',
+      'FRD! 👋🏻',
       name: 'welcome_to',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please login to your account and start the adventure`
-  String get signin_title {
-    return Intl.message(
-      'Please login to your account and start the adventure',
-      name: 'signin_title',
       desc: '',
       args: [],
     );
@@ -140,11 +130,11 @@ class S {
     );
   }
 
-  /// `Or`
-  String get or {
+  /// `Or continue with`
+  String get orContinueWith {
     return Intl.message(
-      'Or',
-      name: 'or',
+      'Or continue with',
+      name: 'orContinueWith',
       desc: '',
       args: [],
     );
@@ -295,6 +285,16 @@ class S {
     return Intl.message(
       'Logout',
       name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `is required`
+  String get isRequired {
+    return Intl.message(
+      'is required',
+      name: 'isRequired',
       desc: '',
       args: [],
     );

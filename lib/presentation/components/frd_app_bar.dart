@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:frd/presentation/components/frd_text.dart';
 
 class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FrdAppBar({
     Key? key,
-    required this.title,
+    this.title,
     this.leading,
     this.actions,
     this.centerTitle = false,
@@ -12,7 +13,7 @@ class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.elevation,
   }) : super(key: key);
 
-  final String title;
+  final String? title;
   final Widget? leading;
   final List<Widget>? actions;
   final bool centerTitle;
@@ -24,10 +25,12 @@ class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading,
-      title: Text(
-        title,
-        style: const TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: title != null
+          ? FrdText(
+              title!,
+              fontWeight: FontWeight.bold,
+            )
+          : null,
       actions: actions,
       backgroundColor: backgroundColor,
       elevation: elevation,

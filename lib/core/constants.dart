@@ -20,6 +20,8 @@ const String viLocale = 'vi';
 
 // Routes
 const String initRoute = '/';
+const String loginRoute = '/login';
+const String signupRoute = '/signup';
 const String authRoute = '/auth';
 const String homeRoute = '/home';
 const String settingRoute = 'settings';

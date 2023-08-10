@@ -405,7 +405,7 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
       margin: EdgeInsets.only(
           left: widget.direction == DrawerDirection.left
               ? 0
-              : MediaQuery.of(context).size.width -
+              : MediaQuery.sizeOf(context).width -
                   maxSlideAmount -
                   (widget.peekMenu ? widget.peekSize : 0)),
       child: SingleChildScrollView(
@@ -424,7 +424,7 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
         margin: EdgeInsets.only(
             left: widget.direction == DrawerDirection.left
                 ? 0
-                : MediaQuery.of(context).size.width - maxSlideAmount),
+                : MediaQuery.sizeOf(context).width - maxSlideAmount),
         child: SizedBox(width: maxSlideAmount, child: widget.headerView),
       ));
     } else {}
@@ -439,7 +439,7 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
           margin: EdgeInsets.only(
               left: widget.direction == DrawerDirection.left
                   ? 0
-                  : MediaQuery.of(context).size.width - maxSlideAmount),
+                  : MediaQuery.sizeOf(context).width - maxSlideAmount),
           child: Container(
             width: maxSlideAmount,
             margin:
@@ -462,7 +462,7 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
         top: widget.withSafeAre || widget.headerView == null,
         bottom: widget.withSafeAre || widget.footerView == null,
         child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.sizeOf(context).height,
           child: Column(
             children: widgets,
           ),

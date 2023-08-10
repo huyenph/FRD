@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:frd/core/bloc/base_bloc.dart';
@@ -31,7 +31,6 @@ abstract class BaseWidgetState<T extends StatefulWidget> extends State<T>
           key: _scaffoldKey,
           appBar: buildAppBar(),
           drawer: buildDrawer(),
-          resizeToAvoidBottomInset: disableResizeToAvoidBottomInset(),
           bottomNavigationBar: buildBottomNavigationBar(),
           floatingActionButton: buildFloatingActionButton(),
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -93,8 +92,6 @@ abstract class BaseWidgetState<T extends StatefulWidget> extends State<T>
 
   Widget buildBody(BuildContext context);
 
-  bool disableResizeToAvoidBottomInset() => true;
-
   void showSnackbarAlert(
     String message, {
     Function? callBack,
@@ -112,7 +109,7 @@ abstract class BaseWidgetState<T extends StatefulWidget> extends State<T>
               ),
             ),
             showCloseIcon: true,
-            closeIconColor: AppColors.backgroundLightColor,
+            closeIconColor: AppColors.bgLightColor,
           ),
         )
         .closed

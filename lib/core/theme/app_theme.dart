@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_size.dart';
 
 class AppTheme {
   static ThemeData get light {
@@ -13,13 +14,15 @@ class AppTheme {
         brightness: Brightness.light,
         primary: AppColors.primaryColor,
       ),
-      canvasColor: AppColors.backgroundLightColor,
+      fontFamily: 'lexend',
+      canvasColor: AppColors.bgLightColor,
       splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
-        color: AppColors.backgroundLightColor,
+        color: AppColors.bgLightColor,
         titleTextStyle: TextStyle(
           color: AppColors.primaryTextColor,
-          fontSize: 20.0,
+          fontSize: 16.0,
+          fontFamily: 'lexend',
         ),
         iconTheme: IconThemeData(color: AppColors.primaryColor),
       ),
@@ -32,33 +35,54 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
+          textStyle: const MaterialStatePropertyAll<TextStyle>(
+            TextStyle(fontFamily: 'lexend'),
+          ),
           backgroundColor:
               MaterialStateProperty.all<Color>(AppColors.primaryColor),
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          elevation: MaterialStateProperty.all(0),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
+              side: BorderSide.none,
+            ),
+          ),
+          padding: MaterialStateProperty.all<EdgeInsets>(
+            const EdgeInsets.all(AppSize.edgeSpacing),
+          ),
         ),
       ),
-      scaffoldBackgroundColor: AppColors.backgroundLightColor,
+      scaffoldBackgroundColor: AppColors.bgLightColor,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.backgroundLightColor,
+        backgroundColor: AppColors.bgLightColor,
         selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.primaryColor,
       ),
       inputDecorationTheme: const InputDecorationTheme(
         fillColor: AppColors.cardLightColor,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor, width: 1.2),
+          borderSide: BorderSide(color: AppColors.cardLightColor, width: 1.2),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 1.2),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
@@ -79,13 +103,15 @@ class AppTheme {
         brightness: Brightness.dark,
         primary: AppColors.primaryColor,
       ),
+      fontFamily: 'lexend',
       splashColor: Colors.transparent,
-      canvasColor: AppColors.backgroundDarkColor,
+      canvasColor: AppColors.bgDarkColor,
       appBarTheme: const AppBarTheme(
-        color: AppColors.backgroundDarkColor,
+        color: AppColors.bgDarkColor,
         titleTextStyle: TextStyle(
           color: AppColors.textLightColor,
           fontSize: 20.0,
+          fontFamily: 'lexend',
         ),
         iconTheme: IconThemeData(color: AppColors.textLightColor),
       ),
@@ -97,32 +123,44 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
+          textStyle: const MaterialStatePropertyAll<TextStyle>(
+            TextStyle(fontFamily: 'lexend'),
+          ),
           backgroundColor:
               MaterialStateProperty.all<Color>(AppColors.primaryColor),
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
         ),
       ),
-      scaffoldBackgroundColor: AppColors.backgroundDarkColor,
+      scaffoldBackgroundColor: AppColors.bgDarkColor,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: AppColors.backgroundDarkColor,
-          selectedItemColor: AppColors.cardLightColor,
-          unselectedItemColor: AppColors.backgroundLightColor),
+        backgroundColor: AppColors.bgDarkColor,
+        selectedItemColor: AppColors.cardLightColor,
+        unselectedItemColor: AppColors.bgLightColor,
+      ),
       inputDecorationTheme: const InputDecorationTheme(
         fillColor: AppColors.primaryColor,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderSide: BorderSide(color: AppColors.primaryColor, width: 0.5),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderSide: BorderSide(color: AppColors.primaryColor, width: 0.5),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.dividerColor, width: 0.5),
+          borderSide: BorderSide(color: AppColors.primaryColor, width: 0.5),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryColor, width: 1.2),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 1.2),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),

@@ -352,7 +352,7 @@ class _DrawerScaffoldState<T> extends State<DrawerScaffold>
       body = widget.body ?? widget.builder?.call(context, selectedItemId);
     }
     Widget scaffoldWidget = SizedBox(
-      width: MediaQuery.of(context).size.width - totalPeekSize,
+      width: MediaQuery.sizeOf(context).width - totalPeekSize,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: createAppBar(),
@@ -386,7 +386,7 @@ class _DrawerScaffoldState<T> extends State<DrawerScaffold>
             },
             onHorizontalDragStart: (details) {
               isOpening = !isDrawerOpen();
-              double width = MediaQuery.of(context).size.width;
+              double width = MediaQuery.sizeOf(context).width;
               startDx = -1;
 
               if (details.globalPosition.dx < maxSlideAmount + 60) {
@@ -523,10 +523,10 @@ class _DrawerScaffoldState<T> extends State<DrawerScaffold>
     return Transform(
       transform: perspective,
       origin: drawer.degree != null
-          ? Offset(MediaQuery.of(context).size.width / 2, 0.0)
+          ? Offset(MediaQuery.sizeOf(context).width / 2, 0.0)
           : drawer.direction == DrawerDirection.right
               ? Offset(
-                  MediaQuery.of(context).size.width -
+                  MediaQuery.sizeOf(context).width -
                       drawer.elevation -
                       totalPeekSize,
                   0.0)
