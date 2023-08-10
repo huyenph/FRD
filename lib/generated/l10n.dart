@@ -51,10 +51,10 @@ class S {
   }
 
   /// `FRD! 👋🏻`
-  String get welcome_to {
+  String get welcomeTo {
     return Intl.message(
       'FRD! 👋🏻',
-      name: 'welcome_to',
+      name: 'welcomeTo',
       desc: '',
       args: [],
     );
@@ -75,6 +75,16 @@ class S {
     return Intl.message(
       'Password',
       name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
       desc: '',
       args: [],
     );
@@ -111,20 +121,20 @@ class S {
   }
 
   /// `Forgot password?`
-  String get forgot_password {
+  String get forgotPassword {
     return Intl.message(
       'Forgot password?',
-      name: 'forgot_password',
+      name: 'forgotPassword',
       desc: '',
       args: [],
     );
   }
 
   /// `New on our platform?`
-  String get new_on_platform {
+  String get newOnPlatform {
     return Intl.message(
       'New on our platform?',
-      name: 'new_on_platform',
+      name: 'newOnPlatform',
       desc: '',
       args: [],
     );
@@ -140,91 +150,11 @@ class S {
     );
   }
 
-  /// `Continue with Facebook`
-  String get continue_with_facebook {
-    return Intl.message(
-      'Continue with Facebook',
-      name: 'continue_with_facebook',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Google`
-  String get continue_with_google {
-    return Intl.message(
-      'Continue with Google',
-      name: 'continue_with_google',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Apple`
-  String get continue_with_apple {
-    return Intl.message(
-      'Continue with Apple',
-      name: 'continue_with_apple',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Adventure starts here 🚀`
-  String get adventure_start_here {
-    return Intl.message(
-      'Adventure starts here 🚀',
-      name: 'adventure_start_here',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Make your app management easy and fun!`
-  String get register_title {
-    return Intl.message(
-      'Make your app management easy and fun!',
-      name: 'register_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `I agree to`
-  String get i_agree_to {
-    return Intl.message(
-      'I agree to',
-      name: 'i_agree_to',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `privacy policy & terms`
-  String get privacy_policy {
-    return Intl.message(
-      'privacy policy & terms',
-      name: 'privacy_policy',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Already have an account?`
-  String get aldready_have_account {
+  String get aldreadyHaveAccount {
     return Intl.message(
       'Already have an account?',
-      name: 'aldready_have_account',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Login instead`
-  String get login_instead {
-    return Intl.message(
-      'Login instead',
-      name: 'login_instead',
+      name: 'aldreadyHaveAccount',
       desc: '',
       args: [],
     );

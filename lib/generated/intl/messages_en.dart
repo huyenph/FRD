@@ -22,40 +22,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "adventure_start_here":
-            MessageLookupByLibrary.simpleMessage("Adventure starts here 🚀"),
-        "aldready_have_account":
+        "aldreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
-        "continue_with_apple":
-            MessageLookupByLibrary.simpleMessage("Continue with Apple"),
-        "continue_with_facebook":
-            MessageLookupByLibrary.simpleMessage("Continue with Facebook"),
-        "continue_with_google":
-            MessageLookupByLibrary.simpleMessage("Continue with Google"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "events": MessageLookupByLibrary.simpleMessage("Events"),
-        "forgot_password":
+        "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
-        "i_agree_to": MessageLookupByLibrary.simpleMessage("I agree to"),
         "isRequired": MessageLookupByLibrary.simpleMessage("is required"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "login_instead": MessageLookupByLibrary.simpleMessage("Login instead"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "new_on_platform":
+        "newOnPlatform":
             MessageLookupByLibrary.simpleMessage("New on our platform?"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("Or continue with"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "privacy_policy":
-            MessageLookupByLibrary.simpleMessage("privacy policy & terms"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
-        "register_title": MessageLookupByLibrary.simpleMessage(
-            "Make your app management easy and fun!"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
-        "welcome_to": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
       };
 }

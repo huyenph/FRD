@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frd/core/constants.dart';
 import 'package:frd/core/styles/app_colors.dart';
 import 'package:frd/core/styles/app_size.dart';
 import 'package:frd/core/ui/base_widget_state.dart';
@@ -15,21 +12,25 @@ import 'package:frd/presentation/components/frd_button.dart';
 import 'package:frd/presentation/components/frd_text.dart';
 import 'package:frd/presentation/components/frd_text_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends BaseWidgetState<LoginScreen> {
+class _SignupScreenState extends BaseWidgetState<SignupScreen> {
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPassController = TextEditingController();
 
   @override
   void dispose() {
+    _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPassController.dispose();
     super.dispose();
   }
 
@@ -57,6 +58,15 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                   ),
                   const SizedBox(height: AppSize.edgeSpacing * 2),
                   FrdTextField(
+                    controller: _usernameController,
+                    hintText: S.of(context).username,
+                    fillColor: AppColors.cardLightColor,
+                    textInputType: TextInputType.name,
+                    isVisibleSuffix: true,
+                    isRequired: true,
+                  ),
+                  const SizedBox(height: AppSize.edgeSpacing),
+                  FrdTextField(
                     controller: _emailController,
                     hintText: S.of(context).email,
                     fillColor: AppColors.cardLightColor,
@@ -68,6 +78,16 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                   FrdTextField(
                     controller: _passwordController,
                     hintText: S.of(context).password,
+                    fillColor: AppColors.cardLightColor,
+                    textInputType: TextInputType.visiblePassword,
+                    isVisiblePassword: true,
+                    isVisibleSuffix: true,
+                    isRequired: true,
+                  ),
+                  const SizedBox(height: AppSize.edgeSpacing),
+                  FrdTextField(
+                    controller: _confirmPassController,
+                    hintText: S.of(context).confirmPassword,
                     fillColor: AppColors.cardLightColor,
                     textInputType: TextInputType.visiblePassword,
                     isVisiblePassword: true,
@@ -95,70 +115,15 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                   ),
                   const SizedBox(height: AppSize.edgeSpacing * 2),
                   FrdButton(
-                    onPressed: () => navService.navigateTo(signupRoute),
+                    onPressed: () {},
                     labelColor: AppColors.bgLightColor,
-                    label: S.of(context).login,
+                    label: S.of(context).register,
                     backgroundColor: Colors.red,
-                  ),
-                  const SizedBox(height: AppSize.edgeSpacing * 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: _renderDivider(
-                          Alignment.centerRight,
-                          Alignment.centerLeft,
-                        ),
-                      ),
-                      const SizedBox(width: AppSize.edgeSpacing),
-                      FrdText(
-                        S.of(context).orContinueWith,
-                        color: AppColors.dividerColor,
-                      ),
-                      const SizedBox(width: AppSize.edgeSpacing),
-                      Expanded(
-                        flex: 2,
-                        child: _renderDivider(
-                          Alignment.centerLeft,
-                          Alignment.centerRight,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: AppSize.edgeSpacing * 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: _renderSocialLoginItem(
-                          'assets/icons/ic_google.png',
-                          () {},
-                        ),
-                      ),
-                      const SizedBox(width: AppSize.edgeSpacing * 1.5),
-                      if (Platform.isIOS) ...[
-                        Expanded(
-                          child: _renderSocialLoginItem(
-                            'assets/icons/ic_apple.png',
-                            () {},
-                          ),
-                        ),
-                        const SizedBox(width: AppSize.edgeSpacing * 1.5),
-                      ],
-                      Expanded(
-                        child: _renderSocialLoginItem(
-                          'assets/icons/ic_facebook.png',
-                          () {},
-                        ),
-                      ),
-                    ],
                   ),
                   const SizedBox(height: AppSize.edgeSpacing * 2),
                   RichText(
                     text: TextSpan(
-                      text: S.of(context).newOnPlatform,
+                      text: S.of(context).aldreadyHaveAccount,
                       style: const TextStyle(
                         color: AppColors.dividerColor,
                         fontFamily: 'lexend',
@@ -167,13 +132,13 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                         WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
                           child: GestureDetector(
-                            onTap: () => navService.navigateTo(signupRoute),
+                            onTap: () => navService.goBack(),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                 vertical: 8.0,
                               ),
                               child: FrdText(
-                                ' ${S.of(context).register}',
+                                ' ${S.of(context).login}',
                                 color: AppColors.primaryTextColor,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -194,7 +159,6 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
 
   @override
   PreferredSizeWidget? buildAppBar() => FrdAppBar(
-        leading: const SizedBox.shrink(),
         actions: [
           GestureDetector(
             onTap: () {},
@@ -209,42 +173,5 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
             ),
           )
         ],
-      );
-
-  Widget _renderDivider(Alignment begin, Alignment end) => Container(
-        height: 2.0,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: begin,
-            end: end,
-            colors: const [
-              AppColors.dividerColor,
-              AppColors.bgLightColor,
-            ],
-          ),
-        ),
-      );
-
-  Widget _renderSocialLoginItem(String iconAsset, Function() onTap) =>
-      Container(
-        padding: const EdgeInsets.all(AppSize.edgeSpacing),
-        decoration: BoxDecoration(
-          color: AppColors.bgLightColor,
-          border: Border.all(
-            color: AppColors.cardLightColor,
-            width: 2.0,
-          ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(AppSize.borderRadiusField),
-          ),
-        ),
-        child: GestureDetector(
-          onTap: onTap,
-          child: Image.asset(
-            iconAsset,
-            height: 32.0,
-            width: 32.0,
-          ),
-        ),
       );
 }

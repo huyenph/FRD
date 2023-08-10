@@ -63,27 +63,39 @@ class AppTheme {
         fillColor: AppColors.cardLightColor,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(
+            AppSize.borderRadiusField,
+          )),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(
+            AppSize.borderRadiusField,
+          )),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(
+            AppSize.borderRadiusField,
+          )),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 1.2),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(
+            AppSize.borderRadiusField,
+          )),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(
+            AppSize.borderRadiusField,
+          )),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 1.2),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(
+            AppSize.borderRadiusField,
+          )),
         ),
       ),
       checkboxTheme: CheckboxThemeData(
