@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Username`
   String get username {
     return Intl.message(
@@ -140,61 +150,11 @@ class S {
     );
   }
 
-  /// `Adventure starts here 🚀`
-  String get adventure_start_here {
-    return Intl.message(
-      'Adventure starts here 🚀',
-      name: 'adventure_start_here',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Make your app management easy and fun!`
-  String get register_title {
-    return Intl.message(
-      'Make your app management easy and fun!',
-      name: 'register_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `I agree to`
-  String get i_agree_to {
-    return Intl.message(
-      'I agree to',
-      name: 'i_agree_to',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `privacy policy & terms`
-  String get privacy_policy {
-    return Intl.message(
-      'privacy policy & terms',
-      name: 'privacy_policy',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Already have an account?`
-  String get aldready_have_account {
+  String get aldreadyHaveAccount {
     return Intl.message(
       'Already have an account?',
-      name: 'aldready_have_account',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Login instead`
-  String get login_instead {
-    return Intl.message(
-      'Login instead',
-      name: 'login_instead',
+      name: 'aldreadyHaveAccount',
       desc: '',
       args: [],
     );

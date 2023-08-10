@@ -36,7 +36,7 @@ class SignupForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  S.of(context).adventure_start_here,
+                  'S.of(context).adventure_start_here',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30.0,
@@ -45,7 +45,7 @@ class SignupForm extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 Text(
-                  S.of(context).register_title,
+                  'S.of(context).register_title',
                   style: const TextStyle(
                     fontWeight: FontWeight.w300,
                     fontSize: 15.0,
@@ -76,7 +76,7 @@ class SignupForm extends StatelessWidget {
                 const SizedBox(height: AppSize.fieldSpacingS),
                 RichText(
                   text: TextSpan(
-                    text: S.of(context).i_agree_to,
+                    text: '',
                     style: const TextStyle(color: AppColors.textColor),
                     children: [
                       WidgetSpan(
@@ -86,7 +86,7 @@ class SignupForm extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Text(
-                              ' ${S.of(context).privacy_policy}',
+                              ' ',
                               style: const TextStyle(
                                 color: AppColors.primaryTextColor,
                                 fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class SignupForm extends StatelessWidget {
                 Center(
                   child: RichText(
                     text: TextSpan(
-                      text: S.of(context).aldready_have_account,
+                      text: 'S.of(context).aldready_have_account',
                       style: const TextStyle(color: AppColors.textColor),
                       children: [
                         WidgetSpan(
@@ -145,7 +145,7 @@ class SignupForm extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 8.0),
                               child: Text(
-                                ' ${S.of(context).login_instead}',
+                                ' ',
                                 style: const TextStyle(
                                   color: AppColors.primaryTextColor,
                                   fontWeight: FontWeight.bold,

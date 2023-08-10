@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frd/core/navigation/navigation_service.dart';
+import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/di/injector_setup.dart';
 import 'package:frd/presentation/components/frd_text.dart';
 
 class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,6 +15,7 @@ class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.titleColor,
     this.elevation,
+    this.onBack,
   }) : super(key: key);
 
   final String? title;
@@ -20,11 +25,27 @@ class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final Color? titleColor;
   final double? elevation;
+  final Function? onBack;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading,
+      leading: leading ??
+          IconButton(
+              onPressed: () {
+                if (onBack != null) {
+                  onBack!();
+                } else {
+                  final navService = injector<NavigationService>();
+                  if (navService.canBack()) {
+                    navService.goBack();
+                  }
+                }
+              },
+              icon: const Icon(
+                CupertinoIcons.back,
+                color: AppColors.primaryColor,
+              )),
       title: title != null
           ? FrdText(
               title!,

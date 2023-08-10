@@ -22,31 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "adventure_start_here": MessageLookupByLibrary.simpleMessage(
-            "Cuộc phiêu lưu bắt đầu từ đây 🚀"),
-        "aldready_have_account":
+        "aldreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản?"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "events": MessageLookupByLibrary.simpleMessage("Sự kiện"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
-        "i_agree_to": MessageLookupByLibrary.simpleMessage("Tôi đồng ý với"),
         "isRequired": MessageLookupByLibrary.simpleMessage("là bắt buộc"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
-        "login_instead": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "newOnPlatform":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản?"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("Hoặc đăng nhập với"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
-        "privacy_policy": MessageLookupByLibrary.simpleMessage(
-            "Chính sách và điều khoản bảo mật"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
-        "register_title": MessageLookupByLibrary.simpleMessage(
-            "Giúp quản lý ứng dụng của bạn dễ dàng và thú vị!"),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
