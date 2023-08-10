@@ -63,10 +63,9 @@ class FrdButton extends StatelessWidget {
             ],
             if (label != null) ...[
               FrdText(
-                text: label!,
+                label!,
                 fontSize: labelSize,
-                textColor: labelColor,
-                isAllCaps: isAllCaps,
+                color: labelColor,
                 fontWeight: FontWeight.bold,
               ),
             ],
