@@ -26,12 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adventure starts here 🚀"),
         "aldready_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
-        "continue_with_apple":
-            MessageLookupByLibrary.simpleMessage("Continue with Apple"),
-        "continue_with_facebook":
-            MessageLookupByLibrary.simpleMessage("Continue with Facebook"),
-        "continue_with_google":
-            MessageLookupByLibrary.simpleMessage("Continue with Google"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "events": MessageLookupByLibrary.simpleMessage("Events"),

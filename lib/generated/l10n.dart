@@ -140,36 +140,6 @@ class S {
     );
   }
 
-  /// `Continue with Facebook`
-  String get continue_with_facebook {
-    return Intl.message(
-      'Continue with Facebook',
-      name: 'continue_with_facebook',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Google`
-  String get continue_with_google {
-    return Intl.message(
-      'Continue with Google',
-      name: 'continue_with_google',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue with Apple`
-  String get continue_with_apple {
-    return Intl.message(
-      'Continue with Apple',
-      name: 'continue_with_apple',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Adventure starts here 🚀`
   String get adventure_start_here {
     return Intl.message(

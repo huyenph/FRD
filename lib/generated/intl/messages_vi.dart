@@ -26,12 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Cuộc phiêu lưu bắt đầu từ đây 🚀"),
         "aldready_have_account":
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản?"),
-        "continue_with_apple":
-            MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Apple"),
-        "continue_with_facebook":
-            MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Facebook"),
-        "continue_with_google":
-            MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Google"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "events": MessageLookupByLibrary.simpleMessage("Sự kiện"),
