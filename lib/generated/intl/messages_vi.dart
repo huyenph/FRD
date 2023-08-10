@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkMode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "events": MessageLookupByLibrary.simpleMessage("Sự kiện"),
-        "forgot_password":
+        "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("Tôi đồng ý với"),
         "isRequired": MessageLookupByLibrary.simpleMessage("là bắt buộc"),
@@ -37,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_instead": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
-        "new_on_platform":
+        "newOnPlatform":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản?"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("Hoặc đăng nhập với"),
@@ -50,6 +50,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "username": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
-        "welcome_to": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
       };
 }

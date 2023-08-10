@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frd/core/constants.dart';
@@ -51,7 +50,7 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   FrdText(
-                    S.of(context).welcome_to,
+                    S.of(context).welcomeTo,
                     color: AppColors.bgDarkColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 30.0,
@@ -77,14 +76,18 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                   ),
                   const SizedBox(height: AppSize.edgeSpacing),
                   GestureDetector(
-                    onTap: (() {}),
+                    onTap: (() {
+                      print('pressed');
+                    }),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSize.edgeSpacing / 2,
+                      ),
                       child: Align(
                         alignment: AlignmentDirectional.centerEnd,
                         child: FrdText(
-                          S.of(context).forgot_password,
-                          color: AppColors.primaryTextColor,
+                          S.of(context).forgotPassword,
+                          color: AppColors.textColor.withOpacity(0.5),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -95,6 +98,7 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                     onPressed: () {},
                     labelColor: AppColors.bgLightColor,
                     label: S.of(context).login,
+                    backgroundColor: Colors.red,
                   ),
                   const SizedBox(height: AppSize.edgeSpacing * 2),
                   Row(
@@ -108,11 +112,9 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                         ),
                       ),
                       const SizedBox(width: AppSize.edgeSpacing),
-                      Text(
+                      FrdText(
                         S.of(context).orContinueWith,
-                        style: const TextStyle(
-                          color: AppColors.dividerColor,
-                        ),
+                        color: AppColors.dividerColor,
                       ),
                       const SizedBox(width: AppSize.edgeSpacing),
                       Expanded(
@@ -156,7 +158,7 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
                   const SizedBox(height: AppSize.edgeSpacing * 2),
                   RichText(
                     text: TextSpan(
-                      text: S.of(context).new_on_platform,
+                      text: S.of(context).newOnPlatform,
                       style: const TextStyle(
                         color: AppColors.dividerColor,
                         fontFamily: 'lexend',
@@ -195,13 +197,13 @@ class _LoginScreenState extends BaseWidgetState<LoginScreen> {
         actions: [
           GestureDetector(
             onTap: () {},
-            child: const Padding(
-              padding: EdgeInsets.symmetric(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppSize.edgeSpacing * 2,
               ),
               child: Icon(
                 Icons.language_outlined,
-                color: AppColors.primaryColor,
+                color: AppColors.textColor.withOpacity(0.5),
               ),
             ),
           )

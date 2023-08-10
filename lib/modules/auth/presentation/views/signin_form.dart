@@ -37,7 +37,7 @@ class SigninForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 FrdText(
-                  S.of(context).welcome_to,
+                  S.of(context).welcomeTo,
                   color: AppColors.bgDarkColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 30.0,
@@ -70,7 +70,7 @@ class SigninForm extends StatelessWidget {
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: Text(
-                        S.of(context).forgot_password,
+                        S.of(context).forgotPassword,
                         style: const TextStyle(
                           color: AppColors.primaryTextColor,
                           fontWeight: FontWeight.bold,
@@ -155,7 +155,7 @@ class SigninForm extends StatelessWidget {
   Widget _buildSignupSection(BuildContext context) => Center(
         child: RichText(
           text: TextSpan(
-            text: S.of(context).new_on_platform,
+            text: S.of(context).newOnPlatform,
             style: const TextStyle(color: AppColors.textColor),
             children: [
               WidgetSpan(

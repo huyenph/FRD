@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "events": MessageLookupByLibrary.simpleMessage("Events"),
-        "forgot_password":
+        "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "i_agree_to": MessageLookupByLibrary.simpleMessage("I agree to"),
         "isRequired": MessageLookupByLibrary.simpleMessage("is required"),
@@ -37,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_instead": MessageLookupByLibrary.simpleMessage("Login instead"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "new_on_platform":
+        "newOnPlatform":
             MessageLookupByLibrary.simpleMessage("New on our platform?"),
         "orContinueWith":
             MessageLookupByLibrary.simpleMessage("Or continue with"),
@@ -50,6 +50,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
-        "welcome_to": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("FRD! 👋🏻")
       };
 }

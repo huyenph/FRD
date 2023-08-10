@@ -51,10 +51,10 @@ class S {
   }
 
   /// `FRD! 👋🏻`
-  String get welcome_to {
+  String get welcomeTo {
     return Intl.message(
       'FRD! 👋🏻',
-      name: 'welcome_to',
+      name: 'welcomeTo',
       desc: '',
       args: [],
     );
@@ -111,20 +111,20 @@ class S {
   }
 
   /// `Forgot password?`
-  String get forgot_password {
+  String get forgotPassword {
     return Intl.message(
       'Forgot password?',
-      name: 'forgot_password',
+      name: 'forgotPassword',
       desc: '',
       args: [],
     );
   }
 
   /// `New on our platform?`
-  String get new_on_platform {
+  String get newOnPlatform {
     return Intl.message(
       'New on our platform?',
-      name: 'new_on_platform',
+      name: 'newOnPlatform',
       desc: '',
       args: [],
     );

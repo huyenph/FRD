@@ -116,8 +116,8 @@ class _FrdTextFieldState extends State<FrdTextField> {
     if (widget.isVisiblePassword) {
       return Icon(
         _isVisiblePass
-            ? Icons.visibility_outlined
-            : Icons.visibility_off_outlined,
+            ? Icons.visibility_off_outlined
+            : Icons.visibility_outlined,
         color: Colors.grey,
         size: 20.0,
       );
