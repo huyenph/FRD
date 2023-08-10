@@ -43,7 +43,7 @@ class FrdText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20.0,
+        fontSize: fontSize ?? 14.0,
         fontWeight: fontWeight,
         decorationStyle: decorationStyle,
         color: color,

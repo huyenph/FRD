@@ -85,6 +85,7 @@ class _FrdTextFieldState extends State<FrdTextField> {
           readOnly: widget.isReadOnly,
           keyboardType: widget.textInputType,
           autovalidateMode: AutovalidateMode.onUserInteraction,
+          obscureText: _isVisiblePass,
           style: const TextStyle(color: AppColors.textColor),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(AppSize.edgeSpacing),
@@ -99,6 +100,7 @@ class _FrdTextFieldState extends State<FrdTextField> {
                     child: _renderSuffix(),
                   )
                 : null,
+            errorStyle: const TextStyle(color: Colors.red),
           ),
           validator: (String? value) {
             return (widget.isRequired && (value == null || value.isEmpty))
