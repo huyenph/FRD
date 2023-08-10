@@ -13,9 +13,10 @@ import 'package:frd/presentation/components/frd_text_field.dart';
 
 const iconSize = 32.0;
 
-class SigninForm extends StatelessWidget {
-  SigninForm({Key? key}) : super(key: key);
+class SignupForm extends StatelessWidget {
+  SignupForm({Key? key}) : super(key: key);
 
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -26,7 +27,7 @@ class SigninForm extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height - kToolbarHeight,
+            height: MediaQuery.sizeOf(context).height - kToolbarHeight,
             alignment: AlignmentDirectional.bottomCenter,
             margin:
                 const EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
@@ -35,60 +36,73 @@ class SigninForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  S.of(context).welcome_to,
+                  S.of(context).adventure_start_here,
                   style: const TextStyle(
-                    color: AppColors.textColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 30.0,
+                    color: AppColors.textColor,
                   ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 Text(
-                  S.of(context).signin_title,
+                  S.of(context).register_title,
                   style: const TextStyle(
-                    color: AppColors.textColor,
                     fontWeight: FontWeight.w300,
                     fontSize: 15.0,
+                    color: AppColors.textColor,
                   ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingXL),
                 FrdTextField(
+                  controller: _usernameController,
+                  hintText: S.of(context).username,
+                  fillColor: AppColors.cardLightColor,
+                  isRequired: false,
+                ),
+                const SizedBox(height: AppSize.fieldSpacingS),
+                FrdTextField(
                   controller: _emailController,
-                  labelText: S.of(context).email,
-                  // hintText: emailEg,
+                  hintText: S.of(context).email,
                   fillColor: AppColors.cardLightColor,
                   isRequired: false,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 FrdTextField(
                   controller: _passwordController,
-                  labelText: S.of(context).password,
-                  // hintText: passwordEg,
+                  hintText: S.of(context).password,
                   fillColor: AppColors.cardLightColor,
-                  isRequired: true,
+                  isRequired: false,
+                ),
+                const SizedBox(height: AppSize.fieldSpacingS),
+                RichText(
+                  text: TextSpan(
+                    text: S.of(context).i_agree_to,
+                    style: const TextStyle(color: AppColors.textColor),
+                    children: [
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              ' ${S.of(context).privacy_policy}',
+                              style: const TextStyle(
+                                color: AppColors.primaryTextColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: AppSize.fieldSpacingS),
                 FrdButton(
                   onPressed: () {},
-                  labelColor: AppColors.backgroundLightColor,
-                  label: S.of(context).login,
-                ),
-                const SizedBox(height: AppSize.fieldSpacingM),
-                GestureDetector(
-                  onTap: (() {}),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: Text(
-                        S.of(context).forgot_password,
-                        style: const TextStyle(
-                          color: AppColors.primaryTextColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
+                  labelColor: AppColors.bgLightColor,
+                  label: S.of(context).register,
                 ),
                 const SizedBox(height: AppSize.fieldSpacingL),
                 Row(
@@ -99,12 +113,10 @@ class SigninForm extends StatelessWidget {
                       child: Divider(color: AppColors.dividerColor),
                     ),
                     const SizedBox(width: AppSize.fieldSpacingM),
-                    Text(
-                      S.of(context).or.toLowerCase(),
-                      style: const TextStyle(
-                        color: AppColors.textColor,
-                      ),
-                    ),
+                    // Text(
+                    //   S.of(context).or.toLowerCase(),
+                    //   style: const TextStyle(color: AppColors.textColor),
+                    // ),
                     const SizedBox(width: AppSize.fieldSpacingM),
                     const Expanded(
                       flex: 2,
@@ -115,7 +127,37 @@ class SigninForm extends StatelessWidget {
                 const SizedBox(height: AppSize.fieldSpacingL),
                 _buildSignInOptions(context),
                 const SizedBox(height: AppSize.fieldSpacingXXL),
-                _buildSignupSection(context),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      text: S.of(context).aldready_have_account,
+                      style: const TextStyle(color: AppColors.textColor),
+                      children: [
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const OnTabChangeEvent(0));
+                            },
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Text(
+                                ' ${S.of(context).login_instead}',
+                                style: const TextStyle(
+                                  color: AppColors.primaryTextColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -161,34 +203,5 @@ class SigninForm extends StatelessWidget {
             ),
           ],
         ],
-      );
-
-  Widget _buildSignupSection(BuildContext context) => Center(
-        child: RichText(
-          text: TextSpan(
-            text: S.of(context).new_on_platform,
-            style: const TextStyle(color: AppColors.textColor),
-            children: [
-              WidgetSpan(
-                alignment: PlaceholderAlignment.middle,
-                child: GestureDetector(
-                  onTap: () {
-                    context.read<AuthBloc>().add(const OnTabChangeEvent(1));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      ' ${S.of(context).register}',
-                      style: const TextStyle(
-                        color: AppColors.primaryTextColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
       );
 }

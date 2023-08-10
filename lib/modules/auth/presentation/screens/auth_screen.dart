@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frd/core/services/firebase/firebase_fcm.dart';
 import 'package:frd/core/styles/app_colors.dart';
 import 'package:frd/core/styles/app_size.dart';
 import 'package:frd/core/ui/base_widget_state.dart';
 import 'package:frd/di/injector_setup.dart';
 import 'package:frd/modules/auth/blocs/authentication.dart';
 import 'package:frd/modules/auth/domain/usecases/auth_usecase.dart';
-import 'package:frd/modules/auth/screens/forms/signin_form.dart';
-import 'package:frd/modules/auth/screens/forms/signup_form.dart';
+import 'package:frd/modules/auth/presentation/views/signin_form.dart';
+import 'package:frd/modules/auth/presentation/views/signup_form.dart';
 
 List<Widget> forms = [
   SigninForm(),
@@ -47,10 +46,10 @@ class _AuthScreenState extends BaseWidgetState<AuthScreen>
       children: [
         SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.sizeOf(context).height,
             padding:
                 const EdgeInsets.symmetric(vertical: AppSize.fieldSpacingL),
-            color: AppColors.backgroundLightColor,
+            color: AppColors.bgLightColor,
             child: BlocProvider(
               create: (_) => AuthBloc(injector<AuthUseCase>()),
               child: BlocListener<AuthBloc, AuthState>(

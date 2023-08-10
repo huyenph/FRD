@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frd/core/styles/app_colors.dart';
+import 'package:frd/core/styles/app_size.dart';
 
 class AppTheme {
   static ThemeData get light {
@@ -20,7 +21,7 @@ class AppTheme {
         color: AppColors.bgLightColor,
         titleTextStyle: TextStyle(
           color: AppColors.primaryTextColor,
-          fontSize: 20.0,
+          fontSize: 16.0,
           fontFamily: 'lexend',
         ),
         iconTheme: IconThemeData(color: AppColors.primaryColor),
@@ -40,6 +41,16 @@ class AppTheme {
           backgroundColor:
               MaterialStateProperty.all<Color>(AppColors.primaryColor),
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          elevation: MaterialStateProperty.all(0),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
+              side: BorderSide.none,
+            ),
+          ),
+          padding: MaterialStateProperty.all<EdgeInsets>(
+            const EdgeInsets.all(AppSize.edgeSpacing),
+          ),
         ),
       ),
       scaffoldBackgroundColor: AppColors.bgLightColor,
@@ -64,6 +75,14 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 1.2),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 1.2),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
@@ -134,6 +153,14 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.primaryColor, width: 1.2),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 1.2),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),

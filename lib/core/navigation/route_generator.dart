@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:frd/core/constants.dart';
-import 'package:frd/modules/auth/screens/auth_screen.dart';
+import 'package:frd/modules/auth/presentation/screens/auth_screen.dart';
+import 'package:frd/modules/auth/presentation/screens/login_screen.dart';
 import 'package:frd/modules/main/main_screen.dart';
 import 'package:frd/modules/settings/language_screen.dart';
 import 'package:frd/modules/settings/setting_screen.dart';
@@ -16,6 +17,8 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const SplashScreen());
       case authRoute:
         return CupertinoPageRoute(builder: (_) => const AuthScreen());
+      case loginRoute:
+        return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case homeRoute:
         return CupertinoPageRoute(
           builder: (_) => MainScreen(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frd/core/constants.dart';
 import 'package:frd/core/ui/base_widget_state.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -16,7 +17,7 @@ class _SplashScreenState extends BaseWidgetState<SplashScreen> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, '/auth'),
+      () => navService.replaceTo(loginRoute),
     );
   }
 

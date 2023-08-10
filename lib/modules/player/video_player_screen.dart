@@ -91,9 +91,7 @@ class _VideoPlayerScreenState extends BaseWidgetState<VideoPlayerScreen> {
         },
         errorBuilder: (context, errorMessage) {
           return Center(
-            child: FrdText(
-              text: errorMessage,
-            ),
+            child: FrdText(errorMessage),
           );
         });
   }

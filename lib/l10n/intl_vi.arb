@@ -1,6 +1,5 @@
 {
-  "welcome_to": "Chào mừng đến với hpcompose! 👋🏻",
-  "signin_title": "Vui lòng đăng nhập vào tài khoản của bạn",
+  "welcome_to": "FRD! 👋🏻",
   "email": "Email",
   "password": "Mật khẩu",
   "username": "Tên tài khoản",
@@ -8,7 +7,7 @@
   "register": "Đăng ký",
   "forgot_password": "Quên mật khẩu?",
   "new_on_platform": "Bạn chưa có tài khoản?",
-  "or": "Hoặc",
+  "orContinueWith": "Hoặc đăng nhập với",
   "continue_with_facebook": "Đăng nhập bằng Facebook",
   "continue_with_google": "Đăng nhập bằng Google",
   "continue_with_apple": "Đăng nhập bằng Apple",
@@ -23,5 +22,6 @@
   "version": "Phiên bản",
   "language": "Ngôn ngữ",
   "darkMode": "Chế độ tối",
-  "logout": "Đăng xuất"
+  "logout": "Đăng xuất",
+  "isRequired": "là bắt buộc"
 }

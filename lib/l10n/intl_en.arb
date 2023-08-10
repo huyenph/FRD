@@ -1,6 +1,5 @@
 {
-  "welcome_to": "Welcome to hpcompose! 👋🏻",
-  "signin_title": "Please login to your account and start the adventure",
+  "welcome_to": "FRD! 👋🏻",
   "email": "Email",
   "password": "Password",
   "username": "Username",
@@ -8,7 +7,7 @@
   "register": "Register",
   "forgot_password": "Forgot password?",
   "new_on_platform": "New on our platform?",
-  "or": "Or",
+  "orContinueWith": "Or continue with",
   "continue_with_facebook": "Continue with Facebook",
   "continue_with_google": "Continue with Google",
   "continue_with_apple": "Continue with Apple",
@@ -23,5 +22,6 @@
   "version": "Version",
   "language": "Language",
   "darkMode": "Dark Mode",
-  "logout": "Logout"
+  "logout": "Logout",
+  "isRequired": "is required"
 }
