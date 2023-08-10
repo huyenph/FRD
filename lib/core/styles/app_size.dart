@@ -6,4 +6,5 @@ class AppSize {
   static const fieldSpacingL = 20.0;
   static const fieldSpacingXL = 25.0;
   static const fieldSpacingXXL = 30.0;
+  static const edgeSpacing = 16.0;
 }
