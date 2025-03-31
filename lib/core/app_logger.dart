@@ -3,11 +3,7 @@ import 'package:logger/logger.dart';
 
 class AppLogger {
   static final logger = Logger(
-    printer: PrettyPrinter(
-      colors: true,
-      printEmojis: true,
-      printTime: true,
-    ),
+    printer: PrettyPrinter(colors: true, printEmojis: true),
     output: ConsoleOutput(),
   );
 }

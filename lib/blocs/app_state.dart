@@ -1,4 +1,4 @@
-part of app_bloc;
+part of 'app_bloc.dart';
 
 enum AppConfigType { all, theme, locale }
 

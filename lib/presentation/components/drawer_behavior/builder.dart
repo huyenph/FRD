@@ -1,10 +1,10 @@
-part of drawer_behavior;
+part of 'drawer_behavior.dart';
 
-typedef SideDrawerItemBuilder = Function(
-    BuildContext context, DrawerMenuItem menuItem, bool selected);
+typedef SideDrawerItemBuilder =
+    Function(BuildContext context, DrawerMenuItem menuItem, bool selected);
 
-typedef SideDrawerIndexBuilder = Function(
-    BuildContext context, int index, bool selected);
+typedef SideDrawerIndexBuilder =
+    Function(BuildContext context, int index, bool selected);
 
 abstract class SideDrawerBuilder<ItemType, IdType> {
   MenuController? _menuController;
@@ -43,29 +43,31 @@ class MenuSideDrawerBuilder<IdType>
     const animationIntervalDuration = 0.5;
     final perListItemDelay =
         menuController?.state != MenuState.closing ? 0.15 : 0.0;
-    final millis = menuController?.state != MenuState.closing
-        ? 150 * menu.items.length
-        : 600;
+    final millis =
+        menuController?.state != MenuState.closing
+            ? 150 * menu.items.length
+            : 600;
 
     final maxDuration =
         (menu.items.length - 1) * perListItemDelay + animationIntervalDuration;
 
     int i = 0;
-    final items = menu.items.map((e) {
-      final animationIntervalStart = i * perListItemDelay;
-      final animationIntervalEnd =
-          animationIntervalStart + animationIntervalDuration;
-      DrawerMenuItem item = menu.items[i];
-      i++;
-      return buildListItem(
-        context,
-        item,
-        animationIntervalStart,
-        animationIntervalEnd,
-        millis,
-        maxDuration,
-      );
-    }).toList();
+    final items =
+        menu.items.map((e) {
+          final animationIntervalStart = i * perListItemDelay;
+          final animationIntervalEnd =
+              animationIntervalStart + animationIntervalDuration;
+          DrawerMenuItem item = menu.items[i];
+          i++;
+          return buildListItem(
+            context,
+            item,
+            animationIntervalStart,
+            animationIntervalEnd,
+            millis,
+            maxDuration,
+          );
+        }).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.max,
@@ -94,37 +96,41 @@ class MenuSideDrawerBuilder<IdType>
     Color selectorColor =
         drawer?.selectorColor ?? Theme.of(context).indicatorColor;
 
-    TextStyle? textStyle = drawer?.textStyle ??
-        Theme.of(context).textTheme.subtitle1?.copyWith(
-              color: (drawer?.color.computeLuminance() ?? 0) < 0.5
+    TextStyle? textStyle =
+        drawer?.textStyle ??
+        Theme.of(context).textTheme.titleMedium?.copyWith(
+          color:
+              (drawer?.color.computeLuminance() ?? 0) < 0.5
                   ? Colors.white
                   : Colors.black,
-            );
+        );
 
     Widget listItem = InkWell(
-      child: builder == null
-          ? MenuListItem(
-              padding: drawer?.peekMenu == true
-                  ? EdgeInsets.zero
-                  : const EdgeInsets.only(left: 32.0),
-              direction: drawer?.direction ?? DrawerDirection.left,
-              title: item.title,
-              isSelected: isSelected,
-              selectorColor: selectorColor,
-              textStyle: item.textStyle ?? textStyle,
-              menuView: drawer,
-              width: drawer?.maxSlideAmount(context),
-              icon: item.icon == null ? item.prefix : Icon(item.icon),
-              suffix: item.suffix,
-              drawBorder: !useAnimation,
-            )
-          : Container(
-              alignment: Alignment.centerLeft,
-              child: SizedBox(
+      child:
+          builder == null
+              ? MenuListItem(
+                padding:
+                    drawer?.peekMenu == true
+                        ? EdgeInsets.zero
+                        : const EdgeInsets.only(left: 32.0),
+                direction: drawer?.direction ?? DrawerDirection.left,
+                title: item.title,
+                isSelected: isSelected,
+                selectorColor: selectorColor,
+                textStyle: item.textStyle ?? textStyle,
+                menuView: drawer,
                 width: drawer?.maxSlideAmount(context),
-                child: buildItem(context, item, isSelected),
+                icon: item.icon == null ? item.prefix : Icon(item.icon),
+                suffix: item.suffix,
+                drawBorder: !useAnimation,
+              )
+              : Container(
+                alignment: Alignment.centerLeft,
+                child: SizedBox(
+                  width: drawer?.maxSlideAmount(context),
+                  child: buildItem(context, item, isSelected),
+                ),
               ),
-            ),
       onTap: () => onSelected(item.id),
     );
 

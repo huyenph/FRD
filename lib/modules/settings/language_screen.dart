@@ -10,7 +10,7 @@ import 'package:frd/data/datasource/local/entities/language_entity.dart';
 import 'package:frd/generated/l10n.dart';
 
 class LanguageScreen extends StatefulWidget {
-  const LanguageScreen({Key? key}) : super(key: key);
+  const LanguageScreen({super.key});
 
   @override
   State<LanguageScreen> createState() => _LanguageScreenState();
@@ -34,31 +34,35 @@ class _LanguageScreenState extends BaseWidgetState<LanguageScreen> {
         }
         return ListView.separated(
           itemCount: _languages.length,
-          separatorBuilder: (BuildContext context, int index) => const Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppSize.fieldSpacingL),
-            child: Divider(
-              height: 1.0,
-              thickness: 0.1,
-              color: AppColors.dividerColor,
-            ),
-          ),
+          separatorBuilder:
+              (BuildContext context, int index) => const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSize.fieldSpacingL,
+                ),
+                child: Divider(
+                  height: 1.0,
+                  thickness: 0.1,
+                  color: AppColors.dividerColor,
+                ),
+              ),
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               onTap: () {
                 context.read<AppBloc>().add(
-                      OnAppConfigChangeRequested(
-                        AppConfigType.locale,
-                        language: LanguageEntity.fromJson(_languages[index]),
-                      ),
-                    );
+                  OnAppConfigChangeRequested(
+                    AppConfigType.locale,
+                    language: LanguageEntity.fromJson(_languages[index]),
+                  ),
+                );
                 navService.goBack();
               },
               title: Text(_languages[index]['title']),
               subtitle: Text(_languages[index]['subTitle']),
-              trailing: Boxes.getAppConfig().values.last.language.locale ==
-                      _languages[index]['locale']
-                  ? const Icon(CupertinoIcons.checkmark_alt)
-                  : const SizedBox.shrink(),
+              trailing:
+                  Boxes.getAppConfig().values.last.language.locale ==
+                          _languages[index]['locale']
+                      ? const Icon(CupertinoIcons.checkmark_alt)
+                      : const SizedBox.shrink(),
             );
           },
         );

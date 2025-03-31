@@ -1,4 +1,4 @@
-library setting_bloc;
+library;
 
 import 'dart:convert';
 

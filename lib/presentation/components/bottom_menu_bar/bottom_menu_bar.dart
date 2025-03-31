@@ -1,11 +1,11 @@
-library bottom_menu_bar;
+library;
 
 import 'package:flutter/material.dart';
 import 'package:frd/presentation/components/bottom_menu_bar/bottom_menu_item.dart';
 
 class BottomMenuBar extends StatelessWidget {
   const BottomMenuBar({
-    Key? key,
+    super.key,
     required this.items,
     required this.onItemSelected,
     this.selectedIndex = 0,
@@ -18,7 +18,7 @@ class BottomMenuBar extends StatelessWidget {
     this.animationDuration = const Duration(milliseconds: 270),
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.curve = Curves.linear,
-  }) : super(key: key);
+  });
 
   final int selectedIndex;
   final double iconSize;
@@ -41,10 +41,7 @@ class BottomMenuBar extends StatelessWidget {
         borderRadius: bottomBarRadius,
         boxShadow: [
           if (showElevation)
-            const BoxShadow(
-              color: Colors.black12,
-              blurRadius: 2,
-            ),
+            const BoxShadow(color: Colors.black12, blurRadius: 2),
         ],
       ),
       child: SafeArea(
@@ -54,21 +51,22 @@ class BottomMenuBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           child: Row(
             mainAxisAlignment: mainAxisAlignment,
-            children: items.map((item) {
-              var index = items.indexOf(item);
-              return GestureDetector(
-                onTap: () => onItemSelected(index),
-                child: MenuItemWidget(
-                  item: item,
-                  iconSize: iconSize,
-                  isSelected: index == selectedIndex,
-                  backgroundColor: backgroundColor!,
-                  itemCornerRadius: itemCornerRadius,
-                  animationDuration: animationDuration,
-                  curve: curve,
-                ),
-              );
-            }).toList(),
+            children:
+                items.map((item) {
+                  var index = items.indexOf(item);
+                  return GestureDetector(
+                    onTap: () => onItemSelected(index),
+                    child: MenuItemWidget(
+                      item: item,
+                      iconSize: iconSize,
+                      isSelected: index == selectedIndex,
+                      backgroundColor: backgroundColor!,
+                      itemCornerRadius: itemCornerRadius,
+                      animationDuration: animationDuration,
+                      curve: curve,
+                    ),
+                  );
+                }).toList(),
           ),
         ),
       ),

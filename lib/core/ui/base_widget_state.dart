@@ -19,12 +19,8 @@ abstract class BaseWidgetState<T extends StatefulWidget> extends State<T>
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: Platform.isIOS
-          ? null
-          : () async {
-              return true;
-            },
+    return PopScope(
+      canPop: Platform.isIOS,
       child: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(_focusNode),
         child: Scaffold(
@@ -92,10 +88,7 @@ abstract class BaseWidgetState<T extends StatefulWidget> extends State<T>
 
   Widget buildBody(BuildContext context);
 
-  void showSnackbarAlert(
-    String message, {
-    Function? callBack,
-  }) {
+  void showSnackbarAlert(String message, {Function? callBack}) {
     ScaffoldMessenger.of(context)
         .showSnackBar(
           SnackBar(
@@ -114,9 +107,9 @@ abstract class BaseWidgetState<T extends StatefulWidget> extends State<T>
         )
         .closed
         .then((value) {
-      if (callBack != null) {
-        callBack();
-      }
-    });
+          if (callBack != null) {
+            callBack();
+          }
+        });
   }
 }

@@ -1,12 +1,10 @@
-part of injector_setup;
+part of '../../di/injector_setup.dart';
 
 void authModule() {
   injector.registerSingleton<AuthService>(AuthService());
 
   injector.registerSingleton<AuthRepository>(
-    AuthRepositoryImpl(
-      injector<AuthService>(),
-    ),
+    AuthRepositoryImpl(injector<AuthService>()),
   );
 
   injector.registerSingleton<AuthUseCase>(

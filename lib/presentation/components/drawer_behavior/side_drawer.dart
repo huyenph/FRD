@@ -1,12 +1,9 @@
-part of drawer_behavior;
+part of 'drawer_behavior.dart';
 
 // final menuScreenKey = GlobalKey(debugLabel: 'MenuScreen');
 typedef MenuItemSelected<T> = Null Function(T);
 
-enum DrawerDirection {
-  left,
-  right,
-}
+enum DrawerDirection { left, right }
 
 class SideDrawer<T> extends StatefulWidget {
   SideDrawer({
@@ -35,34 +32,40 @@ class SideDrawer<T> extends StatefulWidget {
     this.elevation = 16,
     this.cornerRadius,
     this.withSafeAre = true,
-    Key? key,
+    super.key,
     this.peekMenu = false,
     this.hideOnItemPressed = true,
-  })  : assert((child != null && menu == null && itemBuilder == null) ||
-            (child == null && menu != null)),
-        assert(
-            !peekMenu ||
-                menu?.items
-                        .where((element) =>
-                            element.prefix == null && element.icon == null)
-                        .isEmpty ==
-                    true,
-            "\n\nFor peek menu,\nplease provide prefix or icon in MenuItem\n"),
-        itemBuilder = menu != null
-            ? MenuSideDrawerBuilder<T>(menu, itemBuilder)
-            : WidgetSideDrawerBuilder<T>(child ?? SizedBox())
-                as SideDrawerBuilder,
-        percentage = percentage ?? 0.8,
-        degree = degree == null ? null : max(min(45, degree), 15),
-        scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
-        scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        padding = padding ??
-            (peekMenu
-                ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
-                : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
-        super(key: key);
+  }) : assert(
+         (child != null && menu == null && itemBuilder == null) ||
+             (child == null && menu != null),
+       ),
+       assert(
+         !peekMenu ||
+             menu?.items
+                     .where(
+                       (element) =>
+                           element.prefix == null && element.icon == null,
+                     )
+                     .isEmpty ==
+                 true,
+         "\n\nFor peek menu,\nplease provide prefix or icon in MenuItem\n",
+       ),
+       itemBuilder =
+           menu != null
+               ? MenuSideDrawerBuilder<T>(menu, itemBuilder)
+               : WidgetSideDrawerBuilder<T>(child ?? SizedBox())
+                   as SideDrawerBuilder,
+       percentage = percentage ?? 0.8,
+       degree = degree == null ? null : max(min(45, degree), 15),
+       scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
+       scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       padding =
+           padding ??
+           (peekMenu
+               ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
+               : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0));
 
   SideDrawer.child({
     required this.child,
@@ -89,21 +92,22 @@ class SideDrawer<T> extends StatefulWidget {
     Key? key,
     this.peekMenu = false,
     this.hideOnItemPressed = true,
-  })  : menu = null,
-        selectedItemId = null,
-        onMenuItemSelected = null,
-        itemBuilder = WidgetSideDrawerBuilder(child ?? SizedBox()),
-        percentage = percentage ?? 0.8,
-        degree = degree == null ? null : max(min(45, degree), 15),
-        scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
-        scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        padding = padding ??
-            (peekMenu
-                ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
-                : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
-        super(key: key);
+  }) : menu = null,
+       selectedItemId = null,
+       onMenuItemSelected = null,
+       itemBuilder = WidgetSideDrawerBuilder(child ?? SizedBox()),
+       percentage = percentage ?? 0.8,
+       degree = degree == null ? null : max(min(45, degree), 15),
+       scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
+       scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       padding =
+           padding ??
+           (peekMenu
+               ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
+               : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
+       super(key: key);
 
   SideDrawer.custom({
     required this.itemBuilder,
@@ -130,21 +134,22 @@ class SideDrawer<T> extends StatefulWidget {
     Key? key,
     this.peekMenu = false,
     this.hideOnItemPressed = true,
-  })  : menu = null,
-        selectedItemId = null,
-        onMenuItemSelected = null,
-        child = null,
-        percentage = percentage ?? 0.8,
-        degree = degree == null ? null : max(min(45, degree), 15),
-        scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
-        scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        padding = padding ??
-            (peekMenu
-                ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
-                : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
-        super(key: key);
+  }) : menu = null,
+       selectedItemId = null,
+       onMenuItemSelected = null,
+       child = null,
+       percentage = percentage ?? 0.8,
+       degree = degree == null ? null : max(min(45, degree), 15),
+       scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
+       scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       padding =
+           padding ??
+           (peekMenu
+               ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
+               : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
+       super(key: key);
 
   SideDrawer._({
     required this.itemBuilder,
@@ -173,19 +178,20 @@ class SideDrawer<T> extends StatefulWidget {
     Key? key,
     this.peekMenu = false,
     this.hideOnItemPressed = true,
-  })  : menu = null,
-        child = null,
-        percentage = percentage ?? 0.8,
-        degree = degree == null ? null : max(min(45, degree), 15),
-        scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
-        scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
-        padding = padding ??
-            (peekMenu
-                ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
-                : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
-        super(key: key);
+  }) : menu = null,
+       child = null,
+       percentage = percentage ?? 0.8,
+       degree = degree == null ? null : max(min(45, degree), 15),
+       scaleDownCurve = Interval(0.0, 0.3, curve: curve ?? Curves.easeOut),
+       scaleUpCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideOutCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       slideInCurve = Interval(0.0, 1.0, curve: curve ?? Curves.easeOut),
+       padding =
+           padding ??
+           (peekMenu
+               ? const EdgeInsets.only(left: 16.0, top: 15.0, bottom: 15.0)
+               : const EdgeInsets.only(left: 40.0, top: 15.0, bottom: 15.0)),
+       super(key: key);
 
   static SideDrawer<int> count({
     required int itemCount,
@@ -363,9 +369,10 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
   setSelectedRenderBox(RenderBox newRenderBox, bool useState) async {
     final renderBox = context.findRenderObject() as RenderBox?;
 
-    final newYTop = newRenderBox
-        .localToGlobal(const Offset(0.0, 0.0), ancestor: renderBox)
-        .dy;
+    final newYTop =
+        newRenderBox
+            .localToGlobal(const Offset(0.0, 0.0), ancestor: renderBox)
+            .dy;
 
     final newYBottom = newYTop + newRenderBox.size.height;
     if (newYTop != selectorYTop) {
@@ -376,8 +383,10 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
 
   @override
   void initState() {
-    MenuController? controller =
-        DrawerScaffold.getControllerFor(context, widget);
+    MenuController? controller = DrawerScaffold.getControllerFor(
+      context,
+      widget,
+    );
     controller?.value = widget.selectedItemId;
     super.initState();
   }
@@ -390,8 +399,10 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
   @override
   void didUpdateWidget(SideDrawer<T> oldWidget) {
     if (oldWidget.selectedItemId != widget.selectedItemId) {
-      MenuController? controller =
-          DrawerScaffold.getControllerFor(context, widget);
+      MenuController? controller = DrawerScaffold.getControllerFor(
+        context,
+        widget,
+      );
       controller?.value = widget.selectedItemId;
     }
 
@@ -403,15 +414,15 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
     return Container(
       alignment: widget.alignment,
       margin: EdgeInsets.only(
-          left: widget.direction == DrawerDirection.left
-              ? 0
-              : MediaQuery.sizeOf(context).width -
-                  maxSlideAmount -
-                  (widget.peekMenu ? widget.peekSize : 0)),
+        left:
+            widget.direction == DrawerDirection.left
+                ? 0
+                : MediaQuery.sizeOf(context).width -
+                    maxSlideAmount -
+                    (widget.peekMenu ? widget.peekSize : 0),
+      ),
       child: SingleChildScrollView(
-        child: Container(
-          child: widget.itemBuilder.build(context),
-        ),
+        child: Container(child: widget.itemBuilder.build(context)),
       ),
     );
   }
@@ -419,33 +430,40 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
   Widget createDrawer(MenuController? menuController) {
     List<Widget> widgets = [];
     if (widget.headerView != null) {
-      widgets.add(Container(
-        alignment: widget.alignment,
-        margin: EdgeInsets.only(
-            left: widget.direction == DrawerDirection.left
-                ? 0
-                : MediaQuery.sizeOf(context).width - maxSlideAmount),
-        child: SizedBox(width: maxSlideAmount, child: widget.headerView),
-      ));
-    } else {}
-    widgets.add(Expanded(
-      flex: 1,
-      child: createMenuItems(menuController),
-    ));
-
-    if (widget.footerView != null) {
-      widgets.add(Container(
+      widgets.add(
+        Container(
           alignment: widget.alignment,
           margin: EdgeInsets.only(
-              left: widget.direction == DrawerDirection.left
-                  ? 0
-                  : MediaQuery.sizeOf(context).width - maxSlideAmount),
+            left:
+                widget.direction == DrawerDirection.left
+                    ? 0
+                    : MediaQuery.sizeOf(context).width - maxSlideAmount,
+          ),
+          child: SizedBox(width: maxSlideAmount, child: widget.headerView),
+        ),
+      );
+    } else {}
+    widgets.add(Expanded(flex: 1, child: createMenuItems(menuController)));
+
+    if (widget.footerView != null) {
+      widgets.add(
+        Container(
+          alignment: widget.alignment,
+          margin: EdgeInsets.only(
+            left:
+                widget.direction == DrawerDirection.left
+                    ? 0
+                    : MediaQuery.sizeOf(context).width - maxSlideAmount,
+          ),
           child: Container(
             width: maxSlideAmount,
-            margin:
-                EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).padding.bottom,
+            ),
             child: widget.footerView,
-          )));
+          ),
+        ),
+      );
     }
     MenuController controller = DrawerScaffold.currentController(context);
     return Transform(
@@ -463,9 +481,7 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
         bottom: widget.withSafeAre || widget.footerView == null,
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height,
-          child: Column(
-            children: widgets,
-          ),
+          child: Column(children: widgets),
         ),
       ),
     );
@@ -474,83 +490,92 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
   @override
   Widget build(BuildContext context) {
     selectorColor = widget.selectorColor ?? Theme.of(context).indicatorColor;
-    textStyle = widget.textStyle ??
-        Theme.of(context).textTheme.subtitle1?.copyWith(
-            color: widget.color.computeLuminance() < 0.5
-                ? Colors.white
-                : Colors.black);
+    textStyle =
+        widget.textStyle ??
+        Theme.of(context).textTheme.titleMedium?.copyWith(
+          color:
+              widget.color.computeLuminance() < 0.5
+                  ? Colors.white
+                  : Colors.black,
+        );
     return DrawerScaffoldMenuController(
-        direction: widget.direction,
-        builder: (context, menuController) {
-          var shouldRenderSelector = true;
-          var actualSelectorYTop = selectorYTop;
-          var actualSelectorYBottom = selectorYBottom;
-          var selectorOpacity = 1.0;
+      direction: widget.direction,
+      builder: (context, menuController) {
+        var shouldRenderSelector = true;
+        var actualSelectorYTop = selectorYTop;
+        var actualSelectorYBottom = selectorYBottom;
+        var selectorOpacity = 1.0;
 
-          if (menuController?.state == MenuState.closed ||
-              menuController?.state == MenuState.closing ||
-              selectorYTop == null) {
-            final RenderBox? menuScreenRenderBox =
-                context.findRenderObject() as RenderBox?;
+        if (menuController?.state == MenuState.closed ||
+            menuController?.state == MenuState.closing ||
+            selectorYTop == null) {
+          final RenderBox? menuScreenRenderBox =
+              context.findRenderObject() as RenderBox?;
 
-            if (menuScreenRenderBox != null) {
-              final menuScreenHeight = menuScreenRenderBox.size.height;
-              actualSelectorYTop = menuScreenHeight - 50.0;
-              actualSelectorYBottom = menuScreenHeight;
-              selectorOpacity = 0.0;
-            } else {
-              shouldRenderSelector = false;
-            }
+          if (menuScreenRenderBox != null) {
+            final menuScreenHeight = menuScreenRenderBox.size.height;
+            actualSelectorYTop = menuScreenHeight - 50.0;
+            actualSelectorYBottom = menuScreenHeight;
+            selectorOpacity = 0.0;
+          } else {
+            shouldRenderSelector = false;
           }
+        }
 
-          MenuController? controller =
-              DrawerScaffold.getControllerFor(context, widget);
+        MenuController? controller = DrawerScaffold.getControllerFor(
+          context,
+          widget,
+        );
 
-          return Container(
-            // padding: widget.direction == DrawerDirection.right
-            //     ? const EdgeInsets.only(left: 24)
-            //     : const EdgeInsets.only(right: 24),
-            width: double.infinity,
-            height: double.infinity,
+        return Container(
+          // padding: widget.direction == DrawerDirection.right
+          //     ? const EdgeInsets.only(left: 24)
+          //     : const EdgeInsets.only(right: 24),
+          width: double.infinity,
+          height: double.infinity,
 
-            decoration: BoxDecoration(
-              image: widget.background,
-              color: widget.color,
-            ),
-            child: Transform.translate(
-              offset:
-                  widget.direction == DrawerDirection.left || !widget.peekMenu
-                      ? Offset.zero
-                      : Offset(
-                          (widget.drawerWidth +
-                                  (controller?.slideAmount ?? 0) -
-                                  widget.peekSize)
-                              .clamp(0, widget.drawerWidth),
-                          0),
-              child: Center(
-                child: Material(
-                  color: Colors.transparent,
-                  child: Stack(
-                    children: [
-                      createDrawer(menuController),
-                      (widget.animation && !widget.peekMenu) &&
-                              shouldRenderSelector
-                          ? ItemSelector(
-                              right: widget.direction == DrawerDirection.right
+          decoration: BoxDecoration(
+            image: widget.background,
+            color: widget.color,
+          ),
+          child: Transform.translate(
+            offset:
+                widget.direction == DrawerDirection.left || !widget.peekMenu
+                    ? Offset.zero
+                    : Offset(
+                      (widget.drawerWidth +
+                              (controller?.slideAmount ?? 0) -
+                              widget.peekSize)
+                          .clamp(0, widget.drawerWidth),
+                      0,
+                    ),
+            child: Center(
+              child: Material(
+                color: Colors.transparent,
+                child: Stack(
+                  children: [
+                    createDrawer(menuController),
+                    (widget.animation && !widget.peekMenu) &&
+                            shouldRenderSelector
+                        ? ItemSelector(
+                          right:
+                              widget.direction == DrawerDirection.right
                                   ? maxSlideAmount - 10
                                   : null,
-                              selectorColor: selectorColor,
-                              top: actualSelectorYTop ?? 0,
-                              bottom: actualSelectorYBottom ?? 0,
-                              opacity: selectorOpacity)
-                          : Container(),
-                    ],
-                  ),
+                          selectorColor: selectorColor,
+                          top: actualSelectorYTop ?? 0,
+                          bottom: actualSelectorYBottom ?? 0,
+                          opacity: selectorOpacity,
+                        )
+                        : Container(),
+                  ],
                 ),
               ),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   static _SideDrawerState? of(BuildContext context, {bool nullOk = true}) {
@@ -559,8 +584,9 @@ class _SideDrawerState<T> extends State<SideDrawer<T>>
     if (nullOk || result != null) return result;
     throw FlutterError.fromParts(<DiagnosticsNode>[
       ErrorSummary(
-          '_SideDrawerState.of() called with a context that does not contain a _SideDrawerState.'),
-      context.describeElement('The context used was')
+        '_SideDrawerState.of() called with a context that does not contain a _SideDrawerState.',
+      ),
+      context.describeElement('The context used was'),
     ]);
   }
 }
@@ -580,10 +606,7 @@ class ItemSelector extends ImplicitlyAnimatedWidget {
     this.opacity,
     this.selectorColor,
     Key? key,
-  }) : super(
-          key: key,
-          duration: const Duration(milliseconds: 250),
-        );
+  }) : super(key: key, duration: const Duration(milliseconds: 250));
 
   @override
   _ItemSelectorState createState() => _ItemSelectorState();
@@ -596,21 +619,27 @@ class _ItemSelectorState extends AnimatedWidgetBaseState<ItemSelector> {
 
   @override
   void forEachTween(visitor) {
-    _topY = visitor(
-      _topY,
-      widget.top,
-      (dynamic value) => Tween<double>(begin: value),
-    ) as Tween<double?>?;
-    _bottomY = visitor(
-      _bottomY,
-      widget.bottom,
-      (dynamic value) => Tween<double>(begin: value),
-    ) as Tween<double?>?;
-    _opacity = visitor(
-      _opacity,
-      widget.opacity,
-      (dynamic value) => Tween<double>(begin: value),
-    ) as Tween<double?>?;
+    _topY =
+        visitor(
+              _topY,
+              widget.top,
+              (dynamic value) => Tween<double>(begin: value),
+            )
+            as Tween<double?>?;
+    _bottomY =
+        visitor(
+              _bottomY,
+              widget.bottom,
+              (dynamic value) => Tween<double>(begin: value),
+            )
+            as Tween<double?>?;
+    _opacity =
+        visitor(
+              _opacity,
+              widget.opacity,
+              (dynamic value) => Tween<double>(begin: value),
+            )
+            as Tween<double?>?;
   }
 
   @override
@@ -685,17 +714,21 @@ class _AnimatedMenuListItemState
         break;
     }
 
-    _translation = visitor(
-      _translation,
-      slide,
-      (dynamic value) => Tween<double>(begin: value),
-    ) as Tween<double?>?;
+    _translation =
+        visitor(
+              _translation,
+              slide,
+              (dynamic value) => Tween<double>(begin: value),
+            )
+            as Tween<double?>?;
 
-    _opacity = visitor(
-      _opacity,
-      opacity,
-      (dynamic value) => Tween<double>(begin: value),
-    ) as Tween<double?>?;
+    _opacity =
+        visitor(
+              _opacity,
+              opacity,
+              (dynamic value) => Tween<double>(begin: value),
+            )
+            as Tween<double?>?;
   }
 
   @override

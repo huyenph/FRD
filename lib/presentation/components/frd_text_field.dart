@@ -6,7 +6,7 @@ import 'package:frd/generated/l10n.dart';
 
 class FrdTextField extends StatefulWidget {
   const FrdTextField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     this.onTap,
@@ -19,7 +19,7 @@ class FrdTextField extends StatefulWidget {
     this.isVisiblePassword = false,
     this.isVisibleSuffix = false,
     this.maxLines = 1,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final GestureTapCallback? onTap;
@@ -66,12 +66,9 @@ class _FrdTextFieldState extends State<FrdTextField> {
                 if (widget.isRequired) ...[
                   const TextSpan(
                     text: ' *',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontFamily: 'lexend',
-                    ),
+                    style: TextStyle(color: Colors.red, fontFamily: 'lexend'),
                   ),
-                ]
+                ],
               ],
             ),
           ),
@@ -94,12 +91,13 @@ class _FrdTextFieldState extends State<FrdTextField> {
             hintText: widget.hintText,
             hintStyle: const TextStyle(color: AppColors.dividerColor),
             alignLabelWithHint: true,
-            suffixIcon: widget.isVisibleSuffix
-                ? GestureDetector(
-                    onTap: _onSuffixPressed,
-                    child: _renderSuffix(),
-                  )
-                : null,
+            suffixIcon:
+                widget.isVisibleSuffix
+                    ? GestureDetector(
+                      onTap: _onSuffixPressed,
+                      child: _renderSuffix(),
+                    )
+                    : null,
             errorStyle: const TextStyle(color: Colors.red),
           ),
           validator: (String? value) {
@@ -123,11 +121,7 @@ class _FrdTextFieldState extends State<FrdTextField> {
       );
     } else {
       return _isVisibleSuffix
-          ? const Icon(
-              CupertinoIcons.clear,
-              color: Colors.grey,
-              size: 20.0,
-            )
+          ? const Icon(CupertinoIcons.clear, color: Colors.grey, size: 20.0)
           : widget.suffixIcon ?? const SizedBox();
     }
   }

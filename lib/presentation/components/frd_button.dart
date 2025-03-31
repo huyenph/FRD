@@ -5,7 +5,7 @@ import 'package:frd/presentation/components/frd_text.dart';
 
 class FrdButton extends StatelessWidget {
   const FrdButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     this.startIcon,
     this.endIcon,
@@ -18,7 +18,7 @@ class FrdButton extends StatelessWidget {
     this.endIconSize,
     this.labelSize,
     this.isAllCaps = false,
-  }) : super(key: key);
+  });
 
   final VoidCallback onPressed;
   final Widget? startIcon;
@@ -40,9 +40,7 @@ class FrdButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            backgroundColor,
-          ),
+          backgroundColor: WidgetStateProperty.all<Color>(backgroundColor),
         ),
         child: Row(
           mainAxisAlignment: mainAxisAlignment,
@@ -61,7 +59,7 @@ class FrdButton extends StatelessWidget {
             ],
             if (endIcon != null) ...[
               const SizedBox(width: AppSize.fieldSpacingS),
-              endIcon!
+              endIcon!,
             ],
           ],
         ),

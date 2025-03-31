@@ -21,15 +21,16 @@ extension StringExtension on String {
   }
 
   bool get isValidPassword {
-    final passwordRegExp =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])');
+    final passwordRegExp = RegExp(
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])',
+    );
     return passwordRegExp.hasMatch(this);
   }
 }
 
-extension DioErrorX on DioError {
+extension DioErrorX on DioException {
   bool get isNoConnectionError =>
-      type == DioErrorType.unknown && error is SocketException;
+      type == DioExceptionType.unknown && error is SocketException;
 }
 
 extension DateOnlyCompare on DateTime {

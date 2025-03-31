@@ -15,7 +15,7 @@ import 'package:frd/presentation/components/bottom_menu_bar/bottom_menu_item.dar
 import 'package:frd/presentation/components/drawer_behavior/drawer_behavior.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key, this.message}) : super(key: key);
+  const MainScreen({super.key, this.message});
 
   final RemoteMessage? message;
 
@@ -110,24 +110,21 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text('${S.of(context).version} 1.0.0'),
               ),
-              itemBuilder: (
-                context,
-                menuItem,
-                isSelected,
-              ) {
+              itemBuilder: (context, menuItem, isSelected) {
                 return Container(
                   decoration: BoxDecoration(
-                    gradient: isSelected
-                        ? LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [
-                              AppColors.primaryColor.withOpacity(0.15),
-                              AppColors.primaryColor.withOpacity(0.25),
-                              AppColors.primaryColor.withOpacity(0.35),
-                            ],
-                          )
-                        : null,
+                    gradient:
+                        isSelected
+                            ? LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                AppColors.primaryColor.withOpacity(0.15),
+                                AppColors.primaryColor.withOpacity(0.25),
+                                AppColors.primaryColor.withOpacity(0.35),
+                              ],
+                            )
+                            : null,
                     borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(50.0),
                       bottomRight: Radius.circular(50.0),
@@ -156,10 +153,11 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
             ),
           ],
           bottomNavigationBar: _buildBottomNavigationBar(context),
-          builder: (context, id) => IndexedStack(
-            index: id,
-            children: _menu.items.map((e) => e.widgetContent).toList(),
-          ),
+          builder:
+              (context, id) => IndexedStack(
+                index: id,
+                children: _menu.items.map((e) => e.widgetContent).toList(),
+              ),
         );
       },
     );
@@ -180,9 +178,7 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
         id: 1,
         title: 'Music Player',
         prefix: const Icon(Icons.person),
-        widgetContent: const Center(
-          child: Text('Music Player'),
-        ),
+        widgetContent: const Center(child: Text('Music Player')),
       ),
       DrawerMenuItem<int>(
         id: 2,
@@ -195,9 +191,7 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
     _menuItems = [
       BottomMenuItem(
         icon: const Icon(CupertinoIcons.calendar),
-        title: Text(
-          S.of(context).events,
-        ),
+        title: Text(S.of(context).events),
       ),
       BottomMenuItem(
         icon: const Icon(Icons.person),
@@ -205,9 +199,7 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
       ),
       BottomMenuItem(
         icon: const Icon(Icons.settings),
-        title: Text(
-          S.of(context).events,
-        ),
+        title: Text(S.of(context).events),
       ),
     ];
   }
@@ -216,11 +208,7 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
     return AppBar(
       leading: GestureDetector(
         onTap: () => controller.toggle(),
-        child: const SizedBox(
-          height: 30.0,
-          width: 30.0,
-          child: CircleAvatar(),
-        ),
+        child: const SizedBox(height: 30.0, width: 30.0, child: CircleAvatar()),
       ),
       title: TextFormField(
         controller: searchController,
@@ -235,11 +223,7 @@ class _MainScreenState extends BaseWidgetState<MainScreen> {
           hintStyle: TextStyle(color: AppColors.dividerColor),
           // alignLabelWithHint: true,
           border: OutlineInputBorder(),
-          prefix: Icon(
-            CupertinoIcons.search,
-            color: Colors.grey,
-            size: 20.0,
-          ),
+          prefix: Icon(CupertinoIcons.search, color: Colors.grey, size: 20.0),
         ),
       ),
     );

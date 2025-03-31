@@ -7,7 +7,7 @@ import 'package:frd/presentation/components/frd_text.dart';
 
 class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FrdAppBar({
-    Key? key,
+    super.key,
     this.title,
     this.leading,
     this.actions,
@@ -16,7 +16,7 @@ class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleColor,
     this.elevation,
     this.onBack,
-  }) : super(key: key);
+  });
 
   final String? title;
   final Widget? leading;
@@ -30,28 +30,26 @@ class FrdAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading ??
+      leading:
+          leading ??
           IconButton(
-              onPressed: () {
-                if (onBack != null) {
-                  onBack!();
-                } else {
-                  final navService = injector<NavigationService>();
-                  if (navService.canBack()) {
-                    navService.goBack();
-                  }
+            onPressed: () {
+              if (onBack != null) {
+                onBack!();
+              } else {
+                final navService = injector<NavigationService>();
+                if (navService.canBack()) {
+                  navService.goBack();
                 }
-              },
-              icon: const Icon(
-                CupertinoIcons.back,
-                color: AppColors.primaryColor,
-              )),
-      title: title != null
-          ? FrdText(
-              title!,
-              fontWeight: FontWeight.bold,
-            )
-          : null,
+              }
+            },
+            icon: const Icon(
+              CupertinoIcons.back,
+              color: AppColors.primaryColor,
+            ),
+          ),
+      title:
+          title != null ? FrdText(title!, fontWeight: FontWeight.bold) : null,
       actions: actions,
       backgroundColor: backgroundColor,
       elevation: elevation,

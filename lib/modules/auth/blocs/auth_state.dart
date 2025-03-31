@@ -1,4 +1,4 @@
-part of authentication;
+part of 'authentication.dart';
 
 enum SocialSignInStatus { unknown, unauthenticated, authenticated }
 
@@ -22,15 +22,13 @@ class OnSocialSignInState extends AuthState {
   const OnSocialSignInState.unknown() : this._();
 
   const OnSocialSignInState.unauthenticated()
-      : this._(
-          status: SocialSignInStatus.unauthenticated,
-        );
+    : this._(status: SocialSignInStatus.unauthenticated);
 
   const OnSocialSignInState.authenticated(UserCredential userCredential)
-      : this._(
-          status: SocialSignInStatus.authenticated,
-          userCredential: userCredential,
-        );
+    : this._(
+        status: SocialSignInStatus.authenticated,
+        userCredential: userCredential,
+      );
 
   final SocialSignInStatus status;
   final UserCredential? userCredential;

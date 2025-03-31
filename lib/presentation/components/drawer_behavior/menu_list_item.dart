@@ -1,8 +1,8 @@
-part of drawer_behavior;
+part of 'drawer_behavior.dart';
 
 class MenuListItem extends StatelessWidget {
   const MenuListItem({
-    Key? key,
+    super.key,
     required this.title,
     this.isSelected,
     this.menuView,
@@ -14,7 +14,7 @@ class MenuListItem extends StatelessWidget {
     this.width,
     this.padding,
     this.suffix,
-  }) : super(key: key);
+  });
 
   final String title;
   final bool? isSelected;
@@ -30,26 +30,22 @@ class MenuListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style = textStyle!
-        .copyWith(color: isSelected! ? selectorColor : textStyle!.color);
+    TextStyle style = textStyle!.copyWith(
+      color: isSelected! ? selectorColor : textStyle!.color,
+    );
     List<Widget> children = [];
     if (icon != null) {
-      children.add(Padding(
-        padding: const EdgeInsets.only(right: 16),
-        child: IconTheme(
-          data: IconThemeData(color: style.color),
-          child: icon!,
+      children.add(
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: IconTheme(
+            data: IconThemeData(color: style.color),
+            child: icon!,
+          ),
         ),
-      ));
+      );
     }
-    children.add(
-      Expanded(
-        child: FrdText(
-          title,
-          color: style.color,
-        ),
-      ),
-    );
+    children.add(Expanded(child: FrdText(title, color: style.color)));
     if (suffix != null) {
       children.add(
         Padding(

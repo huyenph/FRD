@@ -11,7 +11,7 @@ class MenuItemWidget extends StatelessWidget {
   final Curve curve;
 
   const MenuItemWidget({
-    Key? key,
+    super.key,
     required this.item,
     required this.isSelected,
     required this.backgroundColor,
@@ -19,7 +19,7 @@ class MenuItemWidget extends StatelessWidget {
     required this.itemCornerRadius,
     required this.iconSize,
     this.curve = Curves.linear,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +50,14 @@ class MenuItemWidget extends StatelessWidget {
                 IconTheme(
                   data: IconThemeData(
                     size: iconSize,
-                    color: isSelected
-                        ? Theme.of(context)
-                            .bottomNavigationBarTheme
-                            .selectedItemColor
-                        : Theme.of(context)
-                            .bottomNavigationBarTheme
-                            .unselectedItemColor,
+                    color:
+                        isSelected
+                            ? Theme.of(
+                              context,
+                            ).bottomNavigationBarTheme.selectedItemColor
+                            : Theme.of(
+                              context,
+                            ).bottomNavigationBarTheme.unselectedItemColor,
                   ),
                   child: item.icon,
                 ),
@@ -66,9 +67,10 @@ class MenuItemWidget extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: DefaultTextStyle.merge(
                         style: TextStyle(
-                          color: Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .selectedItemColor,
+                          color:
+                              Theme.of(
+                                context,
+                              ).bottomNavigationBarTheme.selectedItemColor,
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 1,

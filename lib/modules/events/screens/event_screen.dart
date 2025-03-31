@@ -7,7 +7,7 @@ import 'package:frd/modules/events/domain/models/event.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class EventScreen extends StatefulWidget {
-  const EventScreen({Key? key}) : super(key: key);
+  const EventScreen({super.key});
 
   @override
   State<EventScreen> createState() => _EventScreenState();
@@ -34,38 +34,46 @@ class _EventScreenState extends BaseWidgetState<EventScreen> {
     final DateTime today = DateTime.now();
     final DateTime startTime = DateTime(today.year, today.month, today.day, 9);
     final DateTime endTime = startTime.add(const Duration(hours: 2));
-    meetings.add(Event(
-      id: Random().toString(),
-      eventName: 'Event 1',
-      from: startTime,
-      to: endTime,
-      background: AppColors.cardDarkColor,
-      isAllDay: false,
-    ));
-    meetings.add(Event(
-      id: Random().toString(),
-      eventName: 'Event 1',
-      from: DateTime(today.year, today.month, today.day + 1, 9),
-      to: endTime,
-      background: AppColors.cardDarkColor,
-      isAllDay: false,
-    ));
-    meetings.add(Event(
-      id: Random().toString(),
-      eventName: 'Event 1',
-      from: DateTime(today.year, today.month, today.day + 2, 9),
-      to: endTime,
-      background: AppColors.cardDarkColor,
-      isAllDay: false,
-    ));
-    meetings.add(Event(
-      id: Random().toString(),
-      eventName: 'Event 1',
-      from: DateTime(today.year, today.month, today.day + 3, 9),
-      to: endTime,
-      background: AppColors.cardDarkColor,
-      isAllDay: false,
-    ));
+    meetings.add(
+      Event(
+        id: Random().toString(),
+        eventName: 'Event 1',
+        from: startTime,
+        to: endTime,
+        background: AppColors.cardDarkColor,
+        isAllDay: false,
+      ),
+    );
+    meetings.add(
+      Event(
+        id: Random().toString(),
+        eventName: 'Event 1',
+        from: DateTime(today.year, today.month, today.day + 1, 9),
+        to: endTime,
+        background: AppColors.cardDarkColor,
+        isAllDay: false,
+      ),
+    );
+    meetings.add(
+      Event(
+        id: Random().toString(),
+        eventName: 'Event 1',
+        from: DateTime(today.year, today.month, today.day + 2, 9),
+        to: endTime,
+        background: AppColors.cardDarkColor,
+        isAllDay: false,
+      ),
+    );
+    meetings.add(
+      Event(
+        id: Random().toString(),
+        eventName: 'Event 1',
+        from: DateTime(today.year, today.month, today.day + 3, 9),
+        to: endTime,
+        background: AppColors.cardDarkColor,
+        isAllDay: false,
+      ),
+    );
     return meetings;
   }
 }

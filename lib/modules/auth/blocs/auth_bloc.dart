@@ -1,4 +1,4 @@
-part of authentication;
+part of 'authentication.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authUseCase) : super(const OnSocialSignInState.unknown()) {
