@@ -1,4 +1,4 @@
-part of drawer_behavior;
+part of 'drawer_behavior.dart';
 
 class DrawerMenu<T> {
   const DrawerMenu({required this.items});

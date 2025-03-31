@@ -1,4 +1,4 @@
-library app_bloc;
+library;
 
 import 'dart:convert';
 
@@ -30,10 +30,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         return emit(const OnAppConfigChangeState.all());
 
       case AppConfigType.theme:
-        _appUseCase.updateAppConfig(
-          AppConfigType.theme,
-          theme: event.theme,
-        );
+        _appUseCase.updateAppConfig(AppConfigType.theme, theme: event.theme);
         return emit(const OnAppConfigChangeState.theme());
       case AppConfigType.locale:
         _appUseCase.updateAppConfig(

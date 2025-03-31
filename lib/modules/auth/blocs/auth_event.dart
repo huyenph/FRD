@@ -1,4 +1,4 @@
-part of authentication;
+part of 'authentication.dart';
 
 enum SocialSignInEventOptions { google, facebook, apple }
 

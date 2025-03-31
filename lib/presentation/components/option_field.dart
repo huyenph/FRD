@@ -6,13 +6,13 @@ typedef OnSwitchChanged = Function(bool value);
 
 class OptionField extends StatelessWidget {
   const OptionField({
-    Key? key,
+    super.key,
     required this.label,
     this.value,
     this.icon,
     this.onChanged,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final String label;
   final dynamic value;
@@ -34,17 +34,14 @@ class OptionField extends StatelessWidget {
   Widget _buildTrailing() {
     if (value is bool) {
       return CupertinoSwitch(
-        activeColor: AppColors.primaryColor,
+        activeTrackColor: AppColors.primaryColor,
         value: value,
         onChanged: onChanged,
       );
     } else if (value is String) {
       return Row(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(value),
-          const Icon(CupertinoIcons.forward),
-        ],
+        children: <Widget>[Text(value), const Icon(CupertinoIcons.forward)],
       );
     }
 

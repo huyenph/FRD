@@ -6,10 +6,12 @@ class AppTheme {
   static ThemeData get light {
     return ThemeData(
       useMaterial3: true,
-      pageTransitionsTheme: const PageTransitionsTheme(builders: {
-        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-      }),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
+      ),
       colorScheme: const ColorScheme.light(
         brightness: Brightness.light,
         primary: AppColors.primaryColor,
@@ -29,26 +31,28 @@ class AppTheme {
       // iconTheme: const IconThemeData(color: AppColors.iconColor),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor:
-              MaterialStateProperty.all<Color>(AppColors.primaryColor),
+          foregroundColor: WidgetStateProperty.all<Color>(
+            AppColors.primaryColor,
+          ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          textStyle: const MaterialStatePropertyAll<TextStyle>(
+          textStyle: const WidgetStatePropertyAll<TextStyle>(
             TextStyle(fontFamily: 'lexend'),
           ),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(AppColors.primaryColor),
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          elevation: MaterialStateProperty.all(0),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: WidgetStateProperty.all<Color>(
+            AppColors.primaryColor,
+          ),
+          foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+          elevation: WidgetStateProperty.all(0),
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.borderRadiusField),
               side: BorderSide.none,
             ),
           ),
-          padding: MaterialStateProperty.all<EdgeInsets>(
+          padding: WidgetStateProperty.all<EdgeInsets>(
             const EdgeInsets.all(AppSize.edgeSpacing),
           ),
         ),
@@ -63,43 +67,43 @@ class AppTheme {
         fillColor: AppColors.cardLightColor,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(
-            AppSize.borderRadiusField,
-          )),
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppSize.borderRadiusField),
+          ),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(
-            AppSize.borderRadiusField,
-          )),
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppSize.borderRadiusField),
+          ),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(
-            AppSize.borderRadiusField,
-          )),
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppSize.borderRadiusField),
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.cardLightColor, width: 1.2),
-          borderRadius: BorderRadius.all(Radius.circular(
-            AppSize.borderRadiusField,
-          )),
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppSize.borderRadiusField),
+          ),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(
-            AppSize.borderRadiusField,
-          )),
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppSize.borderRadiusField),
+          ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 1.2),
-          borderRadius: BorderRadius.all(Radius.circular(
-            AppSize.borderRadiusField,
-          )),
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppSize.borderRadiusField),
+          ),
         ),
       ),
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateProperty.all<Color>(AppColors.primaryColor),
+        fillColor: WidgetStateProperty.all<Color>(AppColors.primaryColor),
       ),
     );
   }
@@ -107,10 +111,12 @@ class AppTheme {
   static ThemeData get dark {
     return ThemeData(
       useMaterial3: true,
-      pageTransitionsTheme: const PageTransitionsTheme(builders: {
-        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-      }),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
+      ),
       colorScheme: const ColorScheme.dark(
         brightness: Brightness.dark,
         primary: AppColors.primaryColor,
@@ -130,17 +136,18 @@ class AppTheme {
       // iconTheme: const IconThemeData(color: AppColors.iconLightColor),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          textStyle: const MaterialStatePropertyAll<TextStyle>(
+          textStyle: const WidgetStatePropertyAll<TextStyle>(
             TextStyle(fontFamily: 'lexend'),
           ),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(AppColors.primaryColor),
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          backgroundColor: WidgetStateProperty.all<Color>(
+            AppColors.primaryColor,
+          ),
+          foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
         ),
       ),
       scaffoldBackgroundColor: AppColors.bgDarkColor,
@@ -177,7 +184,7 @@ class AppTheme {
         ),
       ),
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateProperty.all<Color>(AppColors.primaryColor),
+        fillColor: WidgetStateProperty.all<Color>(AppColors.primaryColor),
       ),
     );
   }

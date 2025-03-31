@@ -16,7 +16,7 @@ import 'package:frd/domain/usecases/app_usecase.dart';
 import 'package:frd/modules/splash/splash_screen.dart';
 
 class Application extends StatelessWidget {
-  const Application({Key? key}) : super(key: key);
+  const Application({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,10 @@ class Application extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return BlocProvider(
-      create: (_) => AppBloc(injector<AppUseCase>())
-        ..add(const OnAppConfigChangeRequested(AppConfigType.all)),
+      create:
+          (_) =>
+              AppBloc(injector<AppUseCase>())
+                ..add(const OnAppConfigChangeRequested(AppConfigType.all)),
       child: ValueListenableBuilder<Box<ConfigEntity>>(
         valueListenable: Boxes.getAppConfig().listenable(),
         builder: (context, box, _) {
@@ -42,11 +44,12 @@ class Application extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             locale: Locale(config != null ? config.language.locale : enLocale),
-            theme: config != null
-                ? config.theme == lightTheme
-                    ? AppTheme.light
-                    : AppTheme.dark
-                : AppTheme.light,
+            theme:
+                config != null
+                    ? config.theme == lightTheme
+                        ? AppTheme.light
+                        : AppTheme.dark
+                    : AppTheme.light,
             darkTheme: AppTheme.dark,
             debugShowCheckedModeBanner: false,
             initialRoute: initRoute,

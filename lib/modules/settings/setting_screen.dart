@@ -10,7 +10,7 @@ import 'package:frd/generated/l10n.dart';
 import 'package:frd/presentation/components/option_field.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({Key? key, this.message}) : super(key: key);
+  const SettingScreen({super.key, this.message});
 
   final RemoteMessage? message;
 
@@ -54,11 +54,11 @@ class _SettingScreenState extends BaseWidgetState<SettingScreen> {
           value: _config != null ? _config!.theme == darkTheme : false,
           onChanged: (value) {
             context.read<AppBloc>().add(
-                  OnAppConfigChangeRequested(
-                    AppConfigType.theme,
-                    theme: value ? darkTheme : lightTheme,
-                  ),
-                );
+              OnAppConfigChangeRequested(
+                AppConfigType.theme,
+                theme: value ? darkTheme : lightTheme,
+              ),
+            );
           },
         ),
         OptionField(

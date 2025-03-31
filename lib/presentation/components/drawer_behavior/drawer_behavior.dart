@@ -1,4 +1,4 @@
-library drawer_behavior;
+library;
 
 import 'dart:math';
 

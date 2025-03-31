@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:frd/core/ui/base_widget_state.dart';
 
 class TaskScreen extends StatefulWidget {
-  const TaskScreen({Key? key, this.message}) : super(key: key);
+  const TaskScreen({super.key, this.message});
 
   final RemoteMessage? message;
 
@@ -22,8 +22,6 @@ class _TaskScreenState extends BaseWidgetState<TaskScreen> {
 
   @override
   Widget buildBody(BuildContext context) {
-    return Center(
-      child: Text('task ${notification?.title ?? 'no message'}'),
-    );
+    return Center(child: Text('task ${notification?.title ?? 'no message'}'));
   }
 }

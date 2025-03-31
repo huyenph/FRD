@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:frd/core/navigation/navigation_service.dart';
@@ -42,11 +41,12 @@ void _handleNotification(RemoteMessage message) {
           icon: 'ic_stat_ic_notification',
         ),
         iOS: DarwinNotificationDetails(
-            presentAlert: true,
-            badgeNumber: 1,
-            presentBadge: true,
-            presentSound: true,
-            subtitle: channel.description),
+          presentAlert: true,
+          badgeNumber: 1,
+          presentBadge: true,
+          presentSound: true,
+          subtitle: channel.description,
+        ),
       ),
     );
   }
@@ -70,7 +70,8 @@ class FirebaseFCM {
     /// default FCM channel to enable heads up notifications.
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin
+        >()
         ?.createNotificationChannel(channel);
 
     _messaging.getToken().then((value) {
@@ -100,10 +101,7 @@ class FirebaseFCM {
       // Handle open hpcompose when terminated
       _messaging.getInitialMessage().then((RemoteMessage? message) {
         if (message != null) {
-          injector<NavigationService>().navigateTo(
-            '/home',
-            arguments: message,
-          );
+          injector<NavigationService>().navigateTo('/home', arguments: message);
           // Navigator.pushNamed(context, '/home', arguments: message);
         }
       });
@@ -111,10 +109,7 @@ class FirebaseFCM {
       // For handling the received notifications in hpcompose
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         _handleNotification(message);
-        injector<NavigationService>().navigateTo(
-          '/task',
-          arguments: message,
-        );
+        injector<NavigationService>().navigateTo('/task', arguments: message);
 
         // Navigator.pushNamed(context, '/task', arguments: message);
       });

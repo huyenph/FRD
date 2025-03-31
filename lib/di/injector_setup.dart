@@ -1,4 +1,4 @@
-library injector_setup;
+library;
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
